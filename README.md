@@ -1,2 +1,2 @@
 # NanoBot
-Repositorio dedicado al desarrollo del velocista profesional y amateur NANOBOT.
+##  _Dedicado a la leyenda Asturiana de la Formula 1, El Nano_
