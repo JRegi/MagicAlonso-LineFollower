@@ -19,7 +19,6 @@ private:
     uint16_t ReadMultiplexer(uint8_t channel);
     Color _color;
     bool *_sensorsState;
-    uint8_t _numSensors;
     uint8_t _s0, _s1, _s2, _s3, _sig;
     uint16_t *_whiteValues;
     uint16_t *_blackValues;
