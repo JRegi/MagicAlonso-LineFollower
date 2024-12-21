@@ -1,1 +1,1 @@
-# NanoBot - _Dedicado a la leyenda Asturiana de la Formula 1_
+# NanoBot - _Dedicado a la leyenda Asturiana del motor_
