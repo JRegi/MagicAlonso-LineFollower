@@ -1,1 +1,1 @@
-# NanoBot - _Dedicado a la leyenda Asturiana del motor_
+# MagicAlonso / NANOBOT - _Dedicado a la leyenda Asturiana del motor_
