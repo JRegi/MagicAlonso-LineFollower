@@ -630,6 +630,10 @@
     [
       "c19a4b5e-b66e-4d93-9513-18dbfa3808b4",
       "CH340C"
+    ],
+    [
+      "38d4c26b-5042-47e6-b450-9f4e66fb3158",
+      "StepDown_2315"
     ]
   ],
   "text_variables": {}
