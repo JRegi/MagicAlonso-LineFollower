@@ -721,7 +721,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:D_Small_Filled"
+		(symbol "Device:D_Schottky_Small"
 			(pin_numbers
 				(hide yes)
 			)
@@ -741,8 +741,8 @@
 					(justify left)
 				)
 			)
-			(property "Value" "D_Small_Filled"
-				(at -3.81 -2.032 0)
+			(property "Value" "D_Schottky_Small"
+				(at -7.112 -2.032 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -768,7 +768,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Diode, small symbol, filled shape"
+			(property "Description" "Schottky diode, small symbol"
 				(at 0 0 0)
 				(effects
 					(font
@@ -777,25 +777,7 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Device" "D"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=K 2=A"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode"
+			(property "ki_keywords" "diode Schottky"
 				(at 0 0 0)
 				(effects
 					(font
@@ -813,13 +795,13 @@
 					(hide yes)
 				)
 			)
-			(symbol "D_Small_Filled_0_1"
+			(symbol "D_Schottky_Small_0_1"
 				(polyline
 					(pts
-						(xy -0.762 0) (xy 0.762 0)
+						(xy -1.27 0.762) (xy -1.27 1.016) (xy -0.762 1.016) (xy -0.762 -1.016) (xy -0.254 -1.016) (xy -0.254 -0.762)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -828,10 +810,10 @@
 				)
 				(polyline
 					(pts
-						(xy -0.762 -1.016) (xy -0.762 1.016)
+						(xy -0.762 0) (xy 0.762 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -847,11 +829,11 @@
 						(type default)
 					)
 					(fill
-						(type outline)
+						(type none)
 					)
 				)
 			)
-			(symbol "D_Small_Filled_1_1"
+			(symbol "D_Schottky_Small_1_1"
 				(pin passive line
 					(at -2.54 0 0)
 					(length 1.778)
@@ -3942,7 +3924,7 @@
 		)
 		(uuid "12ff32b9-27ae-42cd-8d48-e42551922bb0")
 	)
-	(text "To-Do\n- giroscopio y acelerometro\n- encoders\n- usb module footprint\n- buzzer\n- 2 ws2822b smd\n- 1 interface button\n- DIP Switch 2 vias ??\n- mounting holes\n- ESC connections\n- quizas integrar step-down\n- soldar modulo de MUX como Modulo SMD\n- Sensores de corriente"
+	(text "To-Do\n- giroscopio y acelerometro\n- encoders\n- usb module footprint\n- buzzer\n- 2 ws2812b smd\n- 1 interface button\n- DIP Switch 2 vias ??\n- mounting holes\n- ESC connections\n- quizas integrar step-down\n- soldar modulo de MUX como Modulo SMD\n- Sensores de corriente"
 		(exclude_from_sim no)
 		(at -167.894 75.184 0)
 		(effects
@@ -5236,7 +5218,7 @@
 	)
 	(wire
 		(pts
-			(xy 40.64 31.75) (xy 44.45 31.75)
+			(xy 40.64 31.75) (xy 43.18 31.75)
 		)
 		(stroke
 			(width 0)
@@ -5566,7 +5548,7 @@
 	)
 	(wire
 		(pts
-			(xy 54.61 31.75) (xy 55.88 31.75)
+			(xy 53.34 31.75) (xy 55.88 31.75)
 		)
 		(stroke
 			(width 0)
@@ -21068,7 +21050,43 @@
 			"AHAAcABlAGUAOAA1AHoAbgAvAE8AegBQAC8AbQB6AHAAbQBEAGYAQgB6AE4ANwArADkAcgBlAC8A"
 			"OABZADEAdgBQAEwAdgB5AG4AbgB2AHUAKwBaAHEAdgArAFoAcQAvACsASQB1AC8AZQBNADUAegBu"
 			"AHIATwAvAGoAdQAyAHgAeAB4ADUANwA3AEwASABIAG4AawBMAGQAWQA0ADgAOQA5AHQAaABqAGoA"
-			"egAwAA=="
+			"egAwAGUAYQB5AGoAaABOAHYAUQBlAEEASABtAFQAUABsADQAawBYAHMAWgBVAFEAbABZAEEARQBR"
+			"AHgATgBMAFoAdgBrAHIARwBBAFcAbQBSAHkAegBnAEsAUQB4AEQAdQBPAFEAYwA5AHcAbQBTAFQA"
+			"RQBDADEAYgA1AEMASgBIAGIATQB4AEoAawB5AFcARgBHAHIAbQBWAHEAeABZAGkAeABGACsAcQB3"
+			"AEMAQgBvAFgAcwBRAEMAeQA1ADcAWQBXAC8AdwBCAHQAdQBoAEQAZABJAGoAWQBmAC8AcwBiAE0A"
+			"KwAzAEcAcABSAE4AMgBLADkASQBwAE0AcwByAEIAQQB6ADAAMQBaADMAbABsAEoAYQBuAEoANgBL"
+			"AHEAcQBsAHUAaQB2AGwAMwB0AEEAcwB6AEUAcwAzAG0AYwArAGYAYwBPAEEAdwBwAFoAeQBaAHkA"
+			"SQBZAEQAWgBsAFMAdABYAEYAbwB0AEYAaQBYAHMASwBvAG0AcQBXAFUAeQA2ADUANABaAFkAVABN"
+			"AFIAcwBvAHkAQwBaAHMAUABZAFMAcQBlAEwAbgBtAGwATgBiAHIAOQBYAEsANQBSAEsASgA2AEcA"
+			"TwBxADYAYgBwAHEAbQBhAFoAcgBwAGQATABwAGEAcgA3AE8ASQBEADUAWAB6AHcAUQBlAEoASwBj"
+			"AGMAMABxAHUAbgBWAGEAeQBmAGUAKwArAFYAcQBLAFMASgBGADEANwBuAHUAaABxADQAZgB6AGwA"
+			"OAA0AGYAMwBoADgANwB1AHEAVgBxADEAawBNAEUASgBBAFIAbQBaAGcAOQBrAGcATwBFAGIAaABq"
+			"AHIAZABvAEsASQAxAHgAZgBMAGEAMQBlAHYAcABwAFMASwBBAFcAZwAvAHIASgAxAHoAbAB5ADUA"
+			"ZABtAGsANABtAEkAWABpAFIAQgBGAEMAYwBXAE4ARwBnADEARQBGAEwAYwBSADUASQBPAFMARQBp"
+			"AEEAcQBhAFUAaABtAEgAWQBtAHQASQBXAGoAMQBwAFEAawA2AFMAcABiAHUAdAArAEgAQgBSAFEA"
+			"UgBBAEQAUQArADgARABzAFQARQBUAE4ANgBxAHIAeQBQAGcAVAB2AEoAVwAyADMASQA5AEYATQBu"
+			"AEcAOABCAFQARQAwAE0ATgBLAFcAWQBzAHoAQQA3AFYAZgBGACsANAByADIATABhAFQAUgBEAEoA"
+			"ZwBhAEUAbgBGAFcAeQA3AE0AUwB4AEMARgBCAFYAVgBRAG0AUABXAHEALwBYADEAMAArAHUAbQBX"
+			"AFEAZgBYAE4ATQAwADUAOAArAGYAbgAwAHcAbQBnAEQAZwBNAGcANgBsAFcAZABUADIASwBiAEkA"
+			"eABRAGkAYgB3AFAAMAArAG0AawByAHEAbwA0AFIAbABFAHQATQBzAGwAQwBqAHEALwBXADYAMwBY"
+			"AFgAagBYAEUAcwBDAGwALwBWADEAYgBXAFQAawA2AE8AagBvAC8AUABuAHoAOQBkAE4AMAAzAFgA"
+			"cgA5AGQAQwBYAHMASwBoAHUAdgBRADQAaABNAEEAMABJAEcAUQBpAHEAcQBwAHAATQBKAHcAQQAy"
+			"AGoAcQBOAGoAbQBrAHoAYgBwAHEANQBUAFMAaQBjAG4AcAA5AGQAUABGADgATQB3AEQATwBNAFEA"
+			"WQAxAFEAeAA3ADgATwBGAEMAeABkAHUAdgAvADMAMgB5AFcAUwBpAEIAcwB2AGwAYwBoAGoASAB3"
+			"ADgAUABEAGsAMgB0AFgANgA3AG8AeAAwADcANwB2AGkASABqAEQAWABLAGQAcwBoAHAATwAyAEwA"
+			"VAA2ADgANABKAHoAMwBJAGEAVQA4AG4AVQAzADcAcwBTACsAZABRAEUAUgB6AFQAaQBsAEgAVgBT"
+			"AFcAaQBwAG0ANgBxAHEAaQBLAGkAWQBSAGkAOAA4ADAAMQBUAFMAMgBaADIAcgBqAGcAUwBiAEYA"
+			"cABPAE4AbABTADQAcQB1AFkAdAB6AGwAZwBKAGIANwBYAGUAUgBNADYAUgBtAFEARABBAE8ATQBi"
+			"AFYAYQBsAFUAawBxADYAYwBuADEAeABlAEwAVQB5AEkAUQAxAFoAaQBpADgANgA2AHQARwA5AHcA"
+			"RwBqAHUAVwBjAEYAYQB5AHEAcQBuAEUAWQBTADQARgA4ADMAdwAvAHMAbgBKAG4AMQBYAFgALwA5"
+			"ADkATgByAGwAaAB4ADcAYQBLAEwANQA5AE0ATQBDAG0AcgB0AHEAMgA3AFYAWQByAE4AUwBOAG0A"
+			"TgBFAFUARQA1ADcAeAB6AEcARQBLAFoAZwA5AEEAaQBzAHkAMQB6AEUATQBTAEUAVABLAEIAbQBv"
+			"AGkAVgAvAEMAegBjAFMAZABGAE0AdwBCAEMAQwBBAGoAZQA4AEgAZwBvAEUAeABrAHAAbQBKAGwA"
+			"RgArAG4AVwA5AGQAWABCAGEARAB5ADkAMgA2AHMAMgBQAEwASQBrAEYATABPAFcAVQBRAHkAbQBD"
+			"AEYAUwBpAFIAZgBiAGoARABZAFAATgB3AHMAaABKAEEAQQB6AFUAQQBQAFkAdgBtADUAVgBvAE4A"
+			"cwB1AHoAcAA3AHkAeABFAHYAbgBqAHUAZABWADcAWQBwAHUAMQA3AEUAMwBBADEASABrAHkAZgB6"
+			"AEwAbgB2AEgAcwA2AFgAVAB5AFcAUQBmAGMAcAB6AC8AOQA2AGUAOQA5ADcAMwB0AGYAOAA1AHIA"
+			"WABmAA=="
 		)
 	)
 	(label "QRE_8"
@@ -25180,91 +25198,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Small_Filled")
-		(at 58.42 31.75 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e9cfe335-3eed-494e-a787-a3fe8e1792fd")
-		(property "Reference" "D1"
-			(at 58.42 26.416 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "M7"
-			(at 58.42 28.956 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 58.42 31.75 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 58.42 31.75 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Diode, small symbol, filled shape"
-			(at 58.42 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 58.42 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 58.42 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "270efa06-d629-4443-92e8-8ca5a9d61a8c")
-		)
-		(pin "2"
-			(uuid "112f37db-df9a-4b35-909d-de249e6ae4c2")
-		)
-		(instances
-			(project ""
-				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
-					(reference "D1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 62.23 40.64 0)
 		(unit 1)
@@ -25400,7 +25333,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_SPST")
-		(at 49.53 31.75 0)
+		(at 48.26 31.75 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25409,7 +25342,7 @@
 		(fields_autoplaced yes)
 		(uuid "f8355495-278d-41c9-aa4d-4f0e214ac9c4")
 		(property "Reference" "SW1"
-			(at 49.53 25.4 0)
+			(at 48.26 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25417,7 +25350,7 @@
 			)
 		)
 		(property "Value" "Power_SW"
-			(at 49.53 27.94 0)
+			(at 48.26 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25425,7 +25358,7 @@
 			)
 		)
 		(property "Footprint" "MixLib:SW_Slide-03_P2.54_L9_W4_H7"
-			(at 49.53 31.75 0)
+			(at 48.26 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25434,7 +25367,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 49.53 31.75 0)
+			(at 48.26 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25443,7 +25376,7 @@
 			)
 		)
 		(property "Description" "Single Pole Single Throw (SPST) switch"
-			(at 49.53 31.75 0)
+			(at 48.26 31.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25461,6 +25394,73 @@
 			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
 					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_Schottky_Small")
+		(at 58.42 31.75 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fb1cfcf5-e73e-4100-9b63-3e4be79969a2")
+		(property "Reference" "D1"
+			(at 58.42 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SS14"
+			(at 58.42 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 58.42 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 58.42 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Schottky diode, small symbol"
+			(at 58.42 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "6bdd6334-5e7c-4adc-b570-82517f592d3b")
+		)
+		(pin "1"
+			(uuid "c22e0b86-2c4e-4f22-93b4-a48f6c50c351")
+		)
+		(instances
+			(project ""
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "D1")
 					(unit 1)
 				)
 			)

@@ -4727,7 +4727,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819"
+		(property "Value" "SS14"
 			(at 91.694 26.67 0)
 			(effects
 				(font
