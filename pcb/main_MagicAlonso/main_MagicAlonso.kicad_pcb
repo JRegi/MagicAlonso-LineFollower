@@ -3069,6 +3069,17 @@
 		(layer "Cmts.User")
 		(uuid "03b7b002-3b73-40ee-aac6-8ef0b784bd12")
 	)
+	(gr_rect
+		(start 236 150.2)
+		(end 274.5 191.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "Cmts.User")
+		(uuid "3a5c6257-38e5-496e-a61c-1168119ee00a")
+	)
 	(gr_circle
 		(center 35.4 265.95)
 		(end 44.2 265.95)
