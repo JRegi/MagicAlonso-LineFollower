@@ -2776,7 +2776,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 110.49 43.18 0)
 			(effects
 				(font
@@ -3109,7 +3109,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_TDK_SLF6025"
 			(at 77.47 39.37 0)
 			(effects
 				(font
@@ -3804,7 +3804,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Potentiometer_SMD:Potentiometer_Vishay_TS53YJ_Vertical"
 			(at 63.5 92.71 0)
 			(effects
 				(font

@@ -24173,7 +24173,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
 			(at 137.16 186.69 0)
 			(effects
 				(font
@@ -24240,7 +24240,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 71.12 185.42 0)
 			(effects
 				(font
@@ -24840,7 +24840,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 142.24 99.06 0)
 			(effects
 				(font
@@ -25050,7 +25050,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal"
 			(at 111.76 166.37 0)
 			(effects
 				(font
@@ -25519,7 +25519,7 @@
 				)
 			)
 		)
-		(property "Footprint" "XT30PW-M:AMASS_XT30PW-M"
+		(property "Footprint" "MixLib:XT30PW-M"
 			(at 27.94 33.02 0)
 			(effects
 				(font
@@ -26649,7 +26649,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_S10B-XH-A_1x10_P2.50mm_Horizontal"
 			(at 19.05 171.45 0)
 			(effects
 				(font
@@ -26963,7 +26963,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 71.12 163.83 0)
 			(effects
 				(font
@@ -27156,7 +27156,7 @@
 				)
 			)
 		)
-		(property "Value" "Encoder1"
+		(property "Value" "Encoder2"
 			(at 142.875 119.38 0)
 			(effects
 				(font
@@ -27164,7 +27164,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
 			(at 142.24 124.46 0)
 			(effects
 				(font
@@ -27498,7 +27498,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 172.72 76.2 0)
 			(effects
 				(font
@@ -27703,7 +27703,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal"
 			(at 139.7 166.37 0)
 			(effects
 				(font
@@ -27770,7 +27770,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical"
 			(at 52.07 172.72 0)
 			(effects
 				(font
@@ -27842,7 +27842,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
 			(at 165.1 186.69 0)
 			(effects
 				(font
@@ -28453,7 +28453,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal"
 			(at 167.64 166.37 0)
 			(effects
 				(font
@@ -29981,7 +29981,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 142.24 76.2 0)
 			(effects
 				(font
@@ -30811,7 +30811,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-AM_1x02_P2.50mm_Vertical"
 			(at 110.49 186.69 0)
 			(effects
 				(font
@@ -31542,7 +31542,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 60.96 33.02 90)
 			(effects
 				(font
