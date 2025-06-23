@@ -3822,7 +3822,7 @@
 		)
 		(uuid "153c34bb-9f9b-4b69-bbee-f6ca38138c1b")
 	)
-	(label "VbusC"
+	(label "VMusC"
 		(at 80.01 29.21 180)
 		(effects
 			(font
@@ -3832,7 +3832,7 @@
 		)
 		(uuid "21607288-5bd1-49d8-84a4-80df724244c2")
 	)
-	(label "VbusB"
+	(label "VMusB"
 		(at 35.56 128.27 0)
 		(effects
 			(font
@@ -3852,7 +3852,7 @@
 		)
 		(uuid "36bdf313-6f58-43e5-a12c-5406de46b6c1")
 	)
-	(label "VbusC"
+	(label "VMusC"
 		(at 49.53 33.02 0)
 		(effects
 			(font
@@ -3882,7 +3882,7 @@
 		)
 		(uuid "5aba39d8-c311-4da8-8160-de8307af5c40")
 	)
-	(label "VbusB"
+	(label "VMusB"
 		(at 49.53 144.78 180)
 		(effects
 			(font
@@ -3972,7 +3972,7 @@
 		)
 		(uuid "aef14966-363d-4284-9604-3e5eb40abbeb")
 	)
-	(label "Vbus"
+	(label "VMus"
 		(at 83.058 88.646 180)
 		(effects
 			(font
@@ -4730,7 +4730,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-AM_1x05_P2.50mm_Vertical"
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical"
 			(at 89.408 93.726 0)
 			(effects
 				(font
@@ -5738,7 +5738,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-AM_1x04_P2.50mm_Vertical"
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 			(at 88.9 77.47 0)
 			(effects
 				(font
@@ -5885,7 +5885,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_Tantalum_SMD:CP_EIA-3216-10_Kemet-I_Pad1.58x1.35mm_HandSolder"
+		(property "Footprint" "Capacitor_Tantalum_SMD:CP_EIA-3216-10_Kemet-I_HandSolder"
 			(at 85.09 46.99 0)
 			(effects
 				(font
