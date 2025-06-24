@@ -3972,7 +3972,7 @@
 		)
 		(uuid "aef14966-363d-4284-9604-3e5eb40abbeb")
 	)
-	(label "VMus"
+	(label "VMusB"
 		(at 83.058 88.646 180)
 		(effects
 			(font
@@ -4730,7 +4730,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical"
+		(property "Footprint" "MixLib:USB_Adapter_Board"
 			(at 89.408 93.726 0)
 			(effects
 				(font
