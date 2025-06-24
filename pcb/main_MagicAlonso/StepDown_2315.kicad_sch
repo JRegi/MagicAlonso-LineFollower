@@ -3759,7 +3759,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "efd61ef4-f82b-4510-b37f-908b0e11e1c3")
 		(property "Reference" "RV1"
 			(at 66.04 91.4399 0)
