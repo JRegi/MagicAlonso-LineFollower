@@ -1,4 +1,4 @@
-25353469800329016
+25355899104072558
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -66689,6 +66689,13 @@ Bornera_2_duo
 4
 2
 MixLib
+CD74HC4067_module
+
+
+0
+24
+24
+MixLib
 Cable-doble-SMD
 
 
@@ -66738,13 +66745,6 @@ GCT_USB4120-03-C_REVA
 20
 17
 MixLib
-HP4067_module
-
-
-0
-24
-24
-MixLib
 LED_0805_2012Metric
 LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
 LED
@@ -66771,6 +66771,13 @@ MP4560_Module
 
 0
 8
+4
+MixLib
+MPU6050_Module
+
+
+0
+4
 4
 MixLib
 Mini360_step-down
