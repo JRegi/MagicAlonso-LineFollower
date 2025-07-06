@@ -2,7 +2,7 @@
 
 ## Modelo 3D PCB principal (KiCad 9.0)
 
-![imagen](pcb_main.jpg "PCB Main")
+![imagen](pcb/pcb_main.jpg "PCB Main")
 
 ## Descripción
 
