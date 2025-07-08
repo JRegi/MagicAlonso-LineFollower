@@ -147,8 +147,8 @@
           "td_onpthpad": false,
           "td_onroundshapesonly": false,
           "td_onsmdpad": false,
-          "td_ontrackend": false,
-          "td_onvia": true
+          "td_ontrackend": true,
+          "td_onvia": false
         }
       ],
       "teardrop_parameters": [
@@ -492,7 +492,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "main_MagicAlonso.kicad_pro",
+    "filename": "main_MagicAlonso-rounded.kicad_pro",
     "version": 3
   },
   "net_settings": {
