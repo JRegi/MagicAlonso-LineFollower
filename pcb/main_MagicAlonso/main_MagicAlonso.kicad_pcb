@@ -78,7 +78,7 @@
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting front back)
-		(aux_axis_origin 106.5 128.25)
+		(aux_axis_origin 12 288.5)
 		(grid_origin 106.5 128.25)
 		(pcbplotparams
 			(layerselection 0x00000000_00000000_55555555_5755f5ff)
@@ -30448,6 +30448,16 @@
 		(locked yes)
 		(layer "Edge.Cuts")
 		(uuid "eee448db-9a3f-49ef-9c58-b9aafb2d51e3")
+	)
+	(gr_line
+		(start 62 236)
+		(end 62 238.5)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "Edge.Cuts")
+		(uuid "fd481bf4-a482-480a-af17-ba5d44e3ddff")
 	)
 	(gr_text "1404\nBLDC"
 		(at 64.4 264.5 0)

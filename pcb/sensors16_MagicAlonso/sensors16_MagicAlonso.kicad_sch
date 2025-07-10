@@ -1819,6 +1819,89 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "MixLib:CD74HC4067_module"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -3150,6 +3233,18 @@
 		(uuid d31c33c8-b343-4dd6-b503-df4266951708)
 	)
 	(rectangle
+		(start 211.582 136.906)
+		(end 242.824 159.258)
+		(stroke
+			(width 1)
+			(type dot)
+		)
+		(fill
+			(type none)
+		)
+		(uuid dc750e80-6a65-4a08-994a-ccd2aaba0e67)
+	)
+	(rectangle
 		(start 12.7 124.46)
 		(end 175.26 196.85)
 		(stroke
@@ -3216,13 +3311,13 @@
 		(uuid "06553262-d66b-4c75-b526-a2371ac1d09b")
 	)
 	(junction
-		(at 44.45 109.22)
+		(at 45.72 106.68)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "13fa9002-cec8-4d9c-b53d-6aea78e83d77")
 	)
 	(junction
-		(at 45.72 38.1)
+		(at 46.99 35.56)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "19111cc1-d050-4c44-9bfa-c8eed883d4f9")
@@ -3276,7 +3371,7 @@
 		(uuid "3883632c-745f-4bef-9858-d560f8f8d5f6")
 	)
 	(junction
-		(at 45.72 60.96)
+		(at 46.99 58.42)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "40c96771-4736-4fda-85b7-4ba7556fee13")
@@ -3336,7 +3431,7 @@
 		(uuid "c158ae5e-9e1d-4ae7-8187-0547ec37703f")
 	)
 	(junction
-		(at 45.72 83.82)
+		(at 46.99 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e989654f-13a5-4e06-a63e-bf82e2d3d413")
@@ -3455,7 +3550,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 114.3) (xy 44.45 114.3)
+			(xy 44.45 111.76) (xy 45.72 111.76)
 		)
 		(stroke
 			(width 0)
@@ -3475,7 +3570,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 105.41) (xy 44.45 109.22)
+			(xy 45.72 102.87) (xy 45.72 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3545,7 +3640,7 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 109.22) (xy 44.45 109.22)
+			(xy 44.45 106.68) (xy 45.72 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3765,7 +3860,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 83.82) (xy 55.88 83.82)
+			(xy 59.69 81.28) (xy 57.15 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3775,7 +3870,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 83.82) (xy 29.21 83.82)
+			(xy 26.67 81.28) (xy 30.48 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3875,7 +3970,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 60.96) (xy 55.88 60.96)
+			(xy 59.69 58.42) (xy 57.15 58.42)
 		)
 		(stroke
 			(width 0)
@@ -3885,7 +3980,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 83.82) (xy 16.51 81.28)
+			(xy 17.78 81.28) (xy 17.78 78.74)
 		)
 		(stroke
 			(width 0)
@@ -3935,7 +4030,7 @@
 	)
 	(wire
 		(pts
-			(xy 17.78 83.82) (xy 16.51 83.82)
+			(xy 19.05 81.28) (xy 17.78 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3945,7 +4040,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 38.1) (xy 45.72 38.1)
+			(xy 45.72 35.56) (xy 46.99 35.56)
 		)
 		(stroke
 			(width 0)
@@ -3955,7 +4050,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 83.82) (xy 45.72 83.82)
+			(xy 45.72 81.28) (xy 46.99 81.28)
 		)
 		(stroke
 			(width 0)
@@ -3995,7 +4090,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 80.01) (xy 45.72 83.82)
+			(xy 46.99 77.47) (xy 46.99 81.28)
 		)
 		(stroke
 			(width 0)
@@ -4005,7 +4100,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 114.3) (xy 26.67 114.3)
+			(xy 29.21 111.76) (xy 27.94 111.76)
 		)
 		(stroke
 			(width 0)
@@ -4155,7 +4250,7 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 43.18) (xy 27.94 43.18)
+			(xy 30.48 40.64) (xy 29.21 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4175,7 +4270,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 66.04) (xy 45.72 67.31)
+			(xy 46.99 63.5) (xy 46.99 64.77)
 		)
 		(stroke
 			(width 0)
@@ -4195,7 +4290,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 60.96) (xy 48.26 60.96)
+			(xy 46.99 58.42) (xy 49.53 58.42)
 		)
 		(stroke
 			(width 0)
@@ -4215,7 +4310,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 81.28) (xy 58.42 83.82)
+			(xy 59.69 78.74) (xy 59.69 81.28)
 		)
 		(stroke
 			(width 0)
@@ -4265,7 +4360,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 34.29) (xy 45.72 38.1)
+			(xy 46.99 31.75) (xy 46.99 35.56)
 		)
 		(stroke
 			(width 0)
@@ -4325,7 +4420,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 58.42) (xy 58.42 60.96)
+			(xy 59.69 55.88) (xy 59.69 58.42)
 		)
 		(stroke
 			(width 0)
@@ -4355,7 +4450,7 @@
 	)
 	(wire
 		(pts
-			(xy 17.78 38.1) (xy 16.51 38.1)
+			(xy 19.05 35.56) (xy 17.78 35.56)
 		)
 		(stroke
 			(width 0)
@@ -4415,7 +4510,7 @@
 	)
 	(wire
 		(pts
-			(xy 17.78 60.96) (xy 16.51 60.96)
+			(xy 19.05 58.42) (xy 17.78 58.42)
 		)
 		(stroke
 			(width 0)
@@ -4555,7 +4650,7 @@
 	)
 	(wire
 		(pts
-			(xy 26.67 114.3) (xy 26.67 115.57)
+			(xy 27.94 111.76) (xy 27.94 113.03)
 		)
 		(stroke
 			(width 0)
@@ -4645,7 +4740,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 35.56) (xy 58.42 38.1)
+			(xy 59.69 33.02) (xy 59.69 35.56)
 		)
 		(stroke
 			(width 0)
@@ -4805,7 +4900,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 66.04) (xy 27.94 67.31)
+			(xy 29.21 63.5) (xy 29.21 64.77)
 		)
 		(stroke
 			(width 0)
@@ -4865,7 +4960,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 88.9) (xy 45.72 88.9)
+			(xy 45.72 86.36) (xy 46.99 86.36)
 		)
 		(stroke
 			(width 0)
@@ -4905,7 +5000,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 88.9) (xy 27.94 90.17)
+			(xy 29.21 86.36) (xy 29.21 87.63)
 		)
 		(stroke
 			(width 0)
@@ -4925,7 +5020,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 38.1) (xy 55.88 38.1)
+			(xy 59.69 35.56) (xy 57.15 35.56)
 		)
 		(stroke
 			(width 0)
@@ -4935,7 +5030,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 60.96) (xy 16.51 58.42)
+			(xy 17.78 58.42) (xy 17.78 55.88)
 		)
 		(stroke
 			(width 0)
@@ -5055,7 +5150,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 38.1) (xy 29.21 38.1)
+			(xy 26.67 35.56) (xy 30.48 35.56)
 		)
 		(stroke
 			(width 0)
@@ -5115,7 +5210,7 @@
 	)
 	(wire
 		(pts
-			(xy 15.24 109.22) (xy 15.24 106.68)
+			(xy 16.51 106.68) (xy 16.51 104.14)
 		)
 		(stroke
 			(width 0)
@@ -5125,7 +5220,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 109.22) (xy 46.99 109.22)
+			(xy 45.72 106.68) (xy 48.26 106.68)
 		)
 		(stroke
 			(width 0)
@@ -5145,7 +5240,7 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 66.04) (xy 27.94 66.04)
+			(xy 30.48 63.5) (xy 29.21 63.5)
 		)
 		(stroke
 			(width 0)
@@ -5185,7 +5280,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 43.18) (xy 45.72 43.18)
+			(xy 45.72 40.64) (xy 46.99 40.64)
 		)
 		(stroke
 			(width 0)
@@ -5245,7 +5340,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 88.9) (xy 45.72 90.17)
+			(xy 46.99 86.36) (xy 46.99 87.63)
 		)
 		(stroke
 			(width 0)
@@ -5295,7 +5390,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 114.3) (xy 44.45 115.57)
+			(xy 45.72 111.76) (xy 45.72 113.03)
 		)
 		(stroke
 			(width 0)
@@ -5465,7 +5560,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 66.04) (xy 45.72 66.04)
+			(xy 45.72 63.5) (xy 46.99 63.5)
 		)
 		(stroke
 			(width 0)
@@ -5575,7 +5670,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 109.22) (xy 15.24 109.22)
+			(xy 17.78 106.68) (xy 16.51 106.68)
 		)
 		(stroke
 			(width 0)
@@ -5595,7 +5690,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 83.82) (xy 48.26 83.82)
+			(xy 46.99 81.28) (xy 49.53 81.28)
 		)
 		(stroke
 			(width 0)
@@ -5635,7 +5730,7 @@
 	)
 	(wire
 		(pts
-			(xy 29.21 88.9) (xy 27.94 88.9)
+			(xy 30.48 86.36) (xy 29.21 86.36)
 		)
 		(stroke
 			(width 0)
@@ -5695,7 +5790,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 43.18) (xy 45.72 44.45)
+			(xy 46.99 40.64) (xy 46.99 41.91)
 		)
 		(stroke
 			(width 0)
@@ -5715,7 +5810,7 @@
 	)
 	(wire
 		(pts
-			(xy 27.94 43.18) (xy 27.94 44.45)
+			(xy 29.21 40.64) (xy 29.21 41.91)
 		)
 		(stroke
 			(width 0)
@@ -5745,7 +5840,7 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 60.96) (xy 29.21 60.96)
+			(xy 26.67 58.42) (xy 30.48 58.42)
 		)
 		(stroke
 			(width 0)
@@ -5755,7 +5850,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 38.1) (xy 48.26 38.1)
+			(xy 46.99 35.56) (xy 49.53 35.56)
 		)
 		(stroke
 			(width 0)
@@ -5835,7 +5930,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 57.15) (xy 45.72 60.96)
+			(xy 46.99 54.61) (xy 46.99 58.42)
 		)
 		(stroke
 			(width 0)
@@ -5905,7 +6000,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 60.96) (xy 45.72 60.96)
+			(xy 45.72 58.42) (xy 46.99 58.42)
 		)
 		(stroke
 			(width 0)
@@ -5945,7 +6040,7 @@
 	)
 	(wire
 		(pts
-			(xy 24.13 109.22) (xy 27.94 109.22)
+			(xy 25.4 106.68) (xy 29.21 106.68)
 		)
 		(stroke
 			(width 0)
@@ -6015,7 +6110,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 109.22) (xy 54.61 109.22)
+			(xy 58.42 106.68) (xy 55.88 106.68)
 		)
 		(stroke
 			(width 0)
@@ -6025,7 +6120,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 106.68) (xy 57.15 109.22)
+			(xy 58.42 104.14) (xy 58.42 106.68)
 		)
 		(stroke
 			(width 0)
@@ -6035,7 +6130,7 @@
 	)
 	(wire
 		(pts
-			(xy 16.51 38.1) (xy 16.51 35.56)
+			(xy 17.78 35.56) (xy 17.78 33.02)
 		)
 		(stroke
 			(width 0)
@@ -6294,7 +6389,7 @@
 		(uuid "140514dc-95bb-4628-b77e-247e4dcdeb35")
 	)
 	(label "QRE_1"
-		(at 45.72 57.15 0)
+		(at 46.99 54.61 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6314,7 +6409,7 @@
 		(uuid "201e5724-36cc-47d6-b2c9-3f14af4bb543")
 	)
 	(label "QRE_2"
-		(at 45.72 80.01 0)
+		(at 46.99 77.47 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6354,7 +6449,7 @@
 		(uuid "2789b88b-7074-45f4-bf48-a287dfc2fb95")
 	)
 	(label "QRE_0"
-		(at 45.72 34.29 0)
+		(at 46.99 31.75 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6514,7 +6609,7 @@
 		(uuid "66fecd0c-e76e-4b2c-b12b-e35a625db4f4")
 	)
 	(label "QRE_3"
-		(at 44.45 105.41 0)
+		(at 45.72 102.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6923,7 +7018,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0098e16a-7539-4567-8010-11fecdb646e0")
-		(property "Reference" "#PWR072"
+		(property "Reference" "#PWR045"
 			(at 146.05 191.77 0)
 			(effects
 				(font
@@ -6972,7 +7067,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR072")
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -6980,15 +7075,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 52.07 38.1 90)
+		(at 53.34 35.56 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "02892e0d-6dda-4b11-aa7e-a9a0f229189c")
-		(property "Reference" "R32"
-			(at 52.0192 40.513 90)
+		(property "Reference" "R6"
+			(at 53.2892 37.973 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6996,15 +7091,15 @@
 			)
 		)
 		(property "Value" "20k"
-			(at 52.0192 43.053 90)
+			(at 53.2892 40.513 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 52.07 39.878 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 53.34 37.338 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7013,7 +7108,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 52.07 38.1 0)
+			(at 53.34 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7022,7 +7117,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 52.07 38.1 0)
+			(at 53.34 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7038,7 +7133,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R32")
+					(reference "R6")
 					(unit 1)
 				)
 			)
@@ -7053,7 +7148,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "041fe5f7-21bd-44dc-9185-02f745ffe18d")
-		(property "Reference" "#PWR066"
+		(property "Reference" "#PWR019"
 			(at 68.58 186.69 0)
 			(effects
 				(font
@@ -7102,7 +7197,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR066")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -7118,7 +7213,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "047c5332-d870-49f2-9006-9fd9441d281a")
-		(property "Reference" "U10"
+		(property "Reference" "U5"
 			(at 87.63 32.8676 0)
 			(effects
 				(font
@@ -7175,7 +7270,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U10")
+					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -7183,7 +7278,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 58.42 58.42 0)
+		(at 59.69 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7191,8 +7286,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "063a3348-b465-415a-81fe-357c9bd15145")
-		(property "Reference" "#PWR013"
-			(at 58.42 62.23 0)
+		(property "Reference" "#PWR015"
+			(at 59.69 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7201,7 +7296,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 58.42 52.705 0)
+			(at 59.69 50.165 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7209,7 +7304,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 58.42 58.42 0)
+			(at 59.69 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7218,7 +7313,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 58.42 58.42 0)
+			(at 59.69 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7227,7 +7322,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 58.42 58.42 0)
+			(at 59.69 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7240,7 +7335,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR013")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -7255,7 +7350,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0646bf5c-4885-4405-b7d9-ef0b40d1ffad")
-		(property "Reference" "D3"
+		(property "Reference" "D1"
 			(at 252.73 107.95 0)
 			(effects
 				(font
@@ -7315,7 +7410,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "D3")
+					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -7330,7 +7425,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "06a5336e-7e33-42ef-a9c5-7c70054c348a")
-		(property "Reference" "R28"
+		(property "Reference" "R30"
 			(at 212.0392 41.783 90)
 			(effects
 				(font
@@ -7346,7 +7441,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 212.09 41.148 90)
 			(effects
 				(font
@@ -7381,7 +7476,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R28")
+					(reference "R30")
 					(unit 1)
 				)
 			)
@@ -7396,7 +7491,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0839c73a-edbf-482a-8483-894b8c156579")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR029"
 			(at 100.33 73.66 0)
 			(effects
 				(font
@@ -7445,7 +7540,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR011")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -7460,7 +7555,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0a07dd8a-871d-4c04-977a-f8900e8290e1")
-		(property "Reference" "R27"
+		(property "Reference" "R23"
 			(at 157.4292 112.903 90)
 			(effects
 				(font
@@ -7476,7 +7571,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 157.48 112.268 90)
 			(effects
 				(font
@@ -7511,7 +7606,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R27")
+					(reference "R23")
 					(unit 1)
 				)
 			)
@@ -7519,15 +7614,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 52.07 83.82 90)
+		(at 53.34 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "0acc50c8-f18e-4521-9542-ee759ce5074a")
-		(property "Reference" "R6"
-			(at 52.0192 86.233 90)
+		(property "Reference" "R8"
+			(at 53.2892 83.693 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7535,15 +7630,15 @@
 			)
 		)
 		(property "Value" "20k"
-			(at 52.0192 88.773 90)
+			(at 53.2892 86.233 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 52.07 85.598 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 53.34 83.058 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7552,7 +7647,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 52.07 83.82 0)
+			(at 53.34 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7561,7 +7656,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 52.07 83.82 0)
+			(at 53.34 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7577,7 +7672,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R6")
+					(reference "R8")
 					(unit 1)
 				)
 			)
@@ -7593,7 +7688,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0dd41d75-1917-4d1f-aeba-4e6fab2010be")
-		(property "Reference" "U11"
+		(property "Reference" "U6"
 			(at 90.17 103.9876 0)
 			(effects
 				(font
@@ -7650,7 +7745,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U11")
+					(reference "U6")
 					(unit 1)
 				)
 			)
@@ -7658,15 +7753,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 45.72 90.17 0)
+		(at 46.99 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "10c2b4f9-31ff-4cb4-9e68-94b6d75c9ea0")
-		(property "Reference" "#PWR010"
-			(at 45.72 96.52 0)
+		(property "Reference" "#PWR012"
+			(at 46.99 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7675,7 +7770,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 45.974 94.3102 0)
+			(at 47.244 91.7702 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7683,7 +7778,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 90.17 0)
+			(at 46.99 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7692,7 +7787,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 90.17 0)
+			(at 46.99 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7701,7 +7796,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 45.72 90.17 0)
+			(at 46.99 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7714,7 +7809,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR010")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -7722,7 +7817,7 @@
 	)
 	(symbol
 		(lib_id "Sensor_Proximity:QRE1113GR")
-		(at 36.83 40.64 0)
+		(at 38.1 38.1 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7730,8 +7825,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "10c3aabd-6b8c-40ea-9d2a-7b8433be6c82")
-		(property "Reference" "U16"
-			(at 36.83 32.8676 0)
+		(property "Reference" "U2"
+			(at 38.1 30.3276 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7739,7 +7834,7 @@
 			)
 		)
 		(property "Value" "QRE1113GR"
-			(at 36.83 35.4076 0)
+			(at 38.1 32.8676 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7747,7 +7842,7 @@
 			)
 		)
 		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
-			(at 36.83 45.72 0)
+			(at 38.1 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7756,7 +7851,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.onsemi.com/pub/Collateral/QRE1113-D.PDF"
-			(at 36.83 38.1 0)
+			(at 38.1 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7765,7 +7860,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 36.83 40.64 0)
+			(at 38.1 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7787,7 +7882,71 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U16")
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 218.44 143.51 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "10f1d583-bd18-47b7-ad2a-059fc7190fa6")
+		(property "Reference" "H1"
+			(at 220.98 142.2399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 220.98 144.7799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965"
+			(at 218.44 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 218.44 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -7803,7 +7962,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1609af6c-63b5-4129-8909-898826563a4b")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR051"
 			(at 163.83 40.64 0)
 			(effects
 				(font
@@ -7852,7 +8011,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR048")
+					(reference "#PWR051")
 					(unit 1)
 				)
 			)
@@ -7867,7 +8026,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "167d548d-c88c-4af0-81e4-8da909cdfee8")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR036"
 			(at 121.92 111.76 0)
 			(effects
 				(font
@@ -7916,7 +8075,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR049")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -7931,7 +8090,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "179a07bb-1e0a-4eb6-b399-4423e485dce2")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR062"
 			(at 189.23 97.79 0)
 			(effects
 				(font
@@ -7980,7 +8139,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR028")
+					(reference "#PWR062")
 					(unit 1)
 				)
 			)
@@ -7988,15 +8147,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 26.67 115.57 0)
+		(at 27.94 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "17b2da59-fadd-4429-b529-2256dcc81046")
-		(property "Reference" "#PWR035"
-			(at 26.67 121.92 0)
+		(property "Reference" "#PWR05"
+			(at 27.94 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8005,7 +8164,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 25.8572 119.4054 0)
+			(at 27.1272 116.8654 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8013,7 +8172,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 26.67 115.57 0)
+			(at 27.94 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8022,7 +8181,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 26.67 115.57 0)
+			(at 27.94 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8031,7 +8190,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 26.67 115.57 0)
+			(at 27.94 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8044,7 +8203,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR035")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -8059,7 +8218,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1af5c480-3796-4dc4-9e34-a33a5ab2974f")
-		(property "Reference" "#PWR059"
+		(property "Reference" "#PWR060"
 			(at 187.96 123.19 0)
 			(effects
 				(font
@@ -8108,7 +8267,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR059")
+					(reference "#PWR060")
 					(unit 1)
 				)
 			)
@@ -8185,15 +8344,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 52.07 60.96 90)
+		(at 53.34 58.42 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "1e08cc45-95f4-4ccb-af86-aed602526dcf")
-		(property "Reference" "R5"
-			(at 52.0192 63.373 90)
+		(property "Reference" "R7"
+			(at 53.2892 60.833 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8201,15 +8360,15 @@
 			)
 		)
 		(property "Value" "20k"
-			(at 52.0192 65.913 90)
+			(at 53.2892 63.373 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 52.07 62.738 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 53.34 60.198 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8218,7 +8377,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 52.07 60.96 0)
+			(at 53.34 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8227,7 +8386,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 52.07 60.96 0)
+			(at 53.34 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8243,7 +8402,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R5")
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -8259,7 +8418,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "21b7d614-55e1-46e9-850f-fe9067e95bc4")
-		(property "Reference" "R25"
+		(property "Reference" "R18"
 			(at 127 105.283 90)
 			(effects
 				(font
@@ -8275,7 +8434,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 127 112.268 90)
 			(effects
 				(font
@@ -8310,7 +8469,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R25")
+					(reference "R18")
 					(unit 1)
 				)
 			)
@@ -8325,7 +8484,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "236f2325-d03e-4603-8fb8-4d5a8c0ceff5")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR026"
 			(at 82.55 96.52 0)
 			(effects
 				(font
@@ -8374,7 +8533,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR08")
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -8389,7 +8548,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "23a7b905-8409-4368-ab2e-bf12fc245728")
-		(property "Reference" "#PWR022"
+		(property "Reference" "#PWR049"
 			(at 152.4 97.79 0)
 			(effects
 				(font
@@ -8438,7 +8597,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR022")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -8446,15 +8605,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 27.94 90.17 0)
+		(at 29.21 87.63 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "2570116b-5162-4979-8a9e-adee3c3759cb")
-		(property "Reference" "#PWR06"
-			(at 27.94 96.52 0)
+		(property "Reference" "#PWR08"
+			(at 29.21 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8463,7 +8622,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 27.1272 94.0054 0)
+			(at 28.3972 91.4654 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8471,7 +8630,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 27.94 90.17 0)
+			(at 29.21 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8480,7 +8639,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 27.94 90.17 0)
+			(at 29.21 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8489,7 +8648,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 27.94 90.17 0)
+			(at 29.21 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8502,7 +8661,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR06")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -8518,7 +8677,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "262b8054-6745-4b57-8273-40c29b17f134")
-		(property "Reference" "U5"
+		(property "Reference" "U11"
 			(at 143.51 56.9976 0)
 			(effects
 				(font
@@ -8575,7 +8734,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U5")
+					(reference "U11")
 					(unit 1)
 				)
 			)
@@ -8590,7 +8749,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "29124408-46c4-4cf1-9a10-5fedf145affe")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR063"
 			(at 205.74 52.07 0)
 			(effects
 				(font
@@ -8639,7 +8798,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR054")
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
@@ -8654,7 +8813,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2950fb72-13d6-401d-8e93-e68746fded85")
-		(property "Reference" "#PWR065"
+		(property "Reference" "#PWR018"
 			(at 68.58 179.07 0)
 			(effects
 				(font
@@ -8703,7 +8862,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR065")
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -8718,7 +8877,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "29c01c13-c5d4-44e8-adea-a9ca51a1b9a1")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR021"
 			(at 71.12 62.23 0)
 			(effects
 				(font
@@ -8767,7 +8926,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR03")
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -8783,7 +8942,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2b0d1797-ae55-4bf6-81a7-220e4ed71d9c")
-		(property "Reference" "#PWR071"
+		(property "Reference" "#PWR040"
 			(at 132.08 196.85 0)
 			(effects
 				(font
@@ -8832,7 +8991,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR071")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -8847,7 +9006,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2c0fe20d-6093-4f18-a6e7-eace6cbc7346")
-		(property "Reference" "#PWR018"
+		(property "Reference" "#PWR038"
 			(at 123.19 86.36 0)
 			(effects
 				(font
@@ -8896,7 +9055,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR018")
+					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -8912,7 +9071,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2f45aa92-6519-4946-845f-b3530144a80f")
-		(property "Reference" "#PWR024"
+		(property "Reference" "#PWR054"
 			(at 165.1 86.36 0)
 			(effects
 				(font
@@ -8961,7 +9120,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR024")
+					(reference "#PWR054")
 					(unit 1)
 				)
 			)
@@ -8976,7 +9135,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3368ceae-fc7f-4583-91f9-b8de36183b23")
-		(property "Reference" "R24"
+		(property "Reference" "R22"
 			(at 157.4292 41.783 90)
 			(effects
 				(font
@@ -8992,7 +9151,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 157.48 41.148 90)
 			(effects
 				(font
@@ -9027,7 +9186,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R24")
+					(reference "R22")
 					(unit 1)
 				)
 			)
@@ -9035,7 +9194,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 58.42 35.56 0)
+		(at 59.69 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9043,8 +9202,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "35ac7e7c-708a-4f67-bd2f-7b7ea6075094")
-		(property "Reference" "#PWR064"
-			(at 58.42 39.37 0)
+		(property "Reference" "#PWR014"
+			(at 59.69 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9053,7 +9212,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 58.42 29.845 0)
+			(at 59.69 27.305 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9061,7 +9220,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 58.42 35.56 0)
+			(at 59.69 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9070,7 +9229,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 58.42 35.56 0)
+			(at 59.69 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9079,7 +9238,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 58.42 35.56 0)
+			(at 59.69 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9092,7 +9251,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR064")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -9108,7 +9267,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "386eb9bc-fe94-4aed-a384-296ed3493295")
-		(property "Reference" "U6"
+		(property "Reference" "U12"
 			(at 143.51 79.8576 0)
 			(effects
 				(font
@@ -9165,7 +9324,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U6")
+					(reference "U12")
 					(unit 1)
 				)
 			)
@@ -9180,7 +9339,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "38d19855-2718-4fd9-b490-a2ba390f5f72")
-		(property "Reference" "#PWR020"
+		(property "Reference" "#PWR044"
 			(at 134.62 97.79 0)
 			(effects
 				(font
@@ -9229,7 +9388,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR020")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -9237,15 +9396,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 27.94 44.45 0)
+		(at 29.21 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "392a7a59-878f-402f-a600-3319359d74ef")
-		(property "Reference" "#PWR060"
-			(at 27.94 50.8 0)
+		(property "Reference" "#PWR06"
+			(at 29.21 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9254,7 +9413,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 27.1272 48.2854 0)
+			(at 28.3972 45.7454 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9262,7 +9421,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 27.94 44.45 0)
+			(at 29.21 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9271,7 +9430,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 27.94 44.45 0)
+			(at 29.21 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9280,7 +9439,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 27.94 44.45 0)
+			(at 29.21 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9293,7 +9452,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR060")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -9309,7 +9468,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "39ea2462-b067-4747-8410-3c4e32b948c9")
-		(property "Reference" "U8"
+		(property "Reference" "U16"
 			(at 198.12 79.8576 0)
 			(effects
 				(font
@@ -9366,7 +9525,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U8")
+					(reference "U16")
 					(unit 1)
 				)
 			)
@@ -9374,7 +9533,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 21.59 83.82 90)
+		(at 22.86 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9382,8 +9541,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3a743d12-621a-4d0d-b381-9e4433560550")
-		(property "Reference" "R2"
-			(at 21.59 78.613 90)
+		(property "Reference" "R4"
+			(at 22.86 76.073 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9391,15 +9550,15 @@
 			)
 		)
 		(property "Value" "100"
-			(at 21.59 81.153 90)
+			(at 22.86 78.613 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 21.59 85.598 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 22.86 83.058 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9408,7 +9567,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 21.59 83.82 0)
+			(at 22.86 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9417,7 +9576,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 21.59 83.82 0)
+			(at 22.86 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9433,7 +9592,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R2")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -9449,7 +9608,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3da5ad4e-f7db-47e2-9e9a-7e682eabe58d")
-		(property "Reference" "#PWR069"
+		(property "Reference" "#PWR075"
 			(at 255.27 67.31 0)
 			(effects
 				(font
@@ -9499,7 +9658,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR069")
+					(reference "#PWR075")
 					(unit 1)
 				)
 			)
@@ -9514,7 +9673,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3ec5603f-2945-4d9f-affa-ddf358a9bba2")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR023"
 			(at 78.74 50.8 0)
 			(effects
 				(font
@@ -9563,7 +9722,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR036")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -9578,7 +9737,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "43a5c970-819e-4a03-bb1d-4ed283c004b3")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR059"
 			(at 187.96 52.07 0)
 			(effects
 				(font
@@ -9627,7 +9786,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR052")
+					(reference "#PWR059")
 					(unit 1)
 				)
 			)
@@ -9643,7 +9802,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "43ceef0c-5493-4f7e-975f-13a8f3ebd5d6")
-		(property "Reference" "U4"
+		(property "Reference" "U8"
 			(at 91.44 78.5876 0)
 			(effects
 				(font
@@ -9700,7 +9859,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U4")
+					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -9708,7 +9867,7 @@
 	)
 	(symbol
 		(lib_id "Sensor_Proximity:QRE1113GR")
-		(at 36.83 86.36 0)
+		(at 38.1 83.82 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9716,8 +9875,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "44843b95-f2e1-46b8-8066-7c36c698513a")
-		(property "Reference" "U2"
-			(at 36.83 78.5876 0)
+		(property "Reference" "U4"
+			(at 38.1 76.0476 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9725,7 +9884,7 @@
 			)
 		)
 		(property "Value" "QRE1113GR"
-			(at 36.83 81.1276 0)
+			(at 38.1 78.5876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9733,7 +9892,7 @@
 			)
 		)
 		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
-			(at 36.83 91.44 0)
+			(at 38.1 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9742,7 +9901,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.onsemi.com/pub/Collateral/QRE1113-D.PDF"
-			(at 36.83 83.82 0)
+			(at 38.1 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9751,7 +9910,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 36.83 86.36 0)
+			(at 38.1 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9773,7 +9932,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U2")
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -9788,7 +9947,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "45c9291a-b7bf-4e2c-8a54-36a81f3f064e")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR028"
 			(at 99.06 121.92 0)
 			(effects
 				(font
@@ -9837,7 +9996,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR045")
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
@@ -9853,7 +10012,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "46f84234-0f4d-4395-a486-e03bb2b7aaee")
-		(property "Reference" "U15"
+		(property "Reference" "U14"
 			(at 196.85 105.2576 0)
 			(effects
 				(font
@@ -9910,7 +10069,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U15")
+					(reference "U14")
 					(unit 1)
 				)
 			)
@@ -9926,7 +10085,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "49ba5422-6867-4e17-8181-faf0b9b47eb8")
-		(property "Reference" "J9"
+		(property "Reference" "J1"
 			(at 256.794 24.892 0)
 			(effects
 				(font
@@ -10002,7 +10161,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "J9")
+					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -10018,7 +10177,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4b12b29c-042c-4463-be37-60375c7f7753")
-		(property "Reference" "#PWR070"
+		(property "Reference" "#PWR071"
 			(at 242.57 54.61 0)
 			(effects
 				(font
@@ -10068,7 +10227,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR070")
+					(reference "#PWR071")
 					(unit 1)
 				)
 			)
@@ -10083,7 +10242,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4b373a7f-ddd7-45aa-8590-f4869ea9c21d")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR056"
 			(at 176.53 111.76 0)
 			(effects
 				(font
@@ -10132,7 +10291,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR057")
+					(reference "#PWR056")
 					(unit 1)
 				)
 			)
@@ -10147,7 +10306,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4b6f42e9-aa94-4aad-9c36-a72016035192")
-		(property "Reference" "R12"
+		(property "Reference" "R25"
 			(at 158.6992 87.503 90)
 			(effects
 				(font
@@ -10163,7 +10322,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 158.75 86.868 90)
 			(effects
 				(font
@@ -10198,7 +10357,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R12")
+					(reference "R25")
 					(unit 1)
 				)
 			)
@@ -10206,7 +10365,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 20.32 109.22 90)
+		(at 21.59 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10214,8 +10373,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4daaa189-1866-4870-93ce-d8afe8b16a69")
-		(property "Reference" "R17"
-			(at 20.32 104.013 90)
+		(property "Reference" "R1"
+			(at 21.59 101.473 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10223,15 +10382,15 @@
 			)
 		)
 		(property "Value" "100"
-			(at 20.32 106.553 90)
+			(at 21.59 104.013 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 20.32 110.998 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 21.59 108.458 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10240,7 +10399,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 20.32 109.22 0)
+			(at 21.59 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10249,7 +10408,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 20.32 109.22 0)
+			(at 21.59 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10265,7 +10424,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R17")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -10280,7 +10439,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "522c7d4a-7c75-404e-90c1-6c16ae4a4791")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR058"
 			(at 177.8 86.36 0)
 			(effects
 				(font
@@ -10329,7 +10488,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR026")
+					(reference "#PWR058")
 					(unit 1)
 				)
 			)
@@ -10345,7 +10504,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "583e72e1-21c7-43ea-b1e9-06c91ac09446")
-		(property "Reference" "U7"
+		(property "Reference" "U15"
 			(at 198.12 56.9976 0)
 			(effects
 				(font
@@ -10402,7 +10561,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U7")
+					(reference "U15")
 					(unit 1)
 				)
 			)
@@ -10417,7 +10576,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5a95477f-9d0c-453b-bef7-08fb5aafb6cd")
-		(property "Reference" "#PWR021"
+		(property "Reference" "#PWR048"
 			(at 152.4 74.93 0)
 			(effects
 				(font
@@ -10466,7 +10625,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR021")
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -10481,7 +10640,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5ba5cfe5-7cb7-459d-a319-c4b76c3db3c4")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR065"
 			(at 207.01 74.93 0)
 			(effects
 				(font
@@ -10530,7 +10689,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR029")
+					(reference "#PWR065")
 					(unit 1)
 				)
 			)
@@ -10538,7 +10697,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 21.59 60.96 90)
+		(at 22.86 58.42 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10546,8 +10705,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c03431c-d4a2-49e4-83b5-264314a4291a")
-		(property "Reference" "R1"
-			(at 21.59 55.753 90)
+		(property "Reference" "R3"
+			(at 22.86 53.213 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10555,15 +10714,15 @@
 			)
 		)
 		(property "Value" "100"
-			(at 21.59 58.293 90)
+			(at 22.86 55.753 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 21.59 62.738 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 22.86 60.198 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10572,7 +10731,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 21.59 60.96 0)
+			(at 22.86 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10581,7 +10740,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 21.59 60.96 0)
+			(at 22.86 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10597,7 +10756,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R1")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -10613,7 +10772,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5c560fc7-ab0a-47a1-848f-8e83b5b2914c")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR033"
 			(at 113.03 62.23 0)
 			(effects
 				(font
@@ -10662,7 +10821,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR015")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -10670,7 +10829,7 @@
 	)
 	(symbol
 		(lib_id "Sensor_Proximity:QRE1113GR")
-		(at 35.56 111.76 0)
+		(at 36.83 109.22 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10678,8 +10837,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5cb953db-8bbf-4082-9192-b956c0aff692")
-		(property "Reference" "U9"
-			(at 35.56 103.9876 0)
+		(property "Reference" "U1"
+			(at 36.83 101.4476 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10687,7 +10846,7 @@
 			)
 		)
 		(property "Value" "QRE1113GR"
-			(at 35.56 106.5276 0)
+			(at 36.83 103.9876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10695,7 +10854,7 @@
 			)
 		)
 		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
-			(at 35.56 116.84 0)
+			(at 36.83 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10704,7 +10863,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.onsemi.com/pub/Collateral/QRE1113-D.PDF"
-			(at 35.56 109.22 0)
+			(at 36.83 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10713,7 +10872,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 35.56 111.76 0)
+			(at 36.83 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10735,7 +10894,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U9")
+					(reference "U1")
 					(unit 1)
 				)
 			)
@@ -10751,7 +10910,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5d6e41e2-e2ac-4f21-b3f6-0d70296d12a5")
-		(property "Reference" "U12"
+		(property "Reference" "U9"
 			(at 142.24 34.1376 0)
 			(effects
 				(font
@@ -10808,7 +10967,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U12")
+					(reference "U9")
 					(unit 1)
 				)
 			)
@@ -10816,15 +10975,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 44.45 115.57 0)
+		(at 45.72 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "5ec772bf-e35e-4fac-9244-16f5d951bfba")
-		(property "Reference" "#PWR037"
-			(at 44.45 121.92 0)
+		(property "Reference" "#PWR09"
+			(at 45.72 119.38 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10833,7 +10992,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 44.704 119.7102 0)
+			(at 45.974 117.1702 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10841,7 +11000,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 44.45 115.57 0)
+			(at 45.72 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10850,7 +11009,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 44.45 115.57 0)
+			(at 45.72 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10859,7 +11018,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 44.45 115.57 0)
+			(at 45.72 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10872,7 +11031,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR037")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -10888,7 +11047,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5fb50c6f-3370-417f-985d-4e220320b1ee")
-		(property "Reference" "R9"
+		(property "Reference" "R19"
 			(at 128.27 57.023 90)
 			(effects
 				(font
@@ -10904,7 +11063,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 128.27 64.008 90)
 			(effects
 				(font
@@ -10939,7 +11098,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R9")
+					(reference "R19")
 					(unit 1)
 				)
 			)
@@ -10954,7 +11113,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "620f5644-25b2-4de8-9065-f09032415abf")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR030"
 			(at 100.33 96.52 0)
 			(effects
 				(font
@@ -11003,7 +11162,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR012")
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -11037,7 +11196,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 153.67 137.16 0)
 			(effects
 				(font
@@ -11088,7 +11247,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6831fcde-d3c5-4ba9-8ee8-45862aabc37c")
-		(property "Reference" "R15"
+		(property "Reference" "R32"
 			(at 213.3092 64.643 90)
 			(effects
 				(font
@@ -11104,7 +11263,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 213.36 64.008 90)
 			(effects
 				(font
@@ -11139,7 +11298,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R15")
+					(reference "R32")
 					(unit 1)
 				)
 			)
@@ -11155,7 +11314,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "68bbd237-ff4a-44e2-bec5-780f5df78a9d")
-		(property "Reference" "R13"
+		(property "Reference" "R28"
 			(at 182.88 57.023 90)
 			(effects
 				(font
@@ -11171,7 +11330,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 182.88 64.008 90)
 			(effects
 				(font
@@ -11206,7 +11365,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R13")
+					(reference "R28")
 					(unit 1)
 				)
 			)
@@ -11214,7 +11373,7 @@
 	)
 	(symbol
 		(lib_id "Sensor_Proximity:QRE1113GR")
-		(at 36.83 63.5 0)
+		(at 38.1 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11222,8 +11381,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "68c11587-c9d1-433a-8c03-a80281c66fa4")
-		(property "Reference" "U1"
-			(at 36.83 55.7276 0)
+		(property "Reference" "U3"
+			(at 38.1 53.1876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11231,7 +11390,7 @@
 			)
 		)
 		(property "Value" "QRE1113GR"
-			(at 36.83 58.2676 0)
+			(at 38.1 55.7276 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11239,7 +11398,7 @@
 			)
 		)
 		(property "Footprint" "OptoDevice:OnSemi_CASE100CY"
-			(at 36.83 68.58 0)
+			(at 38.1 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11248,7 +11407,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.onsemi.com/pub/Collateral/QRE1113-D.PDF"
-			(at 36.83 60.96 0)
+			(at 38.1 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11257,7 +11416,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 36.83 63.5 0)
+			(at 38.1 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11279,7 +11438,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U1")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -11294,7 +11453,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6f1a22ba-dddc-4663-9fb0-6faf8d495b55")
-		(property "Reference" "#PWR074"
+		(property "Reference" "#PWR073"
 			(at 245.11 118.11 0)
 			(effects
 				(font
@@ -11344,7 +11503,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR074")
+					(reference "#PWR073")
 					(unit 1)
 				)
 			)
@@ -11424,7 +11583,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "70b2196d-a23f-4c3b-aeb8-a793a68ec8e9")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR025"
 			(at 82.55 73.66 0)
 			(effects
 				(font
@@ -11473,7 +11632,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR07")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -11488,7 +11647,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "73b0d5d0-82ec-492f-b617-935a51ee961d")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR061"
 			(at 189.23 74.93 0)
 			(effects
 				(font
@@ -11537,7 +11696,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR027")
+					(reference "#PWR061")
 					(unit 1)
 				)
 			)
@@ -11553,7 +11712,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "740e6b2b-77c4-44d9-a3a4-92f2c5283303")
-		(property "Reference" "R4"
+		(property "Reference" "R12"
 			(at 76.2 78.613 90)
 			(effects
 				(font
@@ -11569,7 +11728,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 76.2 85.598 90)
 			(effects
 				(font
@@ -11604,7 +11763,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R4")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -11612,15 +11771,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 45.72 44.45 0)
+		(at 46.99 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "765564ca-210c-41a4-ba1b-97da94b419b3")
-		(property "Reference" "#PWR062"
-			(at 45.72 50.8 0)
+		(property "Reference" "#PWR010"
+			(at 46.99 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11629,7 +11788,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 45.974 48.5902 0)
+			(at 47.244 46.0502 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11637,7 +11796,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 44.45 0)
+			(at 46.99 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11646,7 +11805,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 44.45 0)
+			(at 46.99 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11655,7 +11814,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 45.72 44.45 0)
+			(at 46.99 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11668,7 +11827,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR062")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -11684,7 +11843,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "77c6dfb3-168b-491d-abe5-f938df6eeb8d")
-		(property "Reference" "R14"
+		(property "Reference" "R29"
 			(at 182.88 79.883 90)
 			(effects
 				(font
@@ -11700,7 +11859,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 182.88 86.868 90)
 			(effects
 				(font
@@ -11735,7 +11894,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R14")
+					(reference "R29")
 					(unit 1)
 				)
 			)
@@ -11751,7 +11910,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "789b22be-f21e-4f5b-a5b5-544e140e7180")
-		(property "Reference" "#PWR067"
+		(property "Reference" "#PWR039"
 			(at 132.08 135.89 0)
 			(effects
 				(font
@@ -11800,7 +11959,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR067")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -11815,7 +11974,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "78eb37a7-ba46-4e15-a348-9fa7d9e39f8a")
-		(property "Reference" "#PWR042"
+		(property "Reference" "#PWR035"
 			(at 121.92 40.64 0)
 			(effects
 				(font
@@ -11864,7 +12023,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR042")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -11872,7 +12031,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 58.42 81.28 0)
+		(at 59.69 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11880,8 +12039,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7a0d6e95-5eb6-4d5f-b95b-145b9a2857af")
-		(property "Reference" "#PWR014"
-			(at 58.42 85.09 0)
+		(property "Reference" "#PWR016"
+			(at 59.69 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11890,7 +12049,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 58.42 75.565 0)
+			(at 59.69 73.025 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11898,7 +12057,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 58.42 81.28 0)
+			(at 59.69 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11907,7 +12066,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 58.42 81.28 0)
+			(at 59.69 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11916,7 +12075,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 58.42 81.28 0)
+			(at 59.69 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11929,7 +12088,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR014")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -11937,15 +12096,15 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 16.51 81.28 0)
+		(at 17.78 78.74 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "7bbff271-1ff5-491b-b644-526eb72002a4")
-		(property "Reference" "#PWR02"
-			(at 16.51 85.09 0)
+		(property "Reference" "#PWR04"
+			(at 17.78 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11954,7 +12113,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 16.51 76.2 0)
+			(at 17.78 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11962,7 +12121,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 16.51 81.28 0)
+			(at 17.78 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11971,7 +12130,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 16.51 81.28 0)
+			(at 17.78 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11980,7 +12139,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 16.51 81.28 0)
+			(at 17.78 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11993,7 +12152,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR02")
+					(reference "#PWR04")
 					(unit 1)
 				)
 			)
@@ -12009,7 +12168,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7e19d9bb-1440-497b-80bb-6e4d48c639d7")
-		(property "Reference" "R22"
+		(property "Reference" "R17"
 			(at 127 34.163 90)
 			(effects
 				(font
@@ -12025,7 +12184,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 127 41.148 90)
 			(effects
 				(font
@@ -12060,7 +12219,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R22")
+					(reference "R17")
 					(unit 1)
 				)
 			)
@@ -12075,7 +12234,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8691c044-fe8e-44eb-a175-8911fad290d4")
-		(property "Reference" "R16"
+		(property "Reference" "R33"
 			(at 213.3092 87.503 90)
 			(effects
 				(font
@@ -12091,7 +12250,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 213.36 86.868 90)
 			(effects
 				(font
@@ -12126,7 +12285,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R16")
+					(reference "R33")
 					(unit 1)
 				)
 			)
@@ -12141,7 +12300,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8897d1e3-5f94-406f-b28c-e35cd7e26b76")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR027"
 			(at 96.52 50.8 0)
 			(effects
 				(font
@@ -12190,7 +12349,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR038")
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -12205,7 +12364,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8c0cdcf2-aa47-4cdf-8920-361b305429de")
-		(property "Reference" "R20"
+		(property "Reference" "R13"
 			(at 102.8192 40.513 90)
 			(effects
 				(font
@@ -12221,7 +12380,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 102.87 39.878 90)
 			(effects
 				(font
@@ -12256,7 +12415,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R20")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -12271,7 +12430,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8dd941d0-ac7e-488f-835e-4192fb5c0057")
-		(property "Reference" "R11"
+		(property "Reference" "R24"
 			(at 158.6992 64.643 90)
 			(effects
 				(font
@@ -12287,7 +12446,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 158.75 64.008 90)
 			(effects
 				(font
@@ -12322,7 +12481,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R11")
+					(reference "R24")
 					(unit 1)
 				)
 			)
@@ -12338,7 +12497,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8f65ca30-cd4c-429b-a8b7-c5a8835fd80e")
-		(property "Reference" "#PWR047"
+		(property "Reference" "#PWR032"
 			(at 111.76 110.49 0)
 			(effects
 				(font
@@ -12387,7 +12546,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR047")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -12403,7 +12562,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "91b08383-a3cf-48ec-9bcc-5f6e11d8ff99")
-		(property "Reference" "#PWR063"
+		(property "Reference" "#PWR068"
 			(at 218.44 111.76 0)
 			(effects
 				(font
@@ -12452,7 +12611,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR063")
+					(reference "#PWR068")
 					(unit 1)
 				)
 			)
@@ -12460,15 +12619,15 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 15.24 106.68 0)
+		(at 16.51 104.14 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "94393252-f3a7-4c1d-8d2e-084c5841b1b6")
-		(property "Reference" "#PWR033"
-			(at 15.24 110.49 0)
+		(property "Reference" "#PWR01"
+			(at 16.51 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12477,7 +12636,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 15.24 101.6 0)
+			(at 16.51 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12485,7 +12644,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 15.24 106.68 0)
+			(at 16.51 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12494,7 +12653,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 15.24 106.68 0)
+			(at 16.51 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12503,7 +12662,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 15.24 106.68 0)
+			(at 16.51 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12516,7 +12675,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR033")
+					(reference "#PWR01")
 					(unit 1)
 				)
 			)
@@ -12532,7 +12691,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "94ee9d5e-019b-4dc6-9d2e-5c31e0a0039a")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR069"
 			(at 219.71 63.5 0)
 			(effects
 				(font
@@ -12581,7 +12740,71 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR031")
+					(reference "#PWR069")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 218.44 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "97262452-cb6a-4093-80b4-0e138e558395")
+		(property "Reference" "H2"
+			(at 220.98 151.1299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 220.98 153.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965"
+			(at 218.44 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 218.44 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "sensors16_MagicAlonso"
+				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
+					(reference "H2")
 					(unit 1)
 				)
 			)
@@ -12596,7 +12819,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9df5be7e-0537-4712-9e57-ca243eb0f151")
-		(property "Reference" "#PWR044"
+		(property "Reference" "#PWR041"
 			(at 133.35 52.07 0)
 			(effects
 				(font
@@ -12645,7 +12868,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR044")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -12660,7 +12883,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9e18271f-9e81-4312-be69-230d0673af27")
-		(property "Reference" "R7"
+		(property "Reference" "R15"
 			(at 106.6292 63.373 90)
 			(effects
 				(font
@@ -12676,7 +12899,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 106.68 62.738 90)
 			(effects
 				(font
@@ -12711,7 +12934,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R7")
+					(reference "R15")
 					(unit 1)
 				)
 			)
@@ -12791,7 +13014,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9f523794-448a-4ff8-a3d0-e74c7781947a")
-		(property "Reference" "C11"
+		(property "Reference" "C5"
 			(at 251.206 54.102 0)
 			(effects
 				(font
@@ -12845,7 +13068,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "C11")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -12861,7 +13084,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a12da040-abe6-42be-a74d-114fa427b078")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR052"
 			(at 163.83 111.76 0)
 			(effects
 				(font
@@ -12910,7 +13133,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR055")
+					(reference "#PWR052")
 					(unit 1)
 				)
 			)
@@ -12987,15 +13210,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 45.72 67.31 0)
+		(at 46.99 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "a40cc053-00e5-4a25-bad4-e9bfdeb53583")
-		(property "Reference" "#PWR09"
-			(at 45.72 73.66 0)
+		(property "Reference" "#PWR011"
+			(at 46.99 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13004,7 +13227,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 45.974 71.4502 0)
+			(at 47.244 68.9102 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13012,7 +13235,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 67.31 0)
+			(at 46.99 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13021,7 +13244,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 67.31 0)
+			(at 46.99 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13030,7 +13253,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 45.72 67.31 0)
+			(at 46.99 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13043,7 +13266,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR09")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -13059,7 +13282,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a48613ac-97af-4fc4-8a3a-ca348f6abae7")
-		(property "Reference" "C12"
+		(property "Reference" "C3"
 			(at 244.602 54.356 0)
 			(effects
 				(font
@@ -13113,7 +13336,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "C12")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -13128,7 +13351,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a6982b45-f5ef-43fd-ae5d-2637396f6e1d")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR042"
 			(at 133.35 123.19 0)
 			(effects
 				(font
@@ -13177,7 +13400,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR051")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -13193,7 +13416,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a7e97566-1ba4-44a3-930b-a46965c09520")
-		(property "Reference" "U3"
+		(property "Reference" "U7"
 			(at 91.44 55.7276 0)
 			(effects
 				(font
@@ -13250,7 +13473,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U3")
+					(reference "U7")
 					(unit 1)
 				)
 			)
@@ -13265,7 +13488,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a8431f82-17c1-4454-bc31-9fa25929f1b5")
-		(property "Reference" "C24"
+		(property "Reference" "C4"
 			(at 252.222 90.678 90)
 			(effects
 				(font
@@ -13319,7 +13542,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "C24")
+					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -13334,7 +13557,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ae429f48-b591-4d31-8a1b-a729ccd53595")
-		(property "Reference" "#PWR017"
+		(property "Reference" "#PWR037"
 			(at 123.19 63.5 0)
 			(effects
 				(font
@@ -13383,7 +13606,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR017")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -13398,7 +13621,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b10b7b3d-2f01-437f-893d-5c9b67762624")
-		(property "Reference" "C26"
+		(property "Reference" "C6"
 			(at 273.812 90.678 90)
 			(effects
 				(font
@@ -13452,7 +13675,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "C26")
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -13532,7 +13755,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b42ef02e-e639-4311-9ff0-713fed20e9b1")
-		(property "Reference" "#PWR073"
+		(property "Reference" "#PWR072"
 			(at 245.11 91.44 0)
 			(effects
 				(font
@@ -13582,7 +13805,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR073")
+					(reference "#PWR072")
 					(unit 1)
 				)
 			)
@@ -13614,7 +13837,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 181.61 41.148 90)
 			(effects
 				(font
@@ -13664,7 +13887,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b4d5fc3f-0a5e-498c-84d7-86b90615d3d1")
-		(property "Reference" "#PWR061"
+		(property "Reference" "#PWR064"
 			(at 205.74 123.19 0)
 			(effects
 				(font
@@ -13713,7 +13936,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR061")
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)
@@ -13728,7 +13951,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b8a1afda-fe04-430c-865c-53fec89df5a6")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR066"
 			(at 207.01 97.79 0)
 			(effects
 				(font
@@ -13777,7 +14000,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR030")
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
@@ -13793,7 +14016,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b926c6c0-74a6-4dd3-a9b5-c391c4455e39")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR067"
 			(at 218.44 40.64 0)
 			(effects
 				(font
@@ -13842,7 +14065,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR056")
+					(reference "#PWR067")
 					(unit 1)
 				)
 			)
@@ -13850,15 +14073,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 50.8 109.22 90)
+		(at 52.07 106.68 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "b95fa41f-8a45-4989-b99e-4e9b40990a32")
-		(property "Reference" "R19"
-			(at 50.7492 111.633 90)
+		(property "Reference" "R5"
+			(at 52.0192 109.093 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13866,15 +14089,15 @@
 			)
 		)
 		(property "Value" "20k"
-			(at 50.7492 114.173 90)
+			(at 52.0192 111.633 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 50.8 110.998 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 52.07 108.458 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13883,7 +14106,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 50.8 109.22 0)
+			(at 52.07 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13892,7 +14115,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 50.8 109.22 0)
+			(at 52.07 106.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13908,7 +14131,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R19")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -13923,7 +14146,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bb7f4194-5086-4509-b321-f0486de4e8d8")
-		(property "Reference" "D5"
+		(property "Reference" "D2"
 			(at 274.32 108.204 0)
 			(effects
 				(font
@@ -13983,7 +14206,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "D5")
+					(reference "D2")
 					(unit 1)
 				)
 			)
@@ -14014,7 +14237,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 212.09 112.268 90)
 			(effects
 				(font
@@ -14064,7 +14287,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bc4ef88c-0888-4e54-bac7-687cacaeb307")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR055"
 			(at 176.53 40.64 0)
 			(effects
 				(font
@@ -14113,7 +14336,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR050")
+					(reference "#PWR055")
 					(unit 1)
 				)
 			)
@@ -14128,7 +14351,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bd578f92-c6b3-4107-9e02-769e9d63b208")
-		(property "Reference" "R23"
+		(property "Reference" "R14"
 			(at 105.3592 111.633 90)
 			(effects
 				(font
@@ -14144,7 +14367,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 105.41 110.998 90)
 			(effects
 				(font
@@ -14179,7 +14402,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R23")
+					(reference "R14")
 					(unit 1)
 				)
 			)
@@ -14187,7 +14410,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 21.59 38.1 90)
+		(at 22.86 35.56 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14195,8 +14418,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c09105cc-acc5-40ad-876d-5791bed8a066")
-		(property "Reference" "R30"
-			(at 21.59 32.893 90)
+		(property "Reference" "R2"
+			(at 22.86 30.353 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14204,15 +14427,15 @@
 			)
 		)
 		(property "Value" "100"
-			(at 21.59 35.433 90)
+			(at 22.86 32.893 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
-			(at 21.59 39.878 90)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 22.86 37.338 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14221,7 +14444,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 21.59 38.1 0)
+			(at 22.86 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14230,7 +14453,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 21.59 38.1 0)
+			(at 22.86 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14246,7 +14469,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R30")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -14261,7 +14484,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c7556f9b-c103-4e6b-b6fc-e120d92e9f17")
-		(property "Reference" "#PWR034"
+		(property "Reference" "#PWR017"
 			(at 67.31 39.37 0)
 			(effects
 				(font
@@ -14310,7 +14533,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR034")
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)
@@ -14325,7 +14548,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c7f357e9-e4e2-493e-a782-f102042cafd3")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR043"
 			(at 134.62 74.93 0)
 			(effects
 				(font
@@ -14374,7 +14597,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR019")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -14389,7 +14612,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c9b43a51-e898-4b9b-9324-bf069e32d178")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR047"
 			(at 151.13 123.19 0)
 			(effects
 				(font
@@ -14438,7 +14661,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR053")
+					(reference "#PWR047")
 					(unit 1)
 				)
 			)
@@ -14472,7 +14695,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 144.78 137.16 0)
 			(effects
 				(font
@@ -14524,7 +14747,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cd41b72b-7f7a-48e2-9bff-60a49c453620")
-		(property "Reference" "U14"
+		(property "Reference" "U13"
 			(at 196.85 34.1376 0)
 			(effects
 				(font
@@ -14581,7 +14804,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U14")
+					(reference "U13")
 					(unit 1)
 				)
 			)
@@ -14596,7 +14819,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cd55d741-d4b9-4b3b-a9f2-59b3008cb58c")
-		(property "Reference" "#PWR075"
+		(property "Reference" "#PWR074"
 			(at 254 101.6 0)
 			(effects
 				(font
@@ -14646,7 +14869,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR075")
+					(reference "#PWR074")
 					(unit 1)
 				)
 			)
@@ -14654,15 +14877,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 27.94 67.31 0)
+		(at 29.21 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "cdbcc0fb-63e2-4d56-93d2-9834cf163ef7")
-		(property "Reference" "#PWR05"
-			(at 27.94 73.66 0)
+		(property "Reference" "#PWR07"
+			(at 29.21 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14671,7 +14894,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 27.1272 71.1454 0)
+			(at 28.3972 68.6054 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14679,7 +14902,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 27.94 67.31 0)
+			(at 29.21 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14688,7 +14911,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 27.94 67.31 0)
+			(at 29.21 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14697,7 +14920,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 27.94 67.31 0)
+			(at 29.21 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14710,7 +14933,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR05")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -14791,7 +15014,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d2044758-566c-4db1-b210-6f31fa13b891")
-		(property "Reference" "U17"
+		(property "Reference" "U20"
 			(at 52.07 140.97 0)
 			(effects
 				(font
@@ -14909,7 +15132,7 @@
 		(instances
 			(project ""
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U17")
+					(reference "U20")
 					(unit 1)
 				)
 			)
@@ -14924,7 +15147,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d66b8c08-edd2-44bb-98d1-21f96ce9ab97")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR022"
 			(at 71.12 85.09 0)
 			(effects
 				(font
@@ -14973,7 +15196,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR04")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -14989,7 +15212,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d9421b4a-81e6-401b-9154-6277881db599")
-		(property "Reference" "#PWR023"
+		(property "Reference" "#PWR053"
 			(at 165.1 63.5 0)
 			(effects
 				(font
@@ -15038,7 +15261,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR023")
+					(reference "#PWR053")
 					(unit 1)
 				)
 			)
@@ -15054,7 +15277,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "daa34ba9-ad75-47c9-9c05-f872ea4000e5")
-		(property "Reference" "R10"
+		(property "Reference" "R20"
 			(at 128.27 79.883 90)
 			(effects
 				(font
@@ -15070,7 +15293,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 128.27 86.868 90)
 			(effects
 				(font
@@ -15105,7 +15328,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R10")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -15121,7 +15344,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dc8aaaf7-7f1e-425c-90d1-795d16bf64f3")
-		(property "Reference" "U13"
+		(property "Reference" "U10"
 			(at 142.24 105.2576 0)
 			(effects
 				(font
@@ -15178,7 +15401,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U13")
+					(reference "U10")
 					(unit 1)
 				)
 			)
@@ -15194,7 +15417,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dc99e977-7f33-4ee3-809f-ab2371b4bc27")
-		(property "Reference" "R21"
+		(property "Reference" "R10"
 			(at 74.93 104.013 90)
 			(effects
 				(font
@@ -15210,7 +15433,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 74.93 110.998 90)
 			(effects
 				(font
@@ -15245,7 +15468,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R21")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -15253,15 +15476,15 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 16.51 58.42 0)
+		(at 17.78 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "dd56406d-8b22-4303-be04-80d6d6487946")
-		(property "Reference" "#PWR01"
-			(at 16.51 62.23 0)
+		(property "Reference" "#PWR03"
+			(at 17.78 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15270,7 +15493,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 16.51 53.34 0)
+			(at 17.78 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15278,7 +15501,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 16.51 58.42 0)
+			(at 17.78 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15287,7 +15510,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 16.51 58.42 0)
+			(at 17.78 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15296,7 +15519,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 16.51 58.42 0)
+			(at 17.78 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15309,7 +15532,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR01")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -15325,7 +15548,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e3b8a40b-7d17-456b-9922-8cbd11b0f879")
-		(property "Reference" "R18"
+		(property "Reference" "R9"
 			(at 72.39 32.893 90)
 			(effects
 				(font
@@ -15341,7 +15564,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 72.39 39.878 90)
 			(effects
 				(font
@@ -15376,7 +15599,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R18")
+					(reference "R9")
 					(unit 1)
 				)
 			)
@@ -15392,7 +15615,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e3fc18bf-e793-4d49-bbc0-6effd6cad94e")
-		(property "Reference" "R29"
+		(property "Reference" "R27"
 			(at 181.61 105.283 90)
 			(effects
 				(font
@@ -15408,7 +15631,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 181.61 112.268 90)
 			(effects
 				(font
@@ -15443,7 +15666,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R29")
+					(reference "R27")
 					(unit 1)
 				)
 			)
@@ -15460,22 +15683,22 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e48a6a9c-7578-4ee6-b3cd-d00d741800f9")
-		(property "Reference" "U18"
-			(at 129.9367 135.89 0)
+		(property "Reference" "U30"
+			(at 135.1981 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "CD74HC4067M"
-			(at 129.9367 138.43 0)
+			(at 135.1981 138.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Package_SO:SOIC-24W_7.5x15.4mm_P1.27mm"
@@ -15581,7 +15804,7 @@
 		(instances
 			(project ""
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "U18")
+					(reference "U30")
 					(unit 1)
 				)
 			)
@@ -15597,7 +15820,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e5edd3ad-6da1-4011-9c4a-afa58df8a095")
-		(property "Reference" "#PWR068"
+		(property "Reference" "#PWR050"
 			(at 153.67 149.86 0)
 			(effects
 				(font
@@ -15646,7 +15869,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR068")
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)
@@ -15661,7 +15884,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e7e6dcdd-7a62-4001-af2d-bb08eb6d8742")
-		(property "Reference" "#PWR041"
+		(property "Reference" "#PWR020"
 			(at 69.85 110.49 0)
 			(effects
 				(font
@@ -15710,7 +15933,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR041")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -15725,7 +15948,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e8147288-9f64-451f-a960-5f817a38bc86")
-		(property "Reference" "R8"
+		(property "Reference" "R16"
 			(at 106.6292 86.233 90)
 			(effects
 				(font
@@ -15741,7 +15964,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 106.68 85.598 90)
 			(effects
 				(font
@@ -15776,7 +15999,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R8")
+					(reference "R16")
 					(unit 1)
 				)
 			)
@@ -15792,7 +16015,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ecd6618c-2efa-45bc-b457-6ff48c81a8a4")
-		(property "Reference" "#PWR040"
+		(property "Reference" "#PWR031"
 			(at 109.22 39.37 0)
 			(effects
 				(font
@@ -15841,7 +16064,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR040")
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
@@ -15849,15 +16072,15 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 16.51 35.56 0)
+		(at 17.78 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "f0900c80-adb9-49be-8734-07bb2002a089")
-		(property "Reference" "#PWR058"
-			(at 16.51 39.37 0)
+		(property "Reference" "#PWR02"
+			(at 17.78 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15866,7 +16089,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 16.51 30.48 0)
+			(at 17.78 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15874,7 +16097,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 16.51 35.56 0)
+			(at 17.78 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15883,7 +16106,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 16.51 35.56 0)
+			(at 17.78 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15892,7 +16115,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 16.51 35.56 0)
+			(at 17.78 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15905,7 +16128,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR058")
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -15921,7 +16144,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f254eb88-7a82-42ef-be03-d35762a35f66")
-		(property "Reference" "R3"
+		(property "Reference" "R11"
 			(at 76.2 55.753 90)
 			(effects
 				(font
@@ -15937,7 +16160,7 @@
 				)
 			)
 		)
-		(property "Footprint" "EESTN5-v2:R_0805"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 76.2 62.738 90)
 			(effects
 				(font
@@ -15972,7 +16195,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R3")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -15987,7 +16210,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f39afe9c-eaee-4443-b847-e4a2249aa432")
-		(property "Reference" "R33"
+		(property "Reference" "R21"
 			(at 148.59 180.34 0)
 			(effects
 				(font
@@ -16005,7 +16228,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
 			(at 146.05 181.61 0)
 			(effects
 				(font
@@ -16041,7 +16264,7 @@
 		(instances
 			(project ""
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "R33")
+					(reference "R21")
 					(unit 1)
 				)
 			)
@@ -16049,7 +16272,7 @@
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 57.15 106.68 0)
+		(at 58.42 104.14 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16057,8 +16280,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f39c8abd-ab8d-48dc-8aac-39608ccb955f")
-		(property "Reference" "#PWR039"
-			(at 57.15 110.49 0)
+		(property "Reference" "#PWR013"
+			(at 58.42 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16067,7 +16290,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 57.15 100.965 0)
+			(at 58.42 98.425 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16075,7 +16298,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 57.15 106.68 0)
+			(at 58.42 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16084,7 +16307,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.15 106.68 0)
+			(at 58.42 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16093,7 +16316,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 57.15 106.68 0)
+			(at 58.42 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16106,7 +16329,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR039")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -16122,7 +16345,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f4cceb68-ff18-4e2b-bd2c-fc70bed822e8")
-		(property "Reference" "#PWR016"
+		(property "Reference" "#PWR034"
 			(at 113.03 85.09 0)
 			(effects
 				(font
@@ -16171,7 +16394,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR016")
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -16187,7 +16410,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f79197dd-1e47-4454-a2a8-91bb4d941da9")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR070"
 			(at 219.71 86.36 0)
 			(effects
 				(font
@@ -16236,7 +16459,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR032")
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
@@ -16251,7 +16474,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f7f71b51-179c-41e2-93a2-d7f44e26071a")
-		(property "Reference" "#PWR043"
+		(property "Reference" "#PWR024"
 			(at 81.28 121.92 0)
 			(effects
 				(font
@@ -16300,7 +16523,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR043")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -16315,7 +16538,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f99ec0fe-b0c3-4f06-b8c1-921c074c1c4c")
-		(property "Reference" "#PWR025"
+		(property "Reference" "#PWR057"
 			(at 177.8 63.5 0)
 			(effects
 				(font
@@ -16364,7 +16587,7 @@
 		(instances
 			(project "sensors16_MagicAlonso"
 				(path "/17db61e3-45f2-4bda-a832-97fa4122beba"
-					(reference "#PWR025")
+					(reference "#PWR057")
 					(unit 1)
 				)
 			)
