@@ -492,7 +492,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "main_MagicAlonso.kicad_pro",
+    "filename": "main_MagicAlonso__test.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -661,7 +661,7 @@
     ],
     [
       "38d4c26b-5042-47e6-b450-9f4e66fb3158",
-      "StepDown_2315"
+      "StepDown_CN3903"
     ]
   ],
   "text_variables": {}

@@ -32,7 +32,6 @@
       "vias",
       "footprint_text",
       "footprint_anchors",
-      "ratsnest",
       "grid",
       "footprints_front",
       "footprints_back",
@@ -57,7 +56,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "main_MagicAlonso.kicad_prl",
+    "filename": "main_MagicAlonso__test.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
