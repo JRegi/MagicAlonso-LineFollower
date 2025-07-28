@@ -598,250 +598,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "MixLib:CN3903"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at 0 -1.524 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "CN3903"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm"
-				(at 2.032 -33.782 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://datasheet4u.com/pdf-down/C/N/3/CN3903-Chipnet.pdf"
-				(at 2.286 -29.464 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "36V 3.5A 500KHz Synchronous Step-Down Converter"
-				(at 1.524 -25.654 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "StepDown, Step-Down, buck converter"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "CN3903_1_1"
-				(rectangle
-					(start -8.89 11.43)
-					(end 8.89 -11.43)
-					(stroke
-						(width 0.2)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(text "CN3903\n"
-					(at -0.254 1.27 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-							(bold yes)
-						)
-					)
-				)
-				(pin power_in line
-					(at -11.43 7.62 0)
-					(length 2.54)
-					(name "VIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at -11.43 1.27 0)
-					(length 2.54)
-					(hide yes)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at -11.43 -5.08 0)
-					(length 2.54)
-					(name "EN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 -13.97 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 0 13.97 270)
-					(length 2.54)
-					(name "BST"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 2.54 -13.97 90)
-					(length 2.54)
-					(name "EPAD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at 11.43 7.62 180)
-					(length 2.54)
-					(name "SW"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin no_connect line
-					(at 11.43 1.27 180)
-					(length 2.54)
-					(hide yes)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 11.43 -5.08 180)
-					(length 2.54)
-					(name "FB"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "MixLib:MP2315GJ"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2246,7 +2002,7 @@
 			(uuid "3a539ab0-7929-41da-a4b1-39dd7c355565")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR060")
 					(unit 1)
@@ -2314,7 +2070,7 @@
 			(uuid "78499fff-ab60-4e3c-9099-f9bc2822fbf8")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "Rp1")
 					(unit 1)
@@ -2381,7 +2137,7 @@
 			(uuid "e2d22d39-316f-415e-855e-0a3ed3c5ffb8")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "R15")
 					(unit 1)
@@ -2448,7 +2204,7 @@
 			(uuid "a1af6717-814c-4131-9dee-50a7de45c3e8")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "R14")
 					(unit 1)
@@ -2517,100 +2273,9 @@
 			(uuid "ef983b03-eacb-49bf-b467-9d8546b5c16e")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C20")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "MixLib:CN3903")
-		(at 181.61 49.53 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2b265a23-209a-49db-b3ec-725be2af51a5")
-		(property "Reference" "U5"
-			(at 183.7533 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "CN3903"
-			(at 183.7533 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm"
-			(at 183.642 83.312 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://datasheet4u.com/pdf-down/C/N/3/CN3903-Chipnet.pdf"
-			(at 183.896 78.994 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "36V 3.5A 500KHz Synchronous Step-Down Converter"
-			(at 183.134 75.184 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "8"
-			(uuid "317fba66-abb8-4c43-96f0-3aaa0b8b8364")
-		)
-		(pin "4"
-			(uuid "65a0cec7-ee97-45de-ab76-fa73ba610132")
-		)
-		(pin "5"
-			(uuid "250c53fb-02a5-4f87-8fe7-57f7c8e1ee9b")
-		)
-		(pin "1"
-			(uuid "c8dd0f3b-3837-4a4f-b79c-7491db559382")
-		)
-		(pin "2"
-			(uuid "c4ae9e04-4211-45a7-8889-a58151f3a659")
-		)
-		(pin "6"
-			(uuid "f05980e9-9c6e-4d28-96a7-76b3dec42d47")
-		)
-		(pin "3"
-			(uuid "ff46af70-09ea-4929-b930-879c436a9eab")
-		)
-		(pin "9"
-			(uuid "1303a823-2e85-4fb7-b95c-f57810bc8d9e")
-		)
-		(pin "7"
-			(uuid "a7276b88-90e0-4b5e-84db-db423944c89b")
-		)
-		(instances
-			(project ""
-				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
-					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -2675,7 +2340,7 @@
 			(uuid "58703056-0e5e-4da2-9025-f7fc3b79e7d8")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "Rt1")
 					(unit 1)
@@ -2740,7 +2405,7 @@
 			(uuid "24453d51-a15e-4264-b843-8a44dc1f3f22")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR056")
 					(unit 1)
@@ -2809,7 +2474,7 @@
 			(uuid "b85997b7-4512-4e23-a901-fe135c605319")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C23")
 					(unit 1)
@@ -2878,7 +2543,7 @@
 			(uuid "93548e80-49bc-4cf6-98bc-09ae1d22c3c3")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C18")
 					(unit 1)
@@ -2943,7 +2608,7 @@
 			(uuid "1ea5307e-f2d2-40da-9b85-75b516a67a8b")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR057")
 					(unit 1)
@@ -3012,7 +2677,7 @@
 			(uuid "f2367471-74dd-4142-8358-d8876f6be9dc")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C22")
 					(unit 1)
@@ -3077,7 +2742,7 @@
 			(uuid "de5ec447-3d63-48a7-bcf1-1f7ddd698efe")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR059")
 					(unit 1)
@@ -3146,7 +2811,7 @@
 			(uuid "4ae4fb59-2c12-43cd-8048-0cb719d4fc57")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C19")
 					(unit 1)
@@ -3213,7 +2878,7 @@
 			(uuid "5d1f5053-73dd-467d-b164-9c9fc4800988")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "R17")
 					(unit 1)
@@ -3280,7 +2945,7 @@
 			(uuid "ba6d34d1-d596-4bee-b52a-13a3963ef855")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "L1")
 					(unit 1)
@@ -3347,7 +3012,7 @@
 			(uuid "65dc2759-d92f-4798-ab9c-a2d14ddb1ad4")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "Rp2")
 					(unit 1)
@@ -3412,7 +3077,7 @@
 			(uuid "73e515a5-386f-4dea-bd63-4027c27b384d")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR061")
 					(unit 1)
@@ -3477,7 +3142,7 @@
 			(uuid "badcade6-07ee-4aa6-9f16-f0290fc52a22")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR058")
 					(unit 1)
@@ -3562,7 +3227,7 @@
 			(uuid "ae01d856-915d-4b66-b024-c4dec39d9f15")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "ST1")
 					(unit 1)
@@ -3631,7 +3296,7 @@
 			(uuid "4a0d6515-c95e-4590-a409-efd8290cf1b5")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C17")
 					(unit 1)
@@ -3702,7 +3367,7 @@
 			(uuid "18a80196-c370-4f11-91a4-95178671f8e9")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "U6")
 					(unit 1)
@@ -3767,7 +3432,7 @@
 			(uuid "00eb5717-26ef-4362-91a4-ad7dc1cd25f8")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "#PWR062")
 					(unit 1)
@@ -3836,7 +3501,7 @@
 			(uuid "724b2215-3683-45ab-a3ec-447f83ab2bb2")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "C21")
 					(unit 1)
@@ -3903,7 +3568,7 @@
 			(uuid "626ff409-c114-417f-ad4e-c78351f8f742")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project "main_MagicAlonso"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "R16")
 					(unit 1)
@@ -3975,7 +3640,7 @@
 			(uuid "9ad14cd7-0309-4704-b924-64bf14d1ea29")
 		)
 		(instances
-			(project "main_MagicAlonso__test"
+			(project ""
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7/38d4c26b-5042-47e6-b450-9f4e66fb3158"
 					(reference "RV1")
 					(unit 1)

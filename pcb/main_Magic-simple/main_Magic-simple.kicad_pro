@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.7
         }
       },
       "diff_pair_dimensions": [
@@ -146,8 +146,8 @@
         {
           "td_onpthpad": false,
           "td_onroundshapesonly": false,
-          "td_onsmdpad": false,
-          "td_ontrackend": true,
+          "td_onsmdpad": true,
+          "td_ontrackend": false,
           "td_onvia": false
         }
       ],
@@ -492,7 +492,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "main_MagicAlonso-rounded.kicad_pro",
+    "filename": "main_Magic-simple.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -528,7 +528,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "D:/placa_jere/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
@@ -654,14 +654,6 @@
     [
       "80af5e1a-3060-4775-9fc3-f6762d1535e7",
       "Root"
-    ],
-    [
-      "c19a4b5e-b66e-4d93-9513-18dbfa3808b4",
-      "CH340C"
-    ],
-    [
-      "38d4c26b-5042-47e6-b450-9f4e66fb3158",
-      "StepDown_2315"
     ]
   ],
   "text_variables": {}
