@@ -6,7 +6,7 @@
         "apply_defaults_to_fp_fields": false,
         "apply_defaults_to_fp_shapes": false,
         "apply_defaults_to_fp_text": false,
-        "board_outline_line_width": 0.05,
+        "board_outline_line_width": 0.1,
         "copper_line_width": 0.2,
         "copper_text_italic": false,
         "copper_text_size_h": 1.5,
@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.0,
-          "height": 1.75,
-          "width": 1.125
+          "drill": 0.95,
+          "height": 1.95,
+          "width": 1.7
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -146,8 +146,8 @@
         {
           "td_onpthpad": false,
           "td_onroundshapesonly": false,
-          "td_onsmdpad": true,
-          "td_ontrackend": false,
+          "td_onsmdpad": false,
+          "td_ontrackend": true,
           "td_onvia": false
         }
       ],
@@ -235,7 +235,7 @@
         },
         {
           "diameter": 1.4,
-          "drill": 0.7
+          "drill": 0.55
         },
         {
           "diameter": 1.7,
@@ -499,7 +499,7 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.1,
+        "clearance": 0.2,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -510,7 +510,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.4,
+        "track_width": 0.6,
         "via_diameter": 1.5,
         "via_drill": 0.75,
         "wire_width": 6
