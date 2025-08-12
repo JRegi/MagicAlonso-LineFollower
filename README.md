@@ -1,8 +1,8 @@
 # MagicAlonso - _Robot dedicado a la leyenda Asturiana del automobilismo_
 
-## Modelo 3D PCB principal (KiCad 9.0)
+## MagicAlonso V0 (sin turbina)
 
-![imagen](pcb/pcb_main.jpg "PCB Main")
+![imagen](MagicAlonsoV0_ensamblado.jpg "MagicAlonsoV0")
 
 ## Descripción
 
