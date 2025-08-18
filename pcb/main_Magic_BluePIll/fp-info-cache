@@ -1,4 +1,4 @@
-26197310135614625
+26429787556994766
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -262,13 +262,6 @@ Battery
 BatteryHolder_MPD_BH-18650-PC
 Battery holder, MPD BH-18650, battery type 1x18650, https://www.batteryholders.com/uploads/parts/BH-18650-PC/datasheets/BH-18650-PC-datasheet.pdf, generated with kicad-footprint-generator StandardBox_generator.py
 horizontal single
-0
-2
-2
-Battery
-BatteryHolder_MPD_BH-18650-PC2
-18650 Battery Holder (http://www.memoryprotectiondevices.com/datasheets/BK-18650-PC2-datasheet.pdf)
-18650 Battery Holder
 0
 2
 2
@@ -1540,13 +1533,6 @@ Light Touch Switch, https://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/A
 4
 2
 Button_Switch_SMD
-SW_SPST_EVQP2
-Light Touch Switch, https://industrial.panasonic.com/cdbs/www-data/pdf/ATK0000/ATK0000C374.pdf
-SMD SMT SPST EVQP2
-0
-4
-2
-Button_Switch_SMD
 SW_SPST_EVQP2_MiddlePushTravel_H2.5mm
 Tactile switch, 4.7 x 3.5 mm, middle push travel, H2.5mm, https://industry.panasonic.com/ac/cdn/e/control/switch/light-touch/catalog/sw_lt_eng_4735s.pdf
 SMD SMT SPST EVQP2
@@ -1620,13 +1606,6 @@ Button_Switch_SMD
 SW_SPST_Omron_B3FS-105xP
 Surface Mount Tactile Switch for High-Density Mounting, 7.3mm height, https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3fs.pdf
 Tactile Switch
-0
-4
-2
-Button_Switch_SMD
-SW_SPST_PTS645
-C&K Components SPST SMD PTS645 Series 6mm Tact Switch
-SPST Button Switch
 0
 4
 2
@@ -14839,6 +14818,496 @@ connector Hirose DF63 vertical
 0
 5
 5
+Connector_Hirose_DF40
+Hirose_DF40B(2.0)-12DS-0.4V_2x06-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+16
+13
+Connector_Hirose_DF40
+Hirose_DF40B(2.0)-80DS-0.4V_2x40-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+84
+81
+Connector_Hirose_DF40
+Hirose_DF40B-10DS-0.4V_2x05-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+14
+11
+Connector_Hirose_DF40
+Hirose_DF40B-12DS-0.4V_2x06-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+16
+13
+Connector_Hirose_DF40
+Hirose_DF40B-30DS-0.4V_2x15-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+34
+31
+Connector_Hirose_DF40
+Hirose_DF40B-50DS-0.4V_2x25-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+54
+51
+Connector_Hirose_DF40
+Hirose_DF40B-60DS-0.4V_2x30-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+64
+61
+Connector_Hirose_DF40
+Hirose_DF40B-80DS-0.4V_2x40-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+84
+81
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-20DS-0.4V_2x10_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+20
+20
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-24DS-0.4V_2x12_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+24
+24
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-30DS-0.4V_2x15_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+30
+30
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-40DS-0.4V_2x20_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+40
+40
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-50DS-0.4V_2x25_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+50
+50
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-60DS-0.4V_2x30_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+60
+60
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-70DS-0.4V_2x35_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+70
+70
+Connector_Hirose_DF40
+Hirose_DF40C(2.0)-80DS-0.4V_2x40_P0.4mm
+0.4mm Pitch, Stacking Height 2.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+80
+80
+Connector_Hirose_DF40
+Hirose_DF40C-10DP-0.4V_2x05-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+14
+11
+Connector_Hirose_DF40
+Hirose_DF40C-12DP-0.4V_2x06-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+16
+13
+Connector_Hirose_DF40
+Hirose_DF40C-20DP-0.4V_2x10-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+24
+21
+Connector_Hirose_DF40
+Hirose_DF40C-20DS-0.4V_2x10_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+20
+20
+Connector_Hirose_DF40
+Hirose_DF40C-24DP-0.4V_2x12-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+28
+25
+Connector_Hirose_DF40
+Hirose_DF40C-24DS-0.4V_2x12_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+24
+24
+Connector_Hirose_DF40
+Hirose_DF40C-30DP-0.4V_2x15-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+34
+31
+Connector_Hirose_DF40
+Hirose_DF40C-30DS-0.4V_2x15_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+30
+30
+Connector_Hirose_DF40
+Hirose_DF40C-34DP-0.4V_2x17-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+38
+35
+Connector_Hirose_DF40
+Hirose_DF40C-34DS-0.4V_2x17_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+34
+34
+Connector_Hirose_DF40
+Hirose_DF40C-40DP-0.4V_2x20-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+44
+41
+Connector_Hirose_DF40
+Hirose_DF40C-40DS-0.4V_2x20_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+40
+40
+Connector_Hirose_DF40
+Hirose_DF40C-44DP-0.4V_2x22-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+48
+45
+Connector_Hirose_DF40
+Hirose_DF40C-50DP-0.4V_2x25-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+54
+51
+Connector_Hirose_DF40
+Hirose_DF40C-50DS-0.4V_2x25_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+50
+50
+Connector_Hirose_DF40
+Hirose_DF40C-60DP-0.4V_2x30-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+64
+61
+Connector_Hirose_DF40
+Hirose_DF40C-60DS-0.4V_2x30_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+60
+60
+Connector_Hirose_DF40
+Hirose_DF40C-70DP-0.4V_2x35-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+74
+71
+Connector_Hirose_DF40
+Hirose_DF40C-70DS-0.4V_2x35_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+70
+70
+Connector_Hirose_DF40
+Hirose_DF40C-80DP-0.4V_2x40-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+84
+81
+Connector_Hirose_DF40
+Hirose_DF40C-80DS-0.4V_2x40_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+80
+80
+Connector_Hirose_DF40
+Hirose_DF40C-90DP-0.4V_2x45-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+94
+91
+Connector_Hirose_DF40
+Hirose_DF40C-90DS-0.4V_2x45_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+90
+90
+Connector_Hirose_DF40
+Hirose_DF40C-100DP-0.4V_2x50-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+104
+101
+Connector_Hirose_DF40
+Hirose_DF40C-100DS-0.4V_2x50_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+100
+100
+Connector_Hirose_DF40
+Hirose_DF40C-120DP-0.4V_2x60-1MP_P0.4mm
+0.4mm Pitch, Plug, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking plug
+0
+124
+121
+Connector_Hirose_DF40
+Hirose_DF40C-120DS-0.4V_2x60_P0.4mm
+0.4mm Pitch, Stacking Height 1.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+120
+120
+Connector_Hirose_DF40
+Hirose_DF40HB(2.5)-10DS-0.4V_2x05-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 2.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+14
+11
+Connector_Hirose_DF40
+Hirose_DF40HB(4.0)-50DS-0.4V_2x25-1MP_P0.4mm
+0.4mm Pitch, Stacking Height 4.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+54
+51
+Connector_Hirose_DF40
+Hirose_DF40HC(2.5)-20DS-0.4V_2x10_P0.4mm
+0.4mm Pitch, Stacking Height 2.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+20
+20
+Connector_Hirose_DF40
+Hirose_DF40HC(2.5)-30DS-0.4V_2x15_P0.4mm
+0.4mm Pitch, Stacking Height 2.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+30
+30
+Connector_Hirose_DF40
+Hirose_DF40HC(2.5)-40DS-0.4V_2x20_P0.4mm
+0.4mm Pitch, Stacking Height 2.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+40
+40
+Connector_Hirose_DF40
+Hirose_DF40HC(2.5)-50DS-0.4V_2x25_P0.4mm
+0.4mm Pitch, Stacking Height 2.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+50
+50
+Connector_Hirose_DF40
+Hirose_DF40HC(2.5)-60DS-0.4V_2x30_P0.4mm
+0.4mm Pitch, Stacking Height 2.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+60
+60
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-30DS-0.4V_2x15_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+30
+30
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-40DS-0.4V_2x20_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+40
+40
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-44DS-0.4V_2x22_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+44
+44
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-50DS-0.4V_2x25_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+50
+50
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-60DS-0.4V_2x30_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+60
+60
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-70DS-0.4V_2x35_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+70
+70
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-80DS-0.4V_2x40_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+80
+80
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-90DS-0.4V_2x45_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+90
+90
+Connector_Hirose_DF40
+Hirose_DF40HC(3.0)-100DS-0.4V_2x50_P0.4mm
+0.4mm Pitch, Stacking Height 3.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+100
+100
+Connector_Hirose_DF40
+Hirose_DF40HC(3.5)-20DS-0.4V_2x10_P0.4mm
+0.4mm Pitch, Stacking Height 3.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+20
+20
+Connector_Hirose_DF40
+Hirose_DF40HC(3.5)-30DS-0.4V_2x15_P0.4mm
+0.4mm Pitch, Stacking Height 3.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+30
+30
+Connector_Hirose_DF40
+Hirose_DF40HC(3.5)-40DS-0.4V_2x20_P0.4mm
+0.4mm Pitch, Stacking Height 3.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+40
+40
+Connector_Hirose_DF40
+Hirose_DF40HC(3.5)-50DS-0.4V_2x25_P0.4mm
+0.4mm Pitch, Stacking Height 3.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+50
+50
+Connector_Hirose_DF40
+Hirose_DF40HC(3.5)-60DS-0.4V_2x30_P0.4mm
+0.4mm Pitch, Stacking Height 3.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+60
+60
+Connector_Hirose_DF40
+Hirose_DF40HC(3.5)-80DS-0.4V_2x40_P0.4mm
+0.4mm Pitch, Stacking Height 3.500000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+80
+80
+Connector_Hirose_DF40
+Hirose_DF40HC(4.0)-40DS-0.4V_2x20_P0.4mm
+0.4mm Pitch, Stacking Height 4.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+40
+40
+Connector_Hirose_DF40
+Hirose_DF40HC(4.0)-50DS-0.4V_2x25_P0.4mm
+0.4mm Pitch, Stacking Height 4.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+50
+50
+Connector_Hirose_DF40
+Hirose_DF40HC(4.0)-60DS-0.4V_2x30_P0.4mm
+0.4mm Pitch, Stacking Height 4.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+60
+60
+Connector_Hirose_DF40
+Hirose_DF40HC(4.0)-80DS-0.4V_2x40_P0.4mm
+0.4mm Pitch, Stacking Height 4.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+80
+80
+Connector_Hirose_DF40
+Hirose_DF40HC(4.0)-90DS-0.4V_2x45_P0.4mm
+0.4mm Pitch, Stacking Height 4.000000mm, Receptacle, vertical (source: https://www.hirose.com/en/product/document?clcode=&productname=&series=DF40&documenttype=Catalog&lang=en&documentid=en_DF40_CAT)
+conn hirose board-to-board mezzanine stacking receptacle
+0
+90
+90
 Connector_Hirose_FX8
 Hirose_FX8-60P-SV_2x30_P0.6mm
 0.6mm Pitch, Stacking Height 3mm to 16mm, Header, vertical (source: https://www.hirose.com/de/product/document?clcode=&productname=&series=FX8&documenttype=Catalog&lang=en&documentid=D31612_en)
@@ -26235,6 +26704,391 @@ connector Molex SlimStack vertical
 0
 80
 80
+Connector_Molex_Milligrid
+Molex_8783204xx_2x02_P2.0mm_Header_Vertical
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320406_sd.pdf?inline)
+conn molex pin header
+0
+4
+4
+Connector_Molex_Milligrid
+Molex_8783206xx_2x03_P2.0mm_Header_Vertical
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320606_sd.pdf?inline)
+conn molex pin header
+0
+6
+6
+Connector_Molex_Milligrid
+Molex_8783206xx_2x03_P2.0mm_Header_Vertical_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320606_sd.pdf?inline)
+conn molex pin header
+0
+6
+6
+Connector_Molex_Milligrid
+Molex_8783206xx_2x03_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320606_sd.pdf?inline)
+conn molex pin header
+0
+6
+6
+Connector_Molex_Milligrid
+Molex_8783206xx_2x03_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320606_sd.pdf?inline)
+conn molex pin header
+0
+6
+6
+Connector_Molex_Milligrid
+Molex_8783208xx_2x04_P2.0mm_Header_Vertical
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320806_sd.pdf?inline)
+conn molex pin header
+0
+8
+8
+Connector_Molex_Milligrid
+Molex_8783208xx_2x04_P2.0mm_Header_Vertical_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320806_sd.pdf?inline)
+conn molex pin header
+0
+8
+8
+Connector_Molex_Milligrid
+Molex_8783208xx_2x04_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320806_sd.pdf?inline)
+conn molex pin header
+0
+8
+8
+Connector_Molex_Milligrid
+Molex_8783208xx_2x04_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878320806_sd.pdf?inline)
+conn molex pin header
+0
+8
+8
+Connector_Molex_Milligrid
+Molex_8783210xx_2x05_P2.0mm_Header_Vertical
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321006_sd.pdf?inline)
+conn molex pin header
+0
+10
+10
+Connector_Molex_Milligrid
+Molex_8783210xx_2x05_P2.0mm_Header_Vertical_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321006_sd.pdf?inline)
+conn molex pin header
+0
+10
+10
+Connector_Molex_Milligrid
+Molex_8783210xx_2x05_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321006_sd.pdf?inline)
+conn molex pin header
+0
+10
+10
+Connector_Molex_Milligrid
+Molex_8783210xx_2x05_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321006_sd.pdf?inline)
+conn molex pin header
+0
+10
+10
+Connector_Molex_Milligrid
+Molex_8783212xx_2x06_P2.0mm_Header_Vertical
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321206_sd.pdf?inline)
+conn molex pin header
+0
+12
+12
+Connector_Molex_Milligrid
+Molex_8783212xx_2x06_P2.0mm_Header_Vertical_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321206_sd.pdf?inline)
+conn molex pin header
+0
+12
+12
+Connector_Molex_Milligrid
+Molex_8783212xx_2x06_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321206_sd.pdf?inline)
+conn molex pin header
+0
+12
+12
+Connector_Molex_Milligrid
+Molex_8783212xx_2x06_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321206_sd.pdf?inline)
+conn molex pin header
+0
+12
+12
+Connector_Molex_Milligrid
+Molex_8783214xx_2x07_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321406_sd.pdf?inline)
+conn molex pin header
+0
+14
+14
+Connector_Molex_Milligrid
+Molex_8783214xx_2x07_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321406_sd.pdf?inline)
+conn molex pin header
+0
+14
+14
+Connector_Molex_Milligrid
+Molex_8783216xx_2x08_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321606_sd.pdf?inline)
+conn molex pin header
+0
+16
+16
+Connector_Molex_Milligrid
+Molex_8783216xx_2x08_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321606_sd.pdf?inline)
+conn molex pin header
+0
+16
+16
+Connector_Molex_Milligrid
+Molex_8783218xx_2x09_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321806_sd.pdf?inline)
+conn molex pin header
+0
+18
+18
+Connector_Molex_Milligrid
+Molex_8783218xx_2x09_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878321806_sd.pdf?inline)
+conn molex pin header
+0
+18
+18
+Connector_Molex_Milligrid
+Molex_8783220xx_2x10_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322006_sd.pdf?inline)
+conn molex pin header
+0
+20
+20
+Connector_Molex_Milligrid
+Molex_8783220xx_2x10_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322006_sd.pdf?inline)
+conn molex pin header
+0
+20
+20
+Connector_Molex_Milligrid
+Molex_8783222xx_2x11_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322206_sd.pdf?inline)
+conn molex pin header
+0
+22
+22
+Connector_Molex_Milligrid
+Molex_8783222xx_2x11_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322206_sd.pdf?inline)
+conn molex pin header
+0
+22
+22
+Connector_Molex_Milligrid
+Molex_8783224xx_2x12_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322406_sd.pdf?inline)
+conn molex pin header
+0
+24
+24
+Connector_Molex_Milligrid
+Molex_8783224xx_2x12_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322406_sd.pdf?inline)
+conn molex pin header
+0
+24
+24
+Connector_Molex_Milligrid
+Molex_8783226xx_2x13_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322606_sd.pdf?inline)
+conn molex pin header
+0
+26
+26
+Connector_Molex_Milligrid
+Molex_8783226xx_2x13_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322606_sd.pdf?inline)
+conn molex pin header
+0
+26
+26
+Connector_Molex_Milligrid
+Molex_8783228xx_2x14_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322806_sd.pdf?inline)
+conn molex pin header
+0
+28
+28
+Connector_Molex_Milligrid
+Molex_8783228xx_2x14_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878322806_sd.pdf?inline)
+conn molex pin header
+0
+28
+28
+Connector_Molex_Milligrid
+Molex_8783230xx_2x15_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323006_sd.pdf?inline)
+conn molex pin header
+0
+30
+30
+Connector_Molex_Milligrid
+Molex_8783230xx_2x15_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323006_sd.pdf?inline)
+conn molex pin header
+0
+30
+30
+Connector_Molex_Milligrid
+Molex_8783232xx_2x16_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323206_sd.pdf?inline)
+conn molex pin header
+0
+32
+32
+Connector_Molex_Milligrid
+Molex_8783232xx_2x16_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323206_sd.pdf?inline)
+conn molex pin header
+0
+32
+32
+Connector_Molex_Milligrid
+Molex_8783234xx_2x17_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323406_sd.pdf?inline)
+conn molex pin header
+0
+34
+34
+Connector_Molex_Milligrid
+Molex_8783234xx_2x17_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323406_sd.pdf?inline)
+conn molex pin header
+0
+34
+34
+Connector_Molex_Milligrid
+Molex_8783236xx_2x18_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323606_sd.pdf?inline)
+conn molex pin header
+0
+36
+36
+Connector_Molex_Milligrid
+Molex_8783236xx_2x18_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323606_sd.pdf?inline)
+conn molex pin header
+0
+36
+36
+Connector_Molex_Milligrid
+Molex_8783238xx_2x19_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323806_sd.pdf?inline)
+conn molex pin header
+0
+38
+38
+Connector_Molex_Milligrid
+Molex_8783238xx_2x19_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878323806_sd.pdf?inline)
+conn molex pin header
+0
+38
+38
+Connector_Molex_Milligrid
+Molex_8783240xx_2x20_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324006_sd.pdf?inline)
+conn molex pin header
+0
+40
+40
+Connector_Molex_Milligrid
+Molex_8783240xx_2x20_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324006_sd.pdf?inline)
+conn molex pin header
+0
+40
+40
+Connector_Molex_Milligrid
+Molex_8783242xx_2x21_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324206_sd.pdf?inline)
+conn molex pin header
+0
+42
+42
+Connector_Molex_Milligrid
+Molex_8783242xx_2x21_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324206_sd.pdf?inline)
+conn molex pin header
+0
+42
+42
+Connector_Molex_Milligrid
+Molex_8783244xx_2x22_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324406_sd.pdf?inline)
+conn molex pin header
+0
+44
+44
+Connector_Molex_Milligrid
+Molex_8783244xx_2x22_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324406_sd.pdf?inline)
+conn molex pin header
+0
+44
+44
+Connector_Molex_Milligrid
+Molex_8783246xx_2x23_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324606_sd.pdf?inline)
+conn molex pin header
+0
+46
+46
+Connector_Molex_Milligrid
+Molex_8783246xx_2x23_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324606_sd.pdf?inline)
+conn molex pin header
+0
+46
+46
+Connector_Molex_Milligrid
+Molex_8783248xx_2x24_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324806_sd.pdf?inline)
+conn molex pin header
+0
+48
+48
+Connector_Molex_Milligrid
+Molex_8783248xx_2x24_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878324806_sd.pdf?inline)
+conn molex pin header
+0
+48
+48
+Connector_Molex_Milligrid
+Molex_8783250xx_2x25_P2.0mm_Header_Vertical_Polarized
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878325006_sd.pdf?inline)
+conn molex pin header
+0
+50
+50
+Connector_Molex_Milligrid
+Molex_8783250xx_2x25_P2.0mm_Header_Vertical_Polarized_MountingPegs
+Milli-Grid PCB Header, Dual Row, Vertical, Surface Mount, Shrouded, 2.00 mm Pitch, Center Polarization, Mounting Pegs (source: https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87832/878325006_sd.pdf?inline)
+conn molex pin header
+0
+50
+50
 Connector_PCBEdge
 4UCON_10156_2x40_P1.27mm_Socket_Horizontal
 4UCON 10156 Card edge socket with 80 contacts (40 each side), through-hole, http://www.4uconnector.com/online/object/4udrawing/10156.pdf
@@ -46066,6 +46920,636 @@ conn samtec board-to-board socket high-speed
 0
 100
 100
+Connector_Samtec_FSI
+Samtec_FSI-105-03-X-D-AD_2x05_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+10
+10
+Connector_Samtec_FSI
+Samtec_FSI-105-03-X-D_2x05_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+10
+10
+Connector_Samtec_FSI
+Samtec_FSI-105-XX-X-D-AD_2x05_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+10
+10
+Connector_Samtec_FSI
+Samtec_FSI-105-XX-X-D-AD_2x05_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+10
+10
+Connector_Samtec_FSI
+Samtec_FSI-105-XX-X-D_2x05_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+10
+10
+Connector_Samtec_FSI
+Samtec_FSI-105-XX-X-D_2x05_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+10
+10
+Connector_Samtec_FSI
+Samtec_FSI-110-03-X-D-AD_2x10_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-03-X-D-M-AD_2x10_P1.0mm_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-03-X-D-M_2x10_P1.0mm_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-03-X-D_2x10_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D-AD_2x10_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D-AD_2x10_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D-M-AD_2x10_P1.0mm_Mate_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D-M-AD_2x10_P1.0mm_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D-M_2x10_P1.0mm_Mate_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D-M_2x10_P1.0mm_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D_2x10_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-110-XX-X-D_2x10_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+20
+20
+Connector_Samtec_FSI
+Samtec_FSI-115-03-X-D-AD_2x15_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+30
+30
+Connector_Samtec_FSI
+Samtec_FSI-115-03-X-D_2x15_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+30
+30
+Connector_Samtec_FSI
+Samtec_FSI-115-XX-X-D-AD_2x15_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+30
+30
+Connector_Samtec_FSI
+Samtec_FSI-115-XX-X-D-AD_2x15_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+30
+30
+Connector_Samtec_FSI
+Samtec_FSI-115-XX-X-D_2x15_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+30
+30
+Connector_Samtec_FSI
+Samtec_FSI-115-XX-X-D_2x15_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+30
+30
+Connector_Samtec_FSI
+Samtec_FSI-120-03-X-D-AD_2x20_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-03-X-D-M-AD_2x20_P1.0mm_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-03-X-D-M_2x20_P1.0mm_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-03-X-D_2x20_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D-AD_2x20_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D-AD_2x20_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D-M-AD_2x20_P1.0mm_Mate_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D-M-AD_2x20_P1.0mm_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D-M_2x20_P1.0mm_Mate_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D-M_2x20_P1.0mm_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D_2x20_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-120-XX-X-D_2x20_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+40
+40
+Connector_Samtec_FSI
+Samtec_FSI-125-03-X-D-AD_2x25_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+50
+50
+Connector_Samtec_FSI
+Samtec_FSI-125-03-X-D_2x25_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+50
+50
+Connector_Samtec_FSI
+Samtec_FSI-125-XX-X-D-AD_2x25_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+50
+50
+Connector_Samtec_FSI
+Samtec_FSI-125-XX-X-D-AD_2x25_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+50
+50
+Connector_Samtec_FSI
+Samtec_FSI-125-XX-X-D_2x25_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+50
+50
+Connector_Samtec_FSI
+Samtec_FSI-125-XX-X-D_2x25_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+50
+50
+Connector_Samtec_FSI
+Samtec_FSI-130-03-X-D-AD_2x30_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-03-X-D-M-AD_2x30_P1.0mm_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-03-X-D-M_2x30_P1.0mm_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-03-X-D_2x30_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D-AD_2x30_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D-AD_2x30_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D-M-AD_2x30_P1.0mm_Mate_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D-M-AD_2x30_P1.0mm_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D-M_2x30_P1.0mm_Mate_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D-M_2x30_P1.0mm_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D_2x30_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-130-XX-X-D_2x30_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+60
+60
+Connector_Samtec_FSI
+Samtec_FSI-135-03-X-D-AD_2x35_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+70
+70
+Connector_Samtec_FSI
+Samtec_FSI-135-03-X-D_2x35_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+70
+70
+Connector_Samtec_FSI
+Samtec_FSI-135-XX-X-D-AD_2x35_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+70
+70
+Connector_Samtec_FSI
+Samtec_FSI-135-XX-X-D-AD_2x35_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+70
+70
+Connector_Samtec_FSI
+Samtec_FSI-135-XX-X-D_2x35_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+70
+70
+Connector_Samtec_FSI
+Samtec_FSI-135-XX-X-D_2x35_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+70
+70
+Connector_Samtec_FSI
+Samtec_FSI-140-03-X-D-AD_2x40_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-03-X-D-M-AD_2x40_P1.0mm_Pol20_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-03-X-D-M_2x40_P1.0mm_Pol20_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-03-X-D_2x40_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D-AD_2x40_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D-AD_2x40_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D-M-AD_2x40_P1.0mm_Pol20_Mate_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D-M-AD_2x40_P1.0mm_Pol20_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D-M_2x40_P1.0mm_Pol20_Mate_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D-M_2x40_P1.0mm_Pol20_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D_2x40_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-140-XX-X-D_2x40_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+80
+80
+Connector_Samtec_FSI
+Samtec_FSI-145-03-X-D-AD_2x45_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+90
+90
+Connector_Samtec_FSI
+Samtec_FSI-145-03-X-D_2x45_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+90
+90
+Connector_Samtec_FSI
+Samtec_FSI-145-XX-X-D-AD_2x45_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+90
+90
+Connector_Samtec_FSI
+Samtec_FSI-145-XX-X-D-AD_2x45_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+90
+90
+Connector_Samtec_FSI
+Samtec_FSI-145-XX-X-D_2x45_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+90
+90
+Connector_Samtec_FSI
+Samtec_FSI-145-XX-X-D_2x45_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+90
+90
+Connector_Samtec_FSI
+Samtec_FSI-150-03-X-D-AD_2x50_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-03-X-D-M-AD_2x50_P1.0mm_Pol25_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-03-X-D-M_2x50_P1.0mm_Pol25_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-03-X-D_2x50_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-03-x-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D-AD_2x50_P1.0mm_Mate_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D-AD_2x50_P1.0mm_Socket_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D-M-AD_2x50_P1.0mm_Pol25_Mate_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D-M-AD_2x50_P1.0mm_Pol25_Socket_Threaded_AlignmentPin
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded, Alignment Pin (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D-M_2x50_P1.0mm_Pol25_Mate_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate, Threaded (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D-M_2x50_P1.0mm_Pol25_Socket_Threaded
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, Threaded (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D_2x50_P1.0mm_Mate
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row, PCB Mate (source: https://suddendocs.samtec.com/prints/fsi-mating%20board.pdf)
+conn samtec one piece interface
+0
+100
+100
+Connector_Samtec_FSI
+Samtec_FSI-150-XX-X-D_2x50_P1.0mm_Socket
+Samtec FSI One-Piece Interface, 1.00 mm Pitch, Double Row (source: https://suddendocs.samtec.com/prints/fsi-1xx-xx-xxx-d-x-xx-xx-footprint.pdf)
+conn samtec one piece interface
+0
+100
+100
 Connector_Samtec_HLE_SMD
 Samtec_HLE-102-02-xxx-DV-BE-LC_2x02_P2.54mm_Horizontal
 Samtec HLE .100" Tiger Beam Cost-effective Single Beam Socket Strip, HLE-102-02-xxx-DV-BE-LC, 2 Pins per row (http://suddendocs.samtec.com/prints/hle-1xx-02-xxx-dv-xx-xx-xx-mkt.pdf, http://suddendocs.samtec.com/prints/hle-dv-footprint.pdf), generated with kicad-footprint-generator
@@ -50280,6 +51764,188 @@ conn samtec card-edge high-speed
 0
 200
 200
+Connector_Samtec_LTMM
+Samtec_LTMM-104-02-X-D-SM-LC_2x04_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+8
+8
+Connector_Samtec_LTMM
+Samtec_LTMM-104-02-X-D-SM_2x04_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+8
+8
+Connector_Samtec_LTMM
+Samtec_LTMM-105-02-X-D-SM-LC_2x05_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+10
+10
+Connector_Samtec_LTMM
+Samtec_LTMM-105-02-X-D-SM_2x05_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+10
+10
+Connector_Samtec_LTMM
+Samtec_LTMM-106-02-X-D-SM-LC_2x06_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+12
+12
+Connector_Samtec_LTMM
+Samtec_LTMM-106-02-X-D-SM_2x06_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+12
+12
+Connector_Samtec_LTMM
+Samtec_LTMM-107-02-X-D-SM-LC_2x07_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+14
+14
+Connector_Samtec_LTMM
+Samtec_LTMM-107-02-X-D-SM_2x07_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+14
+14
+Connector_Samtec_LTMM
+Samtec_LTMM-108-02-X-D-SM-LC_2x08_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+16
+16
+Connector_Samtec_LTMM
+Samtec_LTMM-108-02-X-D-SM_2x08_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+16
+16
+Connector_Samtec_LTMM
+Samtec_LTMM-110-02-X-D-SM-LC_2x10_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+20
+20
+Connector_Samtec_LTMM
+Samtec_LTMM-110-02-X-D-SM_2x10_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+20
+20
+Connector_Samtec_LTMM
+Samtec_LTMM-112-02-X-D-SM-LC_2x12_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+24
+24
+Connector_Samtec_LTMM
+Samtec_LTMM-112-02-X-D-SM_2x12_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+24
+24
+Connector_Samtec_LTMM
+Samtec_LTMM-113-02-X-D-SM-LC_2x13_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+26
+26
+Connector_Samtec_LTMM
+Samtec_LTMM-113-02-X-D-SM_2x13_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+26
+26
+Connector_Samtec_LTMM
+Samtec_LTMM-115-02-X-D-SM-LC_2x15_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+30
+30
+Connector_Samtec_LTMM
+Samtec_LTMM-115-02-X-D-SM_2x15_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+30
+30
+Connector_Samtec_LTMM
+Samtec_LTMM-117-02-X-D-SM-LC_2x17_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+34
+34
+Connector_Samtec_LTMM
+Samtec_LTMM-117-02-X-D-SM_2x17_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+34
+34
+Connector_Samtec_LTMM
+Samtec_LTMM-120-02-X-D-SM-LC_2x20_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+40
+40
+Connector_Samtec_LTMM
+Samtec_LTMM-120-02-X-D-SM_2x20_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+40
+40
+Connector_Samtec_LTMM
+Samtec_LTMM-122-02-X-D-SM-LC_2x22_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+44
+44
+Connector_Samtec_LTMM
+Samtec_LTMM-122-02-X-D-SM_2x22_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+44
+44
+Connector_Samtec_LTMM
+Samtec_LTMM-125-02-X-D-SM-LC_2x25_P2.0mm_Header_Vertical_LockingClip
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount, Locking Clips (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+50
+50
+Connector_Samtec_LTMM
+Samtec_LTMM-125-02-X-D-SM_2x25_P2.0mm_Header_Vertical
+Samtec LTMM Shrouded Terminal Strip, 2.00 mm Pitch, Double Row, Surface Mount (source: https://suddendocs.samtec.com/prints/ltmm-1xx-xx-xx-d-xx-xx-footprint.pdf#page=3)
+conn samtec terminal strip pin header
+0
+50
+50
 Connector_Samtec_MicroMate
 Samtec_T1M-02-X-S-RA_1x02-1MP_P1.0mm_Terminal_Horizontal
 Samtec Micro Mate Discrete Wire Terminal Strip, 1.00 mm Pitch, Single Row, Horizontal (Right Angle) (source: https://suddendocs.samtec.com/prints/t1m-single-row-footprint.pdf)
@@ -55089,6 +56755,69 @@ connector Wuerth WR-WTB vertical
 0
 10
 10
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-2PLT_1x02-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-2PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+4
+3
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-3PLT_1x03-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-3PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+5
+4
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-4PLT_1x04-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-4PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+6
+5
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-5PLT_1x05-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-5PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+7
+6
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-6PLT_1x06-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-6PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+8
+7
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-7PLT_1x07-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-7PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+9
+8
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-8PLT_1x08-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-8PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+10
+9
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-9PLT_1x09-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-9PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+11
+10
+Connector_Zhaoxing
+Zhaoxing_VH_ZX-VH3.96-10PLT_1x10-1MP_P3.96mm_Vertical
+Zhaoxing VH series connector, ZX-VH3.96-10PLT (https://www.lcsc.com/datasheet/lcsc_datasheet_2306191414_Megastar-ZX-VH3-96-4PLT_C7429652.pdf), generated with kicad-footprint-generator
+connector Zhaoxing VH vertical
+0
+12
+11
 Converter_ACDC
 Converter_ACDC_CUI_PBO-3-Sxx_THT_Vertical
 ACDC-Converter, 3W, CUI PBO-3, THT https://www.cui.com/product/resource/pbo-3.pdf
@@ -55947,13 +57676,6 @@ Converter_DCDC
 Converter_DCDC_TRACO_TMR-2xxxxWI_THT
 https://www.tracopower.com/products/tmr2wi.pdf
 DCDC-Converter TRACO TMRxxxxWI Single/Dual_output
-0
-7
-7
-Converter_DCDC
-Converter_DCDC_TRACO_TMR-xxxx_THT
-DCDC-Converter, TRACO, TMR xxxx, Single/Dual output, http://www.datasheetlib.com/datasheet/135136/tmr-2-2410e_traco-power.html?page=3#datasheet
-DCDC-Converter TRACO TMRxxxx Single/Dual_output
 0
 7
 7
@@ -63077,13 +64799,6 @@ high-current power shielded
 2
 2
 Inductor_SMD
-L_Murata_DEM35xxC
-https://www.murata.com/~/media/webrenewal/products/inductor/chip/tokoproducts/wirewoundferritetypeforpl/m_dem3518c.ashx
-Inductor SMD DEM35xxC
-0
-2
-2
-Inductor_SMD
 L_Murata_DEM3512C
 Inductor, Murata, DEM3512C, 3.9x3.7x1.2mm, (https://www.murata.com/~/media/webrenewal/products/inductor/chip/tokoproducts/wirewoundferritetypeforpl/m_dem3512c.ashx), generated with kicad-footprint-generator gen_inductor.py
 power shielded
@@ -68466,328 +70181,6 @@ Yellow 5381 Series LED
 0
 2
 2
-MixLib
-BluePill
-Through hole headers for BluePill module. No SWD breakout. Fancy silkscreen.
-module BlluePill Blue Pill header SWD breakout
-0
-40
-40
-MixLib
-BluePill_SWD
-Through hole headers for BluePill module. No SWD breakout. Fancy silkscreen.
-module BlluePill Blue Pill header SWD breakout
-0
-44
-44
-MixLib
-Bornera_2_duo
-2-way 5.08mm pitch terminal block, Phoenix MKDS series
-
-0
-4
-2
-MixLib
-CD74HC4067_module
-
-
-0
-24
-24
-MixLib
-Cable-doble-SMD
-
-
-0
-2
-2
-MixLib
-Cable-doble-SMD_small
-
-
-0
-2
-2
-MixLib
-Cable-doble-THT
-
-
-0
-2
-2
-MixLib
-Cable-doble_THT-switch
-
-
-0
-2
-2
-MixLib
-Dual-Driver-Module
-
-
-0
-14
-11
-MixLib
-ESP32_DEVKIT_30pin
-
-
-0
-30
-30
-MixLib
-GCT_USB4120-03-C_REVA
-
-
-0
-20
-17
-MixLib
-HC05
-
-
-0
-6
-6
-MixLib
-LED_0805_2012Metric
-LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
-LED
-0
-2
-2
-MixLib
-LED_1206_3216Metric
-LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
-LED
-0
-2
-2
-MixLib
-MODULE_ESP32-C3_SUPERMINI
-
-
-0
-16
-16
-MixLib
-MP4560_Module
-
-
-0
-8
-4
-MixLib
-MPU6050_Module
-
-
-0
-4
-4
-MixLib
-MagicAlonso_Red_Mod_23.5mm
-
-
-0
-0
-0
-MixLib
-Mini360_step-down
-
-
-0
-4
-3
-MixLib
-Mix_Mini360-MP4560
-
-
-0
-10
-4
-MixLib
-MyPinHeader-01x02
-
-
-0
-2
-2
-MixLib
-MyPinHeader-01x02-horizontal
-
-
-0
-2
-2
-MixLib
-Nodemcu_ESP32S_38pin
-ESP32S
-ESP32
-0
-38
-38
-MixLib
-PinHeader_1x03_P2.54-SMD
-
-
-0
-3
-3
-MixLib
-PinHeader_1x03_P2.54-SMD,THT,2-layers
-
-
-0
-9
-3
-MixLib
-PinHeader_1x03_P2.54-THT
-
-
-0
-3
-3
-MixLib
-PinHeader_1x04-P2.54-SMD,THT,2-layers
-
-
-0
-12
-4
-MixLib
-PinHeader_1x05-P2.54-SMD,THT,2-layers
-
-
-0
-15
-5
-MixLib
-PinHeader_1x12_P2.54-SMD
-
-
-0
-12
-12
-MixLib
-SW_DPDT_SLIDE_THT
-Sub-miniature slide switch, vertical, SMT J bend https://dznh3ojzb2azq.cloudfront.net/products/Slide/JS/documents/datasheet.pdf
-switch DPDT SMT
-0
-6
-6
-MixLib
-SW_Push_2P2T_Toggle_6mm
-
-tact sw push PVA2 DPDT 6mm
-0
-6
-6
-MixLib
-SW_Push_SPST_NO_Alps_SKRK_Handsolder
-http://www.alps.com/prod/info/E/HTML/Tact/SurfaceMount/SKRK/SKRKAHE020.html
-SMD SMT button
-0
-2
-2
-MixLib
-SW_Push_Sw-3424p_Handsolder
-http://www.alps.com/prod/info/E/HTML/Tact/SurfaceMount/SKRK/SKRKAHE020.html
-SMD SMT button
-0
-2
-2
-MixLib
-SW_Slide-03_P2.54_L9_W4_H7
-
-
-0
-3
-3
-MixLib
-SolderJumper-3_0,5mm_Bridged
-SMD Solder 3-pad Jumper, 1x1.5mm Pads, 0.3mm gap, open
-solder jumper open
-0
-3
-3
-MixLib
-SolderJumper-3_0,5mm_Open
-SMD Solder 3-pad Jumper, 1x1.5mm Pads, 0.3mm gap, open
-solder jumper open
-0
-3
-3
-MixLib
-Taiyo-Yuden_NR5040T330M
-
-
-0
-2
-2
-MixLib
-Taiyo-Yuden_NR5040T330M_HandSoldering
-
-
-0
-2
-2
-MixLib
-USB_Adapter_Board
-
-
-0
-7
-5
-MixLib
-XT30PW-M
-
-
-0
-4
-4
-MixLib
-mouse-bite-1mm-slot
-
-
-0
-0
-0
-MixLib
-mouse-bite-2.54mm-slot
-
-
-0
-0
-0
-MixLib
-mouse-bite-2mm-slot
-
-
-0
-0
-0
-MixLib
-mouse-bite-3mm-slot
-
-
-0
-0
-0
-MixLib
-mouse-bite-5mm-slot
-
-
-0
-0
-0
-MixLib
-reze
-
-
-0
-0
-0
 Module
 A20_OLINUXINO_LIME2
 A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
@@ -70378,76 +71771,6 @@ Mounting M3 9771150360
 6
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H1mm_9774010482
-Mounting Hardware, inside through hole 4.5mm, height 1, Wuerth electronics 9774010482 (https://katalog.we-online.de/em/datasheet/9774010482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774010482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H2mm_9774020482
-Mounting Hardware, inside through hole 4.5mm, height 2, Wuerth electronics 9774020482 (https://katalog.we-online.de/em/datasheet/9774020482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774020482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H3mm_9774030482
-Mounting Hardware, inside through hole 4.5mm, height 3, Wuerth electronics 9774030482 (https://katalog.we-online.de/em/datasheet/9774030482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774030482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H4mm_9774040482
-Mounting Hardware, inside through hole 4.5mm, height 4, Wuerth electronics 9774040482 (https://katalog.we-online.de/em/datasheet/9774040482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774040482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H5mm_9774050482
-Mounting Hardware, inside through hole 4.5mm, height 5, Wuerth electronics 9774050482 (https://katalog.we-online.de/em/datasheet/9774050482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774050482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H6mm_9774060482
-Mounting Hardware, inside through hole 4.5mm, height 6, Wuerth electronics 9774060482 (https://katalog.we-online.de/em/datasheet/9774060482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774060482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H7mm_9774070482
-Mounting Hardware, inside through hole 4.5mm, height 7, Wuerth electronics 9774070482 (https://katalog.we-online.de/em/datasheet/9774070482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774070482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H8mm_9774080482
-Mounting Hardware, inside through hole 4.5mm, height 8, Wuerth electronics 9774080482 (https://katalog.we-online.de/em/datasheet/9774080482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774080482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H9mm_9774090482
-Mounting Hardware, inside through hole 4.5mm, height 9, Wuerth electronics 9774090482 (https://katalog.we-online.de/em/datasheet/9774090482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774090482
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-4.5mm_H10mm_9774100482
-Mounting Hardware, inside through hole 4.5mm, height 10, Wuerth electronics 9774100482 (https://katalog.we-online.de/em/datasheet/9774100482.pdf), generated with kicad-footprint-generator
-Mounting 4.5mm 9774100482
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M1.6_H0.5mm_9774005633
 Mounting Hardware, inside through hole M1.6, height 0.5, Wuerth electronics 9774005633 (https://www.we-online.com/components/products/datasheet/9774005633R.pdf), generated with kicad-footprint-generator
 Mounting M1.6 9774005633
@@ -70630,23 +71953,9 @@ Mounting M2.5 9774005151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H0.5mm_9774005151R
-Mounting Hardware, inside through hole M2.5, height 0.5, Wuerth electronics 9774005151R (https://www.we-online.com/components/products/datasheet/9774005151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774005151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151
 Mounting Hardware, inside through hole M2.5, height 1.5, Wuerth electronics 9774015151 (https://www.we-online.com/components/products/datasheet/9774015151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774015151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H1.5mm_9774015151R
-Mounting Hardware, inside through hole M2.5, height 1.5, Wuerth electronics 9774015151R (https://www.we-online.com/components/products/datasheet/9774015151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774015151R
 0
 8
 1
@@ -70658,23 +71967,9 @@ Mounting M2.5 9774010151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H1mm_9774010151R
-Mounting Hardware, inside through hole M2.5, height 1, Wuerth electronics 9774010151R (https://www.we-online.com/components/products/datasheet/9774010151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774010151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H2.5mm_9774025151
 Mounting Hardware, inside through hole M2.5, height 2.5, Wuerth electronics 9774025151 (https://www.we-online.com/components/products/datasheet/9774025151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774025151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H2.5mm_9774025151R
-Mounting Hardware, inside through hole M2.5, height 2.5, Wuerth electronics 9774025151R (https://www.we-online.com/components/products/datasheet/9774025151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774025151R
 0
 8
 1
@@ -70686,23 +71981,9 @@ Mounting M2.5 9774027151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H2.7mm_9774027151R
-Mounting Hardware, inside through hole M2.5, height 2.7, Wuerth electronics 9774027151R (https://www.we-online.com/components/products/datasheet/9774027151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774027151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H2mm_9774020151
 Mounting Hardware, inside through hole M2.5, height 2, Wuerth electronics 9774020151 (https://www.we-online.com/components/products/datasheet/9774020151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774020151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H2mm_9774020151R
-Mounting Hardware, inside through hole M2.5, height 2, Wuerth electronics 9774020151R (https://www.we-online.com/components/products/datasheet/9774020151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774020151R
 0
 8
 1
@@ -70714,23 +71995,9 @@ Mounting M2.5 9774035151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H3.5mm_9774035151R
-Mounting Hardware, inside through hole M2.5, height 3.5, Wuerth electronics 9774035151R (https://www.we-online.com/components/products/datasheet/9774035151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774035151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H3mm_9774030151
 Mounting Hardware, inside through hole M2.5, height 3, Wuerth electronics 9774030151 (https://www.we-online.com/components/products/datasheet/9774030151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774030151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H3mm_9774030151R
-Mounting Hardware, inside through hole M2.5, height 3, Wuerth electronics 9774030151R (https://www.we-online.com/components/products/datasheet/9774030151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774030151R
 0
 8
 1
@@ -70742,23 +72009,9 @@ Mounting M2.5 9774045151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H4.5mm_9774045151R
-Mounting Hardware, inside through hole M2.5, height 4.5, Wuerth electronics 9774045151R (https://www.we-online.com/components/products/datasheet/9774045151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774045151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H4mm_9774040151
 Mounting Hardware, inside through hole M2.5, height 4, Wuerth electronics 9774040151 (https://www.we-online.com/components/products/datasheet/9774040151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774040151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H4mm_9774040151R
-Mounting Hardware, inside through hole M2.5, height 4, Wuerth electronics 9774040151R (https://www.we-online.com/components/products/datasheet/9774040151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774040151R
 0
 8
 1
@@ -70770,23 +72023,9 @@ Mounting M2.5 9774055151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H5.5mm_9774055151R
-Mounting Hardware, inside through hole M2.5, height 5.5, Wuerth electronics 9774055151R (https://www.we-online.com/components/products/datasheet/9774055151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774055151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H5mm_9774050151
 Mounting Hardware, inside through hole M2.5, height 5, Wuerth electronics 9774050151 (https://www.we-online.com/components/products/datasheet/9774050151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774050151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H5mm_9774050151R
-Mounting Hardware, inside through hole M2.5, height 5, Wuerth electronics 9774050151R (https://www.we-online.com/components/products/datasheet/9774050151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774050151R
 0
 8
 1
@@ -70798,23 +72037,9 @@ Mounting M2.5 9774065151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H6.5mm_9774065151R
-Mounting Hardware, inside through hole M2.5, height 6.5, Wuerth electronics 9774065151R (https://www.we-online.com/components/products/datasheet/9774065151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774065151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H6mm_9774060151
 Mounting Hardware, inside through hole M2.5, height 6, Wuerth electronics 9774060151 (https://www.we-online.com/components/products/datasheet/9774060151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774060151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H6mm_9774060151R
-Mounting Hardware, inside through hole M2.5, height 6, Wuerth electronics 9774060151R (https://www.we-online.com/components/products/datasheet/9774060151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774060151R
 0
 8
 1
@@ -70826,23 +72051,9 @@ Mounting M2.5 9774075151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H7.5mm_9774075151R
-Mounting Hardware, inside through hole M2.5, height 7.5, Wuerth electronics 9774075151R (https://www.we-online.com/components/products/datasheet/9774075151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774075151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H7mm_9774070151
 Mounting Hardware, inside through hole M2.5, height 7, Wuerth electronics 9774070151 (https://www.we-online.com/components/products/datasheet/9774070151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774070151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H7mm_9774070151R
-Mounting Hardware, inside through hole M2.5, height 7, Wuerth electronics 9774070151R (https://www.we-online.com/components/products/datasheet/9774070151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774070151R
 0
 8
 1
@@ -70854,23 +72065,9 @@ Mounting M2.5 9774085151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H8.5mm_9774085151R
-Mounting Hardware, inside through hole M2.5, height 8.5, Wuerth electronics 9774085151R (https://www.we-online.com/components/products/datasheet/9774085151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774085151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H8mm_9774080151
 Mounting Hardware, inside through hole M2.5, height 8, Wuerth electronics 9774080151 (https://www.we-online.com/components/products/datasheet/9774080151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774080151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H8mm_9774080151R
-Mounting Hardware, inside through hole M2.5, height 8, Wuerth electronics 9774080151R (https://www.we-online.com/components/products/datasheet/9774080151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774080151R
 0
 8
 1
@@ -70882,13 +72079,6 @@ Mounting M2.5 9774095151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H9.5mm_9774095151R
-Mounting Hardware, inside through hole M2.5, height 9.5, Wuerth electronics 9774095151R (https://www.we-online.com/components/products/datasheet/9774095151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774095151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H9mm_9774090151
 Mounting Hardware, inside through hole M2.5, height 9, Wuerth electronics 9774090151 (https://www.we-online.com/components/products/datasheet/9774090151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774090151
@@ -70896,23 +72086,9 @@ Mounting M2.5 9774090151
 8
 1
 Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H9mm_9774090151R
-Mounting Hardware, inside through hole M2.5, height 9, Wuerth electronics 9774090151R (https://www.we-online.com/components/products/datasheet/9774090151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774090151R
-0
-8
-1
-Mounting_Wuerth
 Mounting_Wuerth_WA-SMSI-M2.5_H10mm_9774100151
 Mounting Hardware, inside through hole M2.5, height 10, Wuerth electronics 9774100151 (https://www.we-online.com/components/products/datasheet/9774100151R.pdf), generated with kicad-footprint-generator
 Mounting M2.5 9774100151
-0
-8
-1
-Mounting_Wuerth
-Mounting_Wuerth_WA-SMSI-M2.5_H10mm_9774100151R
-Mounting Hardware, inside through hole M2.5, height 10, Wuerth electronics 9774100151R (https://www.we-online.com/components/products/datasheet/9774100151R.pdf), generated with kicad-footprint-generator
-Mounting M2.5 9774100151R
 0
 8
 1
@@ -72772,13 +73948,6 @@ SMD SMT crystal oscillator
 4
 4
 Oscillator
-Oscillator_SMD_EuroQuartz_XO32-4Pin_3.2x2.5mm_HandSoldering
-Miniature Crystal Clock Oscillator EuroQuartz XO32 series, http://cdn-reichelt.de/documents/datenblatt/B400/XO32.pdf, hand-soldering, 3.2x2.5mm^2 package
-SMD SMT crystal oscillator hand-soldering
-0
-4
-4
-Oscillator
 Oscillator_SMD_EuroQuartz_XO32-4Pin_3.2x2.5mm_RotB
 EuroQuartz XO32, Miniature Crystal Clock Oscillator, 3.2x2.5mm package, SMD, generated with kicad-footprint-generator make_crystal.py, http://cdn-reichelt.de/documents/datenblatt/B400/XO32.pdf
 
@@ -73156,328 +74325,6 @@ DIL DIP PDIP 2.54mm 7.62mm 300mil
 0
 4
 4
-PCM_Espressif
-ESP32-C3-DevKitC-02
-
-
-0
-30
-30
-PCM_Espressif
-ESP32-C3-DevKitM-1
-
-
-0
-30
-30
-PCM_Espressif
-ESP32-C3-MINI-1
-ESP32-C3-MINI-1: https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf
-ESP32-C3
-0
-61
-53
-PCM_Espressif
-ESP32-C3-MINI-1U
-ESP32-C3-MINI-1U: https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf
-ESP32-C3
-0
-61
-53
-PCM_Espressif
-ESP32-C3-MINI-1_HandSoldering
-ESP32-C3-MINI-1: https://www.espressif.com/sites/default/files/documentation/esp32-c3-mini-1_datasheet_en.pdf
-ESP32-C3
-0
-61
-53
-PCM_Espressif
-ESP32-C3-WROOM-02
-ESP32-C3-WROOM-02: https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf
-ESP32-C3
-0
-27
-19
-PCM_Espressif
-ESP32-C3-WROOM-02U
-ESP32-C3-WROOM-02: https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf
-ESP32-C3
-0
-27
-19
-PCM_Espressif
-ESP32-C5-DevKitC-1
-
-
-0
-32
-32
-PCM_Espressif
-ESP32-C6-DevKitC-1
-ESP32-C6 general-purpose development board, based on ESP32-2-WROOM-1,It has all the ESP32-C6 pins exposed and is easy to connect and use.
-ESP32-C6
-0
-32
-32
-PCM_Espressif
-ESP32-C6-DevKitM-1
-ESP32-C6 general-purpose development board, based on ESP32-2-WROOM-1,It has all the ESP32-C6 pins exposed and is easy to connect and use.
-ESP32-C6
-0
-30
-30
-PCM_Espressif
-ESP32-C6-MINI-1
-ESP32-C6-MINI-1: https://www.espressif.com/sites/default/files/documentation/esp32-c6-mini-1_datasheet_en.pdf
-ESP32-C6
-0
-61
-53
-PCM_Espressif
-ESP32-C6-MINI-1U
-ESP32-C6-MINI-1U: https://www.espressif.com/sites/default/files/documentation/esp32-c6-mini-1_datasheet_en.pdf
-ESP32-C6
-0
-61
-53
-PCM_Espressif
-ESP32-C6-WROOM-1
-ESP32-C6-WROOM-1: https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_datasheet_en.pdf
-esp32-c6
-0
-37
-29
-PCM_Espressif
-ESP32-C6-WROOM-1U
-ESP32-C6-WROOM-1U: https://www.espressif.com/sites/default/files/documentation/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf
-esp32-c6
-0
-37
-29
-PCM_Espressif
-ESP32-DevKitC
-ESP32-DevKitC: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html
-ESP32
-0
-38
-38
-PCM_Espressif
-ESP32-DevKitM-1
-ESP32-DevKitC: https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html
-ESP32
-0
-34
-34
-PCM_Espressif
-ESP32-H2-MINI-1
-ESP32-H2-MINI-1: https://www.espressif.com/sites/default/files/documentation/esp32-h2-mini-1_mini-1u_datasheet_en.pdf
-ESP32-H2
-0
-61
-53
-PCM_Espressif
-ESP32-MINI-1
-ESP32-MINI-1: https://www.espressif.com/sites/default/files/documentation/esp32-mini-1_datasheet_en.pdf
-ESP32-MINI-1
-0
-63
-55
-PCM_Espressif
-ESP32-MINI-1U
-ESP32-MINI-1U: https://www.espressif.com/sites/default/files/documentation/esp32-mini-1_datasheet_en.pdf
-ESP32-MINI-1U
-0
-63
-55
-PCM_Espressif
-ESP32-P4
-
-
-0
-113
-105
-PCM_Espressif
-ESP32-PICO-MINI-02
-ESP32-PICO-MINI-02: https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf
-ESP32-PICO-MINI-02
-0
-61
-53
-PCM_Espressif
-ESP32-PICO-MINI-02U
-ESP32-PICO-MINI-02U: https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf
-ESP32-PICO-MINI-02U
-0
-61
-53
-PCM_Espressif
-ESP32-PICO-MINI-02_HandSoldering
-ESP32-PICO-MINI-02: https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf
-ESP32-PICO-MINI-02
-0
-61
-53
-PCM_Espressif
-ESP32-S2-DevKitC-1
-ESP32-S2 general-purpose development board, based on ESP32-S2-SOLO or ESP32-S2-SOLO-U,It has all the ESP32-S2 pins exposed and is easy to connect and use.
-ESP32-S2
-0
-44
-44
-PCM_Espressif
-ESP32-S2-DevKitM
-ESP32-S2 general-purpose development board
-ESP32-S2
-0
-42
-42
-PCM_Espressif
-ESP32-S2-MINI-1
-ESP32-S2-MINI-1 and ESP32-S2-MINI-1U: https://www.espressif.com/sites/default/files/documentation/esp32-s2-mini-1_esp32-s2-mini-1u_datasheet_en.pdf
-ESP32-S2
-0
-73
-65
-PCM_Espressif
-ESP32-S2-MINI-1U
-ESP32-S2-MINI-1 and ESP32-S2-MINI-1U: https://www.espressif.com/sites/default/files/documentation/esp32-s2-mini-1_esp32-s2-mini-1u_datasheet_en.pdf
-ESP32-S2
-0
-73
-65
-PCM_Espressif
-ESP32-S2-MINI-1_HandSoldering
-ESP32-S2-MINI-1 and ESP32-S2-MINI-1U: https://www.espressif.com/sites/default/files/documentation/esp32-s2-mini-1_esp32-s2-mini-1u_datasheet_en.pdf
-ESP32-S2 Hand Soldering
-0
-73
-65
-PCM_Espressif
-ESP32-S2-SOLO
-ESP32-S2-SOLO https://www.espressif.com/sites/default/files/documentation/esp32-s2-solo_esp32-s2-solo-u_datasheet_en.pdf
-esp32-s2 module
-0
-49
-41
-PCM_Espressif
-ESP32-S2-SOLO-2U
-ESP32-S2-SOLO-2U https://www.espressif.com/sites/default/files/documentation/esp32-s2-solo-2_esp32-s2-solo-2u_datasheet_en.pdf
-esp32-s2 module
-0
-49
-41
-PCM_Espressif
-ESP32-S2-Saola-1
-Espressif ESP32-S2-Saola-1 Development Kit: https://docs.espressif.com/projects/esp-idf/en/latest/esp32s2/hw-reference/esp32s2/user-guide-saola-1-v1.2.html
-esp32-s2 devkit
-0
-42
-42
-PCM_Espressif
-ESP32-S2-WROOM
-ESP32-S2-WROOM and ESP32-S2-WROOM-I: https://www.espressif.com/sites/default/files/documentation/esp32-s2-wroom_esp32-s2-wroom-i_datasheet_en.pdf
-ESP32-S2
-0
-51
-43
-PCM_Espressif
-ESP32-S2-WROVER
-ESP32-S2-WROVER and ESP32-S2-WROVER-I: https://www.espressif.com/sites/default/files/documentation/esp32-s2-wrover_esp32-s2-wrover-i_datasheet_en.pdf
-ESP32-S2
-0
-55
-43
-PCM_Espressif
-ESP32-S3-DevKitC
-ESP32-S3 general-purpose development board, based on ESP32-S3-WROOM-1 or ESP32-S3-WROOM-1U,It has all the ESP32-S3 pins exposed and is easy to connect and use.
-ESP32-S3
-0
-44
-44
-PCM_Espressif
-ESP32-S3-MINI-1
-ESP32-S3-MINI-1
-esp32-s3
-0
-73
-65
-PCM_Espressif
-ESP32-S3-MINI-1U
-ESP32-S3-MINI-1 and ESP32-S3-MINI-1U
-esp32-s3
-0
-73
-65
-PCM_Espressif
-ESP32-S3-WROOM-1
-ESP32-S3-WROOM-1 is a powerful, generic Wi-Fi + Bluetooth LE MCU modules that have Dual core CPU , a rich set of peripherals, provides acceleration for neural network computing and signal processing workloads. They are an ideal choice for a wide variety of application scenarios related to AI + Internet of Things (AIoT), such as wake word detection and speech commands recognition , face detection and recognition, smart home, smart appliance, smart control panel, smart speaker etc.
-esp32-s3
-0
-51
-41
-PCM_Espressif
-ESP32-S3-WROOM-1U
-ESP32-S3-WROOM-1 is a powerful, generic Wi-Fi + Bluetooth LE MCU modules that have Dual core CPU , a rich set of peripherals, provides acceleration for neural network computing and signal processing workloads. They are an ideal choice for a wide variety of application scenarios related to AI + Internet of Things (AIoT), such as wake word detection and speech commands recognition , face detection and recognition, smart home, smart appliance, smart control panel, smart speaker etc.
-esp32-s3
-0
-49
-41
-PCM_Espressif
-ESP32-S3-WROOM-2
-ESP32-S3-WROOM-2 is a powerful, generic Wi-Fi + Bluetooth LE MCU modules that have Dual core CPU , a rich set of peripherals, provides acceleration for neural network computing and signal processing workloads. They are an ideal choice for a wide variety of application scenarios related to AI + Internet of Things (AIoT), such as wake word detection and speech commands recognition , face detection and recognition, smart home, smart appliance, smart control panel, smart speaker etc.
-esp32-s3
-0
-51
-41
-PCM_Espressif
-ESP32-WROOM-32E
-ESP32-WROOM-32E and ESP32-WROOM-32UE: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf
-ESP32
-0
-50
-39
-PCM_Espressif
-ESP32-WROOM-32UE
-ESP32-WROOM-32E and ESP32-WROOM-32UE: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf
-ESP32
-0
-47
-39
-PCM_Espressif
-ESP32-WROOM-DA
-ESP32-WROOM-DA: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-da_datasheet_en.pdf
-ESP32 Dual Antenna DA
-0
-49
-41
-PCM_Espressif
-ESP32-WROVER-E
-ESP32-WROVER-E: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf
-esp32 module
-0
-47
-39
-PCM_Espressif
-ESP32-WROVER-E_ThermalVias
-ESP32-WROVER-E: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf
-esp32 module thermal vias
-0
-59
-39
-PCM_Espressif
-ESP8685-WROOM-06
-ESP32-WROOM-06: https://www.espressif.com/sites/default/files/documentation/esp8685-wroom-06_datasheet_en.pdf
-esp32 module
-0
-31
-22
-PCM_Espressif
-QFN-32-1EP_4x4mm_P0.4mm_EP2.9x2.9mm
-QFN, 32 Pin (http://ww1.microchip.com/downloads/en/DeviceDoc/atmel-8153-8-and-16-bit-avr-microcontroller-xmega-e-atxmega8e5-atxmega16e5-atxmega32e5_datasheet.pdf#page=70), generated with kicad-footprint-generator ipc_noLead_generator.py
-QFN NoLead
-0
-37
-33
 Package_BGA
 Alliance_TFBGA-36_6x8mm_Layout6x8_P0.75mm
 Alliance TFBGA-36, NSMD, 6.0x8.0mm, 36 Ball, 6x8 Layout, 0.75mm Pitch, generated with kicad-footprint-generator ipc_bga_generator.py, https://www.alliancememory.com/wp-content/uploads/pdf/AS6C1008_Mar_2023V1.2.pdf#page=13
@@ -84371,26 +85218,12 @@ PQFP QFP MQFP S-52-2 high-standoff
 52
 52
 Package_QFP
-MQFP-44_10x10mm_P0.8mm
-MQFP, 44 Pin (https://www.analog.com/media/en/technical-documentation/data-sheets/ad7722.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
-MQFP QFP
-0
-44
-44
-Package_QFP
 Microchip_PQFP-44_10x10mm_P0.8mm
 Microchip  PQFP, 44 Pin (JEDEC MO-112 variation AA-2, Microchip and Analog Devices, https://www.jedec.org/document_search?search_api_views_fulltext=MO-112, https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/20005418B.pdf#page=10, https://www.analog.com/media/en/technical-documentation/data-sheets/ad7722.pdf#page=23), generated with kicad-footprint-generator ipc_gullwing_generator.py
 Microchip PQFP QFP P-QFP 44-Lead-MQFP S-44-2
 0
 44
 44
-Package_QFP
-PQFP-32_5x5mm_P0.5mm
-PQFP, 32 Pin (https://www.ti.com/lit/ds/symlink/ads127l01.pdf#page=87), generated with kicad-footprint-generator ipc_gullwing_generator.py
-PQFP QFP
-0
-32
-32
 Package_QFP
 PQFP-44_10x10mm_P0.8mm
 PQFP, 44 Pin (JEDEC MS-022 variation AB, https://www.jedec.org/document_search?search_api_views_fulltext=MS-022, https://ww1.microchip.com/downloads/aemDocuments/documents/package-outline-drawings/c04-21291a.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
@@ -84728,20 +85561,6 @@ Texas HTQFP QFP
 88
 49
 Package_QFP
-VQFP-80_14x14mm_P0.65mm
-VQFP, 80 Pin (http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=131095), generated with kicad-footprint-generator ipc_gullwing_generator.py
-VQFP QFP
-0
-80
-80
-Package_QFP
-VQFP-100_14x14mm_P0.5mm
-VQFP, 100 Pin (http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=131095), generated with kicad-footprint-generator ipc_gullwing_generator.py
-VQFP QFP
-0
-100
-100
-Package_QFP
 VQFP-128_14x14mm_P0.4mm
 VQFP, 128 Pin (http://www.microsemi.com/index.php?option=com_docman&task=doc_download&gid=131095), generated with kicad-footprint-generator ipc_gullwing_generator.py
 VQFP QFP
@@ -85008,20 +85827,6 @@ HTSOP SO
 20
 9
 Package_SO
-HTSSOP-14-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask3x3.1mm
-HTSSOP, 14 Pin (http://www.ti.com/lit/ds/symlink/lm5161.pdf#page=34), generated with kicad-footprint-generator ipc_gullwing_generator.py
-HTSSOP SO TI-PWP0014A
-0
-20
-15
-Package_SO
-HTSSOP-14-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask3x3.1mm_ThermalVias
-HTSSOP, 14 Pin (http://www.ti.com/lit/ds/symlink/lm5161.pdf#page=34), generated with kicad-footprint-generator ipc_gullwing_generator.py
-HTSSOP SO TI-PWP0014A
-0
-36
-15
-Package_SO
 HTSSOP-16-1EP_4.4x5mm_P0.65mm_EP3.4x5mm
 16-Lead Plastic HTSSOP (4.4x5x1.2mm); Thermal pad; (http://www.ti.com/lit/ds/symlink/drv8833.pdf)
 SSOP 0.65
@@ -85109,13 +85914,6 @@ Package_SO
 HTSSOP-20-1EP_4.4x6.5mm_P0.65mm_EP3.4x6.5mm_Mask2.75x3.43mm_ThermalVias
 HTSSOP, 20 Pin (http://www.ti.com/lit/ds/symlink/tlc5971.pdf#page=37&zoom=160,-90,3), generated with kicad-footprint-generator ipc_gullwing_generator.py
 HTSSOP SO Texas_PWP0020U
-0
-42
-21
-Package_SO
-HTSSOP-20-1EP_4.4x6.5mm_P0.65mm_EP3.4x6.5mm_Mask2.75x3.43mm_ThermalVias_HandSolder
-HTSSOP, 20 Pin (http://www.ti.com/lit/ds/symlink/tlc5971.pdf#page=37&zoom=160,-90,3), generated with kicad-footprint-generator ipc_gullwing_generator.py
-HTSSOP SO
 0
 42
 21
@@ -85519,20 +86317,6 @@ Linear HTSSOP SO FE38-(31)
 54
 32
 Package_SO
-MFSOP6-4_4.4x3.6mm_P1.27mm
-https://toshiba.semicon-storage.com/ap-en/design-support/package/detail.4pin%20MFSOP6.html
-MFSOP 4 pin SMD
-0
-4
-4
-Package_SO
-MFSOP6-5_4.4x3.6mm_P1.27mm
-https://toshiba.semicon-storage.com/ap-en/design-support/package/detail.5pin%20MFSOP6.html
-MFSOP 4 pin SMD
-0
-5
-5
-Package_SO
 MSOP-8-1EP_3x3mm_P0.65mm_EP1.5x1.8mm
 MSOP, 8 Pin (https://www.diodes.com/assets/Package-Files/MSOP-8EP.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
 MSOP SO
@@ -85879,13 +86663,6 @@ Package_SO
 SO-5-6_4.55x3.7mm_P1.27mm
 SO, 5 Pin (https://toshiba.semicon-storage.com/us/semiconductor/design-development/package/detail.5pin%20SO6.html), generated with kicad-footprint-generator ipc_gullwing_generator.py
 SO SO TLP2310 Toshiba
-0
-5
-5
-Package_SO
-SO-5_4.4x3.6mm_P1.27mm
-5-Lead Plastic Small Outline (SO), see https://docs.broadcom.com/cs/Satellite?blobcol=urldata&blobheader=application%2Fpdf&blobheadername1=Content-Disposition&blobheadername2=Content-Type&blobheadername3=MDT-Type&blobheadervalue1=attachment%3Bfilename%3DIPD-Selection-Guide_AV00-0254EN_030617.pdf&blobheadervalue2=application%2Fx-download&blobheadervalue3=abinary%253B%2Bcharset%253DUTF-8&blobkey=id&blobnocache=true&blobtable=MungoBlobs&blobwhere=1430884105675&ssbinary=true
-SO SOIC 1.27
 0
 5
 5
@@ -86324,13 +87101,6 @@ SOP SO
 20
 9
 Package_SO
-SOP-8_3.9x4.9mm_P1.27mm
-SOP, 8 Pin (http://www.macronix.com/Lists/Datasheet/Attachments/7534/MX25R3235F,%20Wide%20Range,%2032Mb,%20v1.6.pdf#page=79), generated with kicad-footprint-generator ipc_gullwing_generator.py
-SOP SO
-0
-8
-8
-Package_SO
 SOP-8_3.76x4.96mm_P1.27mm
 SOP, 8 Pin (https://ww2.minicircuits.com/case_style/XX211.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
 SOP SO
@@ -86523,13 +87293,6 @@ Package_SO
 SSOP-8_3.95x5.21x3.27mm_P1.27mm
 SSOP-8 3.95x5.21x3.27mm Pitch 1.27mm
 SSOP-8 3.95x5.21x3.27mm 1.27mm
-0
-8
-8
-Package_SO
-SSOP-8_5.25x5.24mm_P1.27mm
-SSOP, 8 Pin (http://www.fujitsu.com/ca/en/Images/MB85RS2MT-DS501-00023-1v0-E.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
-SSOP SO
 0
 8
 8
@@ -87052,13 +87815,6 @@ TSSOP SO
 20
 20
 Package_SO
-TSSOP-24-1EP_4.4x7.8mm_P0.65mm_EP3.2x5mm
-TSSOP, 24 Pin (https://www.st.com/resource/en/datasheet/led1642gw.pdf#page=37), generated with kicad-footprint-generator ipc_gullwing_generator.py
-TSSOP SO
-0
-31
-25
-Package_SO
 TSSOP-24_4.4x5mm_P0.4mm
 TSSOP, 24 Pin (JEDEC MO-153 Var CA https://www.jedec.org/document_search?search_api_views_fulltext=MO-153), generated with kicad-footprint-generator ipc_gullwing_generator.py
 TSSOP SO
@@ -87524,13 +88280,6 @@ Package_SO
 Texas_DYY0016A_TSOT-23-16_2x4.2mm_P0.5mm
 Texas DYY0016A TSSOP, 16 Pin (https://www.ti.com/lit/ds/symlink/tmux1574.pdf#page=42), generated with kicad-footprint-generator ipc_gullwing_generator.py
 Texas TSSOP SO SOT-23-THIN
-0
-16
-16
-Package_SO
-Texas_DYY0016A_TSOT-23-16_4.2x2.0mm_P0.5mm
-TSSOP, 16 Pin (https://www.ti.com/lit/ds/symlink/tmux1574.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
-TSSOP SO
 0
 16
 16
@@ -98874,6 +99623,153 @@ THT Terminal Block CUI TB007-508-24 pitch 5.08mm size 123x10.2mm drill 1.6mm pad
 0
 24
 24
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-01P_1x01_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-01P, 45Degree (cable under 45degree), 1 pins, pitch 3.5mm, size 5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-01P 45Degree pitch 3.5mm size 5x12mm drill 1.2mm pad 3mm
+0
+1
+1
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-02P_1x02_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-02P, 45Degree (cable under 45degree), 2 pins, pitch 3.5mm, size 8.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-02P 45Degree pitch 3.5mm size 8.5x12mm drill 1.2mm pad 3mm
+0
+2
+2
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-03P_1x03_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-03P, 45Degree (cable under 45degree), 3 pins, pitch 3.5mm, size 12x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-03P 45Degree pitch 3.5mm size 12x12mm drill 1.2mm pad 3mm
+0
+3
+3
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-04P_1x04_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-04P, 45Degree (cable under 45degree), 4 pins, pitch 3.5mm, size 15.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-04P 45Degree pitch 3.5mm size 15.5x12mm drill 1.2mm pad 3mm
+0
+4
+4
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-05P_1x05_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-05P, 45Degree (cable under 45degree), 5 pins, pitch 3.5mm, size 19x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-05P 45Degree pitch 3.5mm size 19x12mm drill 1.2mm pad 3mm
+0
+5
+5
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-06P_1x06_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-06P, 45Degree (cable under 45degree), 6 pins, pitch 3.5mm, size 22.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-06P 45Degree pitch 3.5mm size 22.5x12mm drill 1.2mm pad 3mm
+0
+6
+6
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-07P_1x07_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-07P, 45Degree (cable under 45degree), 7 pins, pitch 3.5mm, size 26x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-07P 45Degree pitch 3.5mm size 26x12mm drill 1.2mm pad 3mm
+0
+7
+7
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-08P_1x08_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-08P, 45Degree (cable under 45degree), 8 pins, pitch 3.5mm, size 29.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-08P 45Degree pitch 3.5mm size 29.5x12mm drill 1.2mm pad 3mm
+0
+8
+8
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-09P_1x09_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-09P, 45Degree (cable under 45degree), 9 pins, pitch 3.5mm, size 33x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-09P 45Degree pitch 3.5mm size 33x12mm drill 1.2mm pad 3mm
+0
+9
+9
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-10P_1x10_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-10P, 45Degree (cable under 45degree), 10 pins, pitch 3.5mm, size 36.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-10P 45Degree pitch 3.5mm size 36.5x12mm drill 1.2mm pad 3mm
+0
+10
+10
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-11P_1x11_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-11P, 45Degree (cable under 45degree), 11 pins, pitch 3.5mm, size 40x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-11P 45Degree pitch 3.5mm size 40x12mm drill 1.2mm pad 3mm
+0
+11
+11
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-12P_1x12_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-12P, 45Degree (cable under 45degree), 12 pins, pitch 3.5mm, size 43.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-12P 45Degree pitch 3.5mm size 43.5x12mm drill 1.2mm pad 3mm
+0
+12
+12
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-14P_1x14_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-14P, 45Degree (cable under 45degree), 14 pins, pitch 3.5mm, size 50.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-14P 45Degree pitch 3.5mm size 50.5x12mm drill 1.2mm pad 3mm
+0
+14
+14
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-15P_1x15_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-15P, 45Degree (cable under 45degree), 15 pins, pitch 3.5mm, size 54x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-15P 45Degree pitch 3.5mm size 54x12mm drill 1.2mm pad 3mm
+0
+15
+15
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-16P_1x16_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-16P, 45Degree (cable under 45degree), 16 pins, pitch 3.5mm, size 57.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-16P 45Degree pitch 3.5mm size 57.5x12mm drill 1.2mm pad 3mm
+0
+16
+16
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-18P_1x18_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-18P, 45Degree (cable under 45degree), 18 pins, pitch 3.5mm, size 64.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-18P 45Degree pitch 3.5mm size 64.5x12mm drill 1.2mm pad 3mm
+0
+18
+18
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-19P_1x19_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-19P, 45Degree (cable under 45degree), 19 pins, pitch 3.5mm, size 68x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-19P 45Degree pitch 3.5mm size 68x12mm drill 1.2mm pad 3mm
+0
+19
+19
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-20P_1x20_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-20P, 45Degree (cable under 45degree), 20 pins, pitch 3.5mm, size 71.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-20P 45Degree pitch 3.5mm size 71.5x12mm drill 1.2mm pad 3mm
+0
+20
+20
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-24P_1x24_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-24P, 45Degree (cable under 45degree), 24 pins, pitch 3.5mm, size 85.5x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-24P 45Degree pitch 3.5mm size 85.5x12mm drill 1.2mm pad 3mm
+0
+24
+24
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-44P_1x44_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-44P, 45Degree (cable under 45degree), 44 pins, pitch 3.5mm, size 156x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-44P 45Degree pitch 3.5mm size 156x12mm drill 1.2mm pad 3mm
+0
+44
+44
+TerminalBlock_Degson
+TerminalBlock_Degson_DG250-3.5-45P_1x45_P3.50mm_45Degree
+Terminal Block Degson DG250-3.5-45P, 45Degree (cable under 45degree), 45 pins, pitch 3.5mm, size 159x12mm, drill diameter 1.2mm, pad diameter 3mm, https://www.degson.com/content/details_552_879717.html?lang=en, generated with kicad-footprint-generator TerminalBlock_Degson
+THT Terminal Block Degson DG250-3.5-45P 45Degree pitch 3.5mm size 159x12mm drill 1.2mm pad 3mm
+0
+45
+45
 TerminalBlock_Dinkle
 TerminalBlock_Dinkle_DT-55-B01X-02_P10.00mm
 Dinkle DT-55-B01X Terminal Block  pitch 10.00mm https://www.dinkle.com/en/terminal/DT-55-B01W-XX

@@ -6658,6 +6658,16 @@
 		)
 		(uuid "3e08d634-a424-461c-9a64-b7ab65a54c2d")
 	)
+	(polyline
+		(pts
+			(xy 364.236 36.068) (xy 364.236 43.434)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e129f38-4953-4922-bb40-d499a2e9361b")
+	)
 	(wire
 		(pts
 			(xy 46.99 39.37) (xy 46.99 46.99)
@@ -9666,6 +9676,16 @@
 		)
 		(uuid "32f50b80-20f1-48ec-bd00-bec54c502838")
 	)
+	(label "RGB_B"
+		(at 224.79 34.29 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3bd54425-bd4e-44dc-b7ad-9ecbf090ee65")
+	)
 	(label "BUZ"
 		(at 19.05 128.27 180)
 		(effects
@@ -9905,6 +9925,16 @@
 			(justify left bottom)
 		)
 		(uuid "846ffd18-f187-439d-9ecf-c290229ed963")
+	)
+	(label "RGB_R"
+		(at 224.79 39.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "8635c9ac-050d-4ea8-9af3-6c767dfc66cf")
 	)
 	(label "Data_S1"
 		(at 326.39 26.67 180)
@@ -10245,6 +10275,16 @@
 			(justify left bottom)
 		)
 		(uuid "dd56b8df-ca14-4ba6-a80d-85293fa684a1")
+	)
+	(label "RGB_G"
+		(at 224.79 36.83 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e056508a-2ad9-41c1-8144-422c00f5f476")
 	)
 	(label "PUSH_3"
 		(at 82.55 129.54 180)
