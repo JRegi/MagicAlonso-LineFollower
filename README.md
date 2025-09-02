@@ -2,7 +2,7 @@
 
 ## MagicAlonso V1 (sin turbina)
 
-![imagen](MagicAlonsoV0_ensamblado.png "MagicAlonsoV0")
+![imagen](MagicAlonsoV1_ensamblado.png "MagicAlonsoV0")
 
 ## Descripción
 
