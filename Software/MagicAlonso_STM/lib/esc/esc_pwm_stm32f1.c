@@ -1,7 +1,7 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/timer.h>
-#include "esc/esc.h"
+#include "esc.h"
 
 static int is_adv_timer(uint32_t tim) { return (tim == TIM1) || (tim == TIM8); }
 
