@@ -1,6 +1,6 @@
 # MagicAlonso - _Robot dedicado a la leyenda Asturiana del automobilismo_
 
-## MagicAlonso V0 (sin turbina)
+## MagicAlonso V1 (sin turbina)
 
 ![imagen](MagicAlonsoV0_ensamblado.jpg "MagicAlonsoV0")
 
