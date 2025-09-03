@@ -9,15 +9,22 @@
 #include "esc.h"
 #include "qtr_array.h"
 
+#define SETPOINT   3500
+
 #define KP         0.35f
 #define KI         0.00f
 #define KD         2.00f
 
+#define MAX_SPEED  1300
+#define MIN_SPEED  1100
+#define SPEED      1225
+
 #define US_MIN     1000u
-#define US_MAX     1200u
+#define US_MAX     2000u
+#define US_LIMIT   1200u
 
 // >>> Cambios clave para que se mueva <<<
-#define PWM_HZ         400u      // mejor que 50 Hz para PWM analógico en BLHeli_S
+#define PWM_HZ         50u       // mejor que 50 Hz para PWM analógico en BLHeli_S
 #define MIN_SPIN_US    1160u     // umbral mínimo que mantiene giro
 #define BASE_FWD_US    1180u     // base hacia adelante (sigue en 1000..1200)
 #define KICK_US        1200u     // pulso de arranque
@@ -125,11 +132,16 @@ static inline uint16_t ensure_spin_R(uint16_t target){
     return target;
 }
 
+int lastError;
+float pid;
+float pidRight;
+float pidLeft;
+
 int main(void){
     clock_setup();
     systick_setup();
 
-    // ESC con 400 Hz
+    // ESC con 50 Hz
     esc_handle_t escL, escR;
     const esc_config_t cfgL = {.tim=TIM1,.ch=TIM_OC1,.gpio_port=GPIOA,.gpio_pin=GPIO8,
                                .freq_hz=PWM_HZ,.min_us=US_MIN,.max_us=US_MAX};
@@ -155,7 +167,6 @@ int main(void){
     qre_auto_calibrate(&qre);
 
     // PID
-    float integ = 0.0f; int last_err = 0;
     uint32_t hb_t0 = millis(); LED_OFF(LED_RUN_PORT, LED_RUN_PIN);
 
     while (1){
@@ -166,39 +177,20 @@ int main(void){
         qre_read_calibrated(&qre, cal);
         int32_t pos = qre_read_line_position(&qre, cal); // 0..7000, -1 si no hay línea
 
-        if (pos < 0){
-            esc_write_us(&escL, US_MIN);
-            esc_write_us(&escR, US_MIN);
-            delay_ms(50);    // que se note si pierde línea
-            integ = 0.0f; last_err = 0;
-            continue;
-        }
-
-        int err = POS_CENTER - (int)pos;
-
+        int proportional = SETPOINT - (int)pos;
+        int derivative = proportional - lastError;
         // PID discreto
-        integ += err;
-        if (integ > 20000.0f) integ = 20000.0f;
-        if (integ < -20000.0f) integ = -20000.0f;
-        int derr = err - last_err; last_err = err;
 
-        float u = KP*(float)err + KI*integ + KD*(float)derr;
+        float pid = KP*(float)proportional + KD*(float)derivative;
 
-        // Escalado de corrección → µs
-        const float ERR_TO_US = 100.0f / 3500.0f; // |err|≈3500 → ~100 µs
-        int delta_us = (int)(u * ERR_TO_US);
+        lastError = proportional;
 
-        // >>> base hacia adelante más alta (1180 µs) <<<
-        int left_us  = (int)BASE_FWD_US + delta_us;
-        int right_us = (int)BASE_FWD_US - delta_us;
-
-        // Clip a 1000..1200
-        left_us  = clamp_u16(left_us,  US_MIN, US_MAX);
-        right_us = clamp_u16(right_us, US_MIN, US_MAX);
+        pidRight = US_LIMIT + pid;
+        pidLeft = US_LIMIT - pid;
 
         // Floor + kickstart por motor
-        uint16_t outL = ensure_spin_L((uint16_t)left_us);
-        uint16_t outR = ensure_spin_R((uint16_t)right_us);
+        uint16_t outL = ensure_spin_L((uint16_t)pidLeft);
+        uint16_t outR = ensure_spin_R((uint16_t)pidRight);
 
         esc_write_us(&escL, outL);
         esc_write_us(&escR, outR);

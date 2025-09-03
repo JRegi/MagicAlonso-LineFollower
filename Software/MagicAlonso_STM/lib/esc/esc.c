@@ -74,15 +74,6 @@ void esc_write_us(esc_handle_t* h, uint16_t us)
   timer_set_oc_value(h->cfg.tim, h->cfg.ch, us);
 }
 
-void esc_write_norm(esc_handle_t* h, float n01)
-{
-  if (!h) return;
-  if (n01 < 0.f) n01 = 0.f;
-  if (n01 > 1.f) n01 = 1.f;
-  uint16_t us = (uint16_t)(h->cfg.min_us + (n01 * (h->cfg.max_us - h->cfg.min_us)));
-  esc_write_us(h, us);
-}
-
 void esc_begin_arming(esc_handle_t* h, uint32_t duration_ms, uint32_t now_ms)
 {
   if (!h) return;
