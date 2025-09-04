@@ -28,13 +28,18 @@ typedef struct {
   uint16_t max_us;       // 2000 (PWM) o 250 (OneShot125)
 } esc_config_t;
 
+// ...existing code...
 typedef struct {
   esc_config_t cfg;
-  uint16_t arr;          // ARR actual (cacheado)
-  uint8_t  is_adv;       // TIM1/TIM8 -> 1
+  uint16_t arr;
+  uint8_t  is_adv;
   esc_state_t state;
-  uint32_t arm_until_ms; // para arming no bloqueante
+  uint32_t arm_until_ms;
+  // Simple: fase y tiempo de cambio para arming especial
+  uint8_t arm_phase;
+  uint32_t arm_phase_ms;
 } esc_handle_t;
+// ...existing code...
 
 /* Inicializa GPIO + Timer + Canal, ARR según freq, duty en min_us.
  * Requiere que HSE->72MHz ya esté configurado (p. ej. en tu system_init).
