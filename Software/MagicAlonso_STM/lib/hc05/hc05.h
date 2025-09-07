@@ -1,5 +1,5 @@
-#ifndef BT_HC05_H
-#define BT_HC05_H
+#ifndef HC05_H
+#define HC05_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -11,6 +11,10 @@ void bt_init(uint32_t baudrate);
 
 /* Cola datos para transmitir (no bloqueante). Devuelve cuántos bytes aceptó. */
 size_t bt_write(const void *data, size_t length);
+
+size_t bt_write_int(int value);
+
+size_t bt_write_string_int(const char *str, int value);
 
 /* Azúcar para strings (no bloqueante). Devuelve bytes aceptados. */
 size_t bt_write_string(const char *text);

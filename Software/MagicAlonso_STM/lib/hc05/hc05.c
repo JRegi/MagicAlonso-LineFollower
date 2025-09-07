@@ -1,9 +1,10 @@
-#include "bt_hc05.h"
+#include "hc05.h"
 
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/nvic.h>
+#include <stdio.h>
 
 /* ---- Tamaños de buffers (podés ajustarlos) ---- */
 #ifndef BT_TX_BUFFER_SIZE
@@ -77,6 +78,19 @@ size_t bt_write(const void *data, size_t length)
     usart_enable_tx_interrupt(USART3);
     return accepted;
 }
+
+size_t bt_write_int(int value) {
+    char buffer[16];
+    int len = snprintf(buffer, sizeof(buffer), "%d", value);
+    return bt_write(buffer, (size_t)len);
+}
+
+size_t bt_write_string_int(const char *str, int value) {
+    char buffer[32];
+    int len = snprintf(buffer, sizeof(buffer), "%s%d", str, value);
+    return bt_write(buffer, (size_t)len);
+}
+
 
 size_t bt_write_string(const char *text)
 {
