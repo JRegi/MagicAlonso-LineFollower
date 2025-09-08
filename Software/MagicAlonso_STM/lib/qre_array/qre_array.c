@@ -1,307 +1,109 @@
-// qre_array.c  --  QTR por ADC+DMA con centroide (gamma) en fijo Q15 (sin float)
-// Compatible STM32F103 (libopencm3). TIM3->TRGO -> ADC1(scan)+DMA1_CH1
+//// FILE: src/qre_array.c
 #include "qre_array.h"
-
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
-#include <libopencm3/stm32/timer.h>
 #include <libopencm3/stm32/adc.h>
-#include <libopencm3/stm32/dma.h>
-#include <libopencm3/cm3/nvic.h>
-#include <stdint.h>
-#include <stdbool.h>
 
-/* --- Periféricos fijos en este driver --- */
-#define QTR_ADC_PERIPHERAL    ADC1
-#define QTR_DMA_PERIPHERAL    DMA1
-#define QTR_DMA_CHANNEL       DMA_CHANNEL1
-#define QTR_TIMER             TIM3
-
-#define TIMER_INPUT_CLOCK_HZ              72000000UL
-#define TIMER_PRESCALER_FOR_1MHZ          (72-1)
-
-/* --- Límite de sensores (ajustar si necesitás más) --- */
-#ifndef QTR_MAX_SENSORS
-#define QTR_MAX_SENSORS 16
-#endif
-
-/* --- Estado global --- */
-static qtr_config_t global_config;
-
-static volatile uint16_t *adc_buffer;        /* len = N */
-static uint16_t         *average_output;     /* len = N */
-static uint32_t         *accumulator;        /* len = N */
-static uint16_t         *min_values;         /* len = N */
-static uint16_t         *max_values;         /* len = N */
-
-static volatile uint16_t accumulation_count = 0;
-static volatile bool     frame_ready_flag    = false;
-static volatile uint32_t frame_id_counter    = 0;
-
-/* Workspace estático simple (N máx = QTR_MAX_SENSORS) */
-static uint16_t storage_adc_buffer[QTR_MAX_SENSORS];
-static uint16_t storage_average_output[QTR_MAX_SENSORS];
-static uint32_t storage_accumulator[QTR_MAX_SENSORS];
-static uint16_t storage_min_values[QTR_MAX_SENSORS];
-static uint16_t storage_max_values[QTR_MAX_SENSORS];
-
-/* ========================= Utilidades HW ========================= */
-
-static void set_port_as_analog(uint32_t port, uint32_t mask_bits) {
-    if (!mask_bits) return;
-    for (uint8_t pin = 0; pin < 16; ++pin) {
-        if (mask_bits & (1U << pin)) {
-            gpio_set_mode(port, GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, (1U << pin));
-        }
+static void qre_config_gpio_analog(const qre_t *q){
+    for (uint8_t i=0; i<q->cfg.num_sensors; ++i) {
+        gpio_set_mode(q->cfg.gpio_ports[i], GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, q->cfg.gpio_pins[i]);
+    }
+    if (q->cfg.has_emitters){
+        gpio_set_mode(q->cfg.emit_port, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, q->cfg.emit_pin);
+        gpio_clear(q->cfg.emit_port, q->cfg.emit_pin); // emisores OFF
     }
 }
 
-/* TIM3: TRGO en update, periodo = sample_rate_hz (sin timer_reset) */
-static void timer3_init_trgo(uint32_t sample_rate_hz) {
-    rcc_periph_clock_enable(RCC_TIM3);
-    timer_disable_counter(QTR_TIMER);
-    timer_set_prescaler(QTR_TIMER, TIMER_PRESCALER_FOR_1MHZ); /* 1 MHz base */
-    uint32_t auto_reload = (1000000UL / sample_rate_hz) - 1UL;
-    timer_set_period(QTR_TIMER, (uint16_t)auto_reload);
-    timer_set_master_mode(QTR_TIMER, TIM_CR2_MMS_UPDATE);     /* TRGO = update */
-}
-
-/* DMA para ADC1 regular conversions */
-static void dma_init(uint8_t sensor_count) {
-    rcc_periph_clock_enable(RCC_DMA1);
-
-    dma_channel_reset(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL);
-    dma_set_peripheral_address(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL, (uint32_t)&ADC_DR(QTR_ADC_PERIPHERAL));
-    dma_set_memory_address(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL, (uint32_t)adc_buffer);
-    dma_set_number_of_data(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL, sensor_count);
-    dma_set_read_from_peripheral(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL);
-    dma_enable_memory_increment_mode(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL);
-    dma_set_peripheral_size(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL, DMA_CCR_PSIZE_16BIT);
-    dma_set_memory_size(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL, DMA_CCR_MSIZE_16BIT);
-    dma_set_priority(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL, DMA_CCR_PL_HIGH);
-    dma_enable_circular_mode(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL);
-    dma_enable_transfer_complete_interrupt(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL);
-    nvic_enable_irq(NVIC_DMA1_CHANNEL1_IRQ);
-    dma_enable_channel(QTR_DMA_PERIPHERAL, QTR_DMA_CHANNEL);
-}
-
-/* ADC1 en scan + trigger externo por TIM3 TRGO + DMA */
-static void adc1_init_scan_dma(uint8_t sensor_count, const uint8_t *channel_list) {
+static void qre_config_adc(const qre_t *q){
     rcc_periph_clock_enable(RCC_ADC1);
-
-    /* GPIO analógicos (A/B/C) según máscara del config */
-    rcc_periph_clock_enable(RCC_GPIOA);
-    rcc_periph_clock_enable(RCC_GPIOB);
-    rcc_periph_clock_enable(RCC_GPIOC);
-    set_port_as_analog(GPIOA, global_config.gpioa_analog_mask);
-    set_port_as_analog(GPIOB, global_config.gpiob_analog_mask);
-    set_port_as_analog(GPIOC, global_config.gpioc_analog_mask);
-
-    adc_power_off(QTR_ADC_PERIPHERAL);
-    adc_enable_scan_mode(QTR_ADC_PERIPHERAL);
-    adc_set_right_aligned(QTR_ADC_PERIPHERAL);
-
-    /* Tiempo de muestreo: ajustar si tu fuente es alta Z */
-    adc_set_sample_time_on_all_channels(QTR_ADC_PERIPHERAL, ADC_SMPR_SMP_28DOT5CYC);
-
-    /* Secuencia regular (lista de canales) — castear a uint8_t* según firma libopencm3 */
-    adc_set_regular_sequence(QTR_ADC_PERIPHERAL, sensor_count, (uint8_t*)channel_list);
-
-    /* Trigger externo: TIM3 TRGO */
-    adc_enable_external_trigger_regular(QTR_ADC_PERIPHERAL, ADC_CR2_EXTSEL_TIM3_TRGO);
-
-    /* DMA del ADC */
-    adc_enable_dma(QTR_ADC_PERIPHERAL);
-
-    /* Encendido + calibración compatible */
-    adc_power_on(QTR_ADC_PERIPHERAL);
-    for (volatile int i = 0; i < 8000; ++i) __asm__("nop");
-
-#ifdef ADC_CR2_RSTCAL
-    adc_reset_calibration(QTR_ADC_PERIPHERAL);
-    while (ADC_CR2(QTR_ADC_PERIPHERAL) & ADC_CR2_RSTCAL);
-    /* Si existe CAL, iniciamos y esperamos. */
-    #ifdef ADC_CR2_CAL
-        ADC_CR2(QTR_ADC_PERIPHERAL) |= ADC_CR2_CAL;
-        while (ADC_CR2(QTR_ADC_PERIPHERAL) & ADC_CR2_CAL);
-    #endif
-#endif
-}
-
-/* ========================= API pública ========================= */
-
-void qtr_init(const qtr_config_t *config) {
-    /* Copiar config */
-    global_config = *config;
-
-    /* Sanidad básica */
-    if (global_config.number_of_sensors == 0 || global_config.number_of_sensors > QTR_MAX_SENSORS) while(1);
-    if (!global_config.adc_channel_list || !global_config.sensor_positions) while(1);
-    if (global_config.sample_rate_hz == 0) while(1);
-    if (global_config.averaging_samples_count == 0) global_config.averaging_samples_count = 1;
-
-    /* Mapear storage */
-    adc_buffer     = storage_adc_buffer;
-    average_output = storage_average_output;
-    accumulator    = storage_accumulator;
-    min_values     = storage_min_values;
-    max_values     = storage_max_values;
-
-    /* Estado inicial */
-    for (uint8_t i = 0; i < global_config.number_of_sensors; ++i) {
-        accumulator[i]    = 0;
-        average_output[i] = 0;
-        min_values[i]     = 0x0FFF;
-        max_values[i]     = 0;
+    adc_power_off(q->cfg.adc);
+    // fADC <= 14 MHz (F103). Con PCLK2=72 MHz:
+    rcc_set_adcpre(RCC_CFGR_ADCPRE_DIV6); // 72/6 = 12 MHz
+    adc_set_right_aligned(q->cfg.adc);
+    for (uint8_t i=0; i<q->cfg.num_sensors; ++i) {
+        adc_set_sample_time(q->cfg.adc, q->cfg.adc_channels[i], q->cfg.smpr_default);
     }
-    accumulation_count = 0;
-    frame_ready_flag   = false;
-    frame_id_counter   = 0;
-
-    /* Periféricos */
-    timer3_init_trgo(global_config.sample_rate_hz);
-    dma_init(global_config.number_of_sensors);
-    adc1_init_scan_dma(global_config.number_of_sensors, global_config.adc_channel_list);
+    adc_power_on(q->cfg.adc);
+    if (q->cfg.delay_us) q->cfg.delay_us(5);
+    adc_reset_calibration(q->cfg.adc);
+    adc_calibrate(q->cfg.adc);
 }
 
-void qtr_start(void) {
-    timer_enable_counter(QTR_TIMER);
+void qre_init(qre_t *q, const qre_cfg_t *cfg){
+    q->cfg = *cfg;
+    if (q->cfg.num_sensors > QRE_MAX_SENSORS) q->cfg.num_sensors = QRE_MAX_SENSORS;
+    qre_config_gpio_analog(q);
+    qre_config_adc(q);
+    qre_reset_calibration(q);
 }
 
-/* Señalización de “nuevo frame promedio disponible” */
-bool qtr_poll_new_frame(uint32_t *out_frame_id) {
-    if (frame_ready_flag) {
-        frame_ready_flag = false;
-        if (out_frame_id) *out_frame_id = frame_id_counter;
-        return true;
-    }
-    return false;
+void qre_reset_calibration(qre_t *q){
+    for (uint8_t i=0;i<q->cfg.num_sensors;++i){ q->cal_min[i]=4095; q->cal_max[i]=0; }
 }
 
-/* Acceso al último promedio publicado (valores RAW 12-bit promediados) */
-const uint16_t* qtr_get_values(void) {
-    return average_output;
+void qre_emitters_on(qre_t *q){ if (q->cfg.has_emitters) gpio_set(q->cfg.emit_port, q->cfg.emit_pin); }
+void qre_emitters_off(qre_t *q){ if (q->cfg.has_emitters) gpio_clear(q->cfg.emit_port, q->cfg.emit_pin); }
+
+static uint16_t read_one_channel(qre_t *q, uint8_t ch){
+    uint8_t seq[1] = { ch };
+    adc_set_regular_sequence(q->cfg.adc, 1, seq);
+    adc_start_conversion_direct(q->cfg.adc);
+    while (!adc_eoc(q->cfg.adc)) { /* wait */ }
+    return adc_read_regular(q->cfg.adc);
 }
 
-/* Calibración: reiniciar min/max */
-void qtr_calib_reset(void) {
-    for (uint8_t i = 0; i < global_config.number_of_sensors; ++i) {
-        min_values[i] = 0x0FFF;
-        max_values[i] = 0;
-    }
-}
-
-/* Calibración: alimentar min/max con el último promedio */
-void qtr_calib_feed(void) {
-    for (uint8_t i = 0; i < global_config.number_of_sensors; ++i) {
-        uint16_t v = average_output[i];
-        if (v < min_values[i]) min_values[i] = v;
-        if (v > max_values[i]) max_values[i] = v;
-    }
-}
-
-/* ========================= Centroide fijo Q15 =========================
- * Normalización:
- *   n_q15 = ((value - min) * 32767) / (max - min)     (clamp implícito)
- * Ponderación gamma:
- *   γ=1   -> w = n
- *   γ=2   -> w = n^2       (>>15)
- *   γ=3/2 -> w = n*sqrt(n) (sqrt entero Q15)
- * Posición final (entera en la escala de sensor_positions):
- *   out ≈ ( sum(pos*w) * 32768 ) / sum(w)
- * ==================================================================== */
-
-/* sqrt aproximada en Q15 para 0..32767 (5 iteraciones Herón) */
-static inline uint16_t isqrt_q15(uint16_t x_q15) {
-    if (!x_q15) return 0;
-    uint32_t x = x_q15;
-    uint32_t r = 16384;                /* ~0.5 en Q15 como arranque */
-    for (int i = 0; i < 5; ++i) {
-        /* r = (r + x/r) / 2 en Q15  => x está en Q15, r en Q15
-           x/r (Q15 / Q15) => (x<<15)/r */
-        uint32_t xr = ((x << 15) / r);
-        r = (r + xr) >> 1;
-        if (r == 0) break;
-    }
-    if (r > 32767) r = 32767;
-    return (uint16_t)r;
-}
-
-void qtr_get_position(int16_t *position_out_scaled,
-                      uint16_t gamma_num, uint16_t gamma_den)
-{
-    const uint8_t  N   = global_config.number_of_sensors;
-    const int16_t *pos = global_config.sensor_positions;
-
-    uint32_t sum_w_q15 = 0;    /* suma de pesos en Q15 */
-    int32_t  sum_wx    = 0;    /* suma de pos[i] * w_q15 (pos en enteros, w en Q15) */
-
-    for (uint8_t i = 0; i < N; ++i) {
-        const uint16_t minv = min_values[i];
-        const uint16_t maxv = max_values[i];
-        const uint16_t v    = average_output[i];
-
-        /* normalizado [0..32767] en Q15 */
-        uint16_t n_q15 = 0;
-        if (maxv > minv) {
-            uint32_t num = (uint32_t)(v - minv) * 32767U;
-            uint32_t den = (uint32_t)(maxv - minv);
-            n_q15 = (uint16_t)(num / den);
+int qre_read_raw(qre_t *q, uint16_t *out){
+    if (q->cfg.use_ambient_sub && q->cfg.has_emitters){
+        qre_emitters_off(q);
+        if (q->cfg.delay_us) q->cfg.delay_us(100);
+        uint16_t amb[QRE_MAX_SENSORS];
+        for (uint8_t i=0;i<q->cfg.num_sensors;++i){ amb[i]=read_one_channel(q, q->cfg.adc_channels[i]); }
+        qre_emitters_on(q);
+        if (q->cfg.delay_us) q->cfg.delay_us(100);
+        for (uint8_t i=0;i<q->cfg.num_sensors;++i){
+            uint16_t v_on = read_one_channel(q, q->cfg.adc_channels[i]);
+            int32_t v = (int32_t)v_on - (int32_t)amb[i];
+            out[i] = (v<=0)?0:(v>4095?4095:(uint16_t)v);
         }
-
-        /* peso w_q15 según gamma */
-        uint16_t w_q15 = n_q15;
-        if (gamma_den == 1 && gamma_num == 2) {
-            /* γ = 2: w = n^2 */
-            w_q15 = (uint16_t)(((uint32_t)n_q15 * n_q15) >> 15);
-        } else if (gamma_den == 1 && gamma_num == 3) {
-            /* γ = 3: w = n^3 */
-            uint32_t t = ((uint32_t)n_q15 * n_q15) >> 15;
-            w_q15 = (uint16_t)((t * n_q15) >> 15);
-        } else if (gamma_den == 2 && gamma_num == 3) {
-            /* γ = 1.5: w = n*sqrt(n) */
-            uint16_t rn = isqrt_q15(n_q15);
-            w_q15 = (uint16_t)(((uint32_t)n_q15 * rn) >> 15);
-        } else {
-            /* fallback γ = 1 */
-            w_q15 = n_q15;
-        }
-
-        sum_w_q15 += w_q15;
-        sum_wx    += (int32_t)pos[i] * (int32_t)w_q15; /* aún en Q15 */
+    } else {
+        if (q->cfg.has_emitters){ qre_emitters_on(q); if (q->cfg.delay_us) q->cfg.delay_us(50); }
+        for (uint8_t i=0;i<q->cfg.num_sensors;++i){ out[i]=read_one_channel(q, q->cfg.adc_channels[i]); }
     }
-
-    /* posición = sum(pos*w) / (sum(w)/32768)  ~= (sum(pos*w) * 32768) / sum(w) */
-    int16_t out = 0;
-    if (sum_w_q15 > 0) {
-        int32_t tmp = (int32_t)(( (int64_t)sum_wx * 32768LL ) / (int32_t)sum_w_q15);
-        out = (int16_t)tmp;
-    }
-    if (position_out_scaled) *position_out_scaled = out;
+    return q->cfg.num_sensors;
 }
 
-/* ========================= ISR DMA ========================= */
-
-void dma1_channel1_isr(void) {
-    if (DMA1_ISR & DMA_ISR_TCIF1) {
-        DMA1_IFCR = DMA_IFCR_CTCIF1;
-
-        /* Acumular valores del frame actual */
-        const uint8_t N = global_config.number_of_sensors;
-        for (uint8_t i = 0; i < N; ++i) {
-            accumulator[i] += adc_buffer[i];
+void qre_calibrate_on_samples(qre_t *q, uint16_t samples, uint32_t gap_us){
+    uint16_t v[QRE_MAX_SENSORS];
+    for (uint16_t s=0; s<samples; ++s){
+        qre_read_raw(q, v);
+        for (uint8_t i=0;i<q->cfg.num_sensors;++i){
+            if (v[i]<q->cal_min[i]) q->cal_min[i]=v[i];
+            if (v[i]>q->cal_max[i]) q->cal_max[i]=v[i];
         }
-        accumulation_count++;
-
-        /* ¿Listo para publicar promedio? */
-        if (accumulation_count >= global_config.averaging_samples_count) {
-            for (uint8_t i = 0; i < N; ++i) {
-                average_output[i] = (uint16_t)(accumulator[i] / (uint32_t)global_config.averaging_samples_count);
-                accumulator[i] = 0;
-            }
-            accumulation_count = 0;
-            frame_id_counter++;
-            frame_ready_flag = true;  /* <- el loop/ PID se sincroniza con esto */
-        }
+        if (q->cfg.delay_us) q->cfg.delay_us(gap_us);
     }
+}
+
+int qre_read_calibrated(qre_t *q, uint16_t *out){
+    uint16_t raw[QRE_MAX_SENSORS];
+    qre_read_raw(q, raw);
+    for (uint8_t i=0;i<q->cfg.num_sensors;++i){
+        uint16_t mn=q->cal_min[i], mx=q->cal_max[i], v=raw[i];
+        if (mx<=mn){ out[i]=0; continue; }
+        int32_t scaled = ((int32_t)(v-mn)*1000)/(int32_t)(mx-mn);
+        if (scaled<0) scaled=0; if (scaled>1000) scaled=1000;
+        if (q->cfg.line_is_white) scaled = 1000 - scaled;
+        out[i]=(uint16_t)scaled;
+    }
+    return q->cfg.num_sensors;
+}
+
+int32_t qre_read_line_position(qre_t *q, const uint16_t *pass_calibrated){
+    const uint8_t N=q->cfg.num_sensors;
+    uint16_t tmp[QRE_MAX_SENSORS];
+    const uint16_t *v = pass_calibrated ? pass_calibrated : (qre_read_calibrated(q,tmp), tmp);
+    uint32_t sum=0, weighted=0;
+    for (uint8_t i=0;i<N;++i){ sum+=v[i]; weighted += (uint32_t)v[i] * (uint32_t)(i*1000); }
+    if (sum < (uint32_t)(N*50)) return -1;
+    return (int32_t)(weighted/sum); // 0..(N-1)*1000
 }
