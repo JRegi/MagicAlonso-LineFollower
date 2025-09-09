@@ -1,4 +1,4 @@
-26669114186741306
+26674388182316226
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -70553,6 +70553,20 @@ Yellow 5381 Series LED
 2
 2
 MixLib
+Alonso_Redu_1404_23.5mm
+
+
+0
+0
+0
+MixLib
+Alonso_Redu_2306_23.5mm
+
+
+0
+0
+0
+MixLib
 BluePill
 Through hole headers for BluePill module. No SWD breakout. Fancy silkscreen.
 module BlluePill Blue Pill header SWD breakout
@@ -70630,6 +70644,13 @@ GCT_USB4120-03-C_REVA
 20
 17
 MixLib
+HC05
+
+
+0
+6
+6
+MixLib
 LED_0805_2012Metric
 LED SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
 LED
@@ -70664,13 +70685,6 @@ MPU6050_Module
 0
 4
 4
-MixLib
-MagicAlonso_Red_Mod_23.5mm
-
-
-0
-0
-0
 MixLib
 Mini360_step-down
 
@@ -70748,6 +70762,13 @@ PinHeader_1x12_P2.54-SMD
 0
 12
 12
+MixLib
+SW_DPDT_SLIDE_THT
+Sub-miniature slide switch, vertical, SMT J bend https://dznh3ojzb2azq.cloudfront.net/products/Slide/JS/documents/datasheet.pdf
+switch DPDT SMT
+0
+6
+6
 MixLib
 SW_Push_2P2T_Toggle_6mm
 
