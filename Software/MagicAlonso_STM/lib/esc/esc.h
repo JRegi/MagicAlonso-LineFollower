@@ -30,6 +30,12 @@ void esc_init(esc_handle_t* h, const esc_config_t* cfg);
 /* Cambia el ancho en µs (saturado a [min_us, max_us]). */
 void esc_write_us(esc_handle_t* h, uint16_t us);
 
+/* Secuencia de calibración (enseñar rango a la ESC) */
+void esc_calibrate(esc_handle_t* h);
+
+/* Secuencia de armado (activar ESC antes de usar) */
+void esc_arm(esc_handle_t* h);
+
 #ifdef __cplusplus
 }
 #endif

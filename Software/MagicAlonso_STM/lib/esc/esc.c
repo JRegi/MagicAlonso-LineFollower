@@ -70,3 +70,37 @@ void esc_write_us(esc_handle_t* h, uint16_t us)
   if (us > h->cfg.max_us) us = h->cfg.max_us;
   timer_set_oc_value(h->cfg.tim, h->cfg.ch, us);
 }
+
+void esc_calibrate(esc_handle_t* h)
+{
+    if (!h) return;
+
+    // Mínimo
+    esc_write_us(h, h->cfg.min_us);
+    delay_ms(500);
+
+    // Máximo
+    esc_write_us(h, h->cfg.max_us);
+    delay_ms(3100);
+
+    // Vuelve a mínimo
+    esc_write_us(h, h->cfg.min_us);
+    delay_ms(3100);
+}
+
+void esc_arm(esc_handle_t* h)
+{
+    if (!h) return;
+
+    // Min 500ms
+    esc_write_us(h, h->cfg.min_us);
+    delay_ms(500);
+
+    // 1500us 500ms
+    esc_write_us(h, 1500);
+    delay_ms(500);
+
+    // Min 500ms
+    esc_write_us(h, h->cfg.min_us);
+    delay_ms(500);
+}
