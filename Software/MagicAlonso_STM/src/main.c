@@ -37,7 +37,7 @@ static void uart_printf(const char *fmt, ...) {
 
 // ====== Clocks ======
 static void clocks_setup(void) {
-    rcc_clock_setup_in_hse_8mhz_out_72mhz(); // 72 MHz
+    rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]); // 72 MHz
 }
 
 static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
