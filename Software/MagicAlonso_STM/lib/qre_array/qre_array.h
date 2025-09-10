@@ -1,47 +1,52 @@
-//// FILE: include/qre_array.h
-// Librería mínima para regleta QRE1113 sobre STM32F103 + libopencm3
-// API estilo Pololu QTR: calibración (min/max), lectura calibrada (0..1000) y posición por promedio ponderado.
-// Requiere: clock ya configurado (72 MHz típico).
+// qre_array.h - Minimal QRE1113 (QTR analog) array for STM32F103 + libopencm3
+// API inspirado en Pololu QTR: calibración min/max, lectura calibrada (0..1000)
+// y posición por promedio ponderado (0..(N-1)*1000).
 #ifndef QRE_ARRAY_H
 #define QRE_ARRAY_H
 
 #include <stdint.h>
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef QRE_MAX_SENSORS
 #define QRE_MAX_SENSORS 16
 #endif
 
-typedef void (*qre_delay_us_fn)(uint32_t us);
-
 typedef struct {
-    uint32_t adc;                 // ADC1 (libopencm3: ADC1)
-    uint8_t  num_sensors;         // cantidad de canales usados
-    const uint8_t *adc_channels;  // lista de ADCx_INy (0..15) en orden físico L→R
-    const uint32_t *gpio_ports;   // puerto de cada sensor (GPIOA, ...)
-    const uint16_t *gpio_pins;    // pin de cada sensor (GPIO0..GPIO15)
-    bool     has_emitters;        // si tenés EN de emisores IR
-    uint32_t emit_port;           // puerto EN emisores
-    uint16_t emit_pin;            // pin EN emisores (alto=ON)
-    bool     line_is_white;       // true si la línea es blanca
-    bool     use_ambient_sub;     // true para restar luz ambiente (requiere has_emitters)
-    uint8_t  smpr_default;        // ADC_SMPR_SMP_xxDOT5CYC
-    qre_delay_us_fn delay_us;     // callback de retardo
-} qre_cfg_t;
+    uint8_t num_sensors;                 // cantidad de sensores usados
+    uint8_t adc_channels[QRE_MAX_SENSORS]; // lista de canales ADCx_INy (0..15)
+    uint16_t min[QRE_MAX_SENSORS];       // min calibrado por sensor
+    uint16_t max[QRE_MAX_SENSORS];       // max calibrado por sensor
+    bool calibrated;
+} qre_array_t;
 
-typedef struct {
-    qre_cfg_t cfg;
-    uint16_t  cal_min[QRE_MAX_SENSORS];
-    uint16_t  cal_max[QRE_MAX_SENSORS];
-} qre_t;
+// Inicializa ADC1 y configura los GPIO como entrada analógica para los canales indicados.
+// channels: lista de canales ADC (0..15) en orden físico izquierda->derecha.
+// count: cantidad de sensores.
+// Devuelve false si count > QRE_MAX_SENSORS.
+bool qre_init(qre_array_t* q, const uint8_t* channels, uint8_t count);
 
-void     qre_init(qre_t *q, const qre_cfg_t *cfg);
-void     qre_reset_calibration(qre_t *q);
-void     qre_calibrate_on_samples(qre_t *q, uint16_t samples, uint32_t gap_us);
-int      qre_read_raw(qre_t *q, uint16_t *out);
-int      qre_read_calibrated(qre_t *q, uint16_t *out);
-int32_t  qre_read_line_position(qre_t *q, const uint16_t *pass_calibrated);
-void     qre_emitters_on(qre_t *q);
-void     qre_emitters_off(qre_t *q);
+// Calibra min/max. iterations: repeticiones (típico 200..1000).
+// delay_us: retardo entre lecturas (ej: 1000us). Si 0, sin retardo.
+// Se espera que el usuario mueva el robot sobre el fondo y la línea durante la calibración.
+void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us);
+
+// Lee crudo ADC12 (0..4095) en 'out' (size >= num_sensors).
+void qre_read_raw(const qre_array_t* q, uint16_t* out);
+
+// Lee calibrado (0..1000) donde 0=negro (baja reflectancia) y 1000=blanco.
+// Si aún no se calibró, hace un mapeo simple a 0..1000 con 0..4095.
+void qre_read_calibrated(const qre_array_t* q, uint16_t* out);
+
+// Devuelve una posición ponderada 0..(N-1)*1000 (uint16).
+// Si white_line=true, invierte lecturas para líneas claras sobre fondo oscuro.
+uint16_t qre_read_position(const qre_array_t* q, bool white_line);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // QRE_ARRAY_H
