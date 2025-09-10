@@ -61,14 +61,21 @@ static void gpio_setup_for_channel(uint8_t ch) {
 // Dispara una conversión en scan mode y lee todos los canales de la secuencia.
 // out debe tener al menos q->num_sensors elementos.
 static void adc1_read_sequence(const qre_array_t* q, uint16_t* out) {
-    // Cargar la secuencia completa (1..16 canales)
+    // Cargar la secuencia completa (ranks 1..N)
     adc_set_regular_sequence(ADC1, q->num_sensors, (uint8_t*)q->adc_channels);
 
-    // Un solo start recorre toda la secuencia; EOC se setea en cada conversión
+    // --- LIMPIEZA DE FLAGS ANTES DE DISPARAR ---
+    adc_clear_flag(ADC1, ADC_SR_STRT | ADC_SR_EOC | ADC_SR_JEOC | ADC_SR_AWD);
+
+    // Un solo start recorre toda la secuencia
     adc_start_conversion_regular(ADC1);
+
     for (uint8_t i = 0; i < q->num_sensors; i++) {
-        while (!adc_eoc(ADC1)) { /* esperar cada fin de conversión */ }
-        out[i] = adc_read_regular(ADC1); // lee DR (avanza al siguiente rank)
+        // Esperar fin de conversión del rank actual
+        while (!adc_eoc(ADC1)) { /* wait */ }
+
+        // Leer DR INMEDIATAMENTE: limpia EOC y permite avanzar al siguiente rank
+        out[i] = adc_read_regular(ADC1);
     }
 }
 
