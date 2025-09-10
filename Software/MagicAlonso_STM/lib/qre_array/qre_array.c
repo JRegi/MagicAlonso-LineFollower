@@ -100,6 +100,12 @@ void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us) {
     q->calibrated = true;
 }
 
+uint16_t qre_read_raw_channel(uint8_t ch) {
+    adc1_setup_once();          // asegura ADC listo (con SWSTART habilitado)
+    gpio_setup_for_channel(ch); // pone el pin en analógico
+    return adc1_read_channel(ch); // devuelve 0..4095
+}
+
 void qre_read_raw(const qre_array_t* q, uint16_t* out) {
     if (!q || !out) return;
     for (uint8_t i = 0; i < q->num_sensors; i++) {

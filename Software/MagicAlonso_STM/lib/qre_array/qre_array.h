@@ -31,6 +31,9 @@ bool qre_init(qre_array_t* q, const uint8_t* channels, uint8_t count);
 // Calibra min/max leyendo 'iterations' veces. delay_us opcional entre lecturas.
 void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us);
 
+// Lee crudo (0..4095) un canal ADC1 suelto (PA0..PA7=0..7, PB0..PB1=8..9, PC0..PC5=10..15)
+uint16_t qre_read_raw_channel(uint8_t ch);
+
 // Lecturas
 void qre_read_raw(const qre_array_t* q, uint16_t* out);        // 0..4095
 void qre_read_calibrated(const qre_array_t* q, uint16_t* out); // 0..1000
