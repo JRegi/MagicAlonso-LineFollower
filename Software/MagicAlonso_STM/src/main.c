@@ -55,7 +55,7 @@ int main(void) {
     uart_write("\r\nCAL OK\r\n");
 
     while (1) {
-        uint16_t pos = qre_read_position(&qre, false); // false = línea negra
+        uint16_t pos = qre_read_position_black(&qre); // false = línea negra
         uart_printf("%d\r\n", pos);
     }
 }
