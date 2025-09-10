@@ -192,11 +192,14 @@ static uint16_t qre_position_core(const qre_array_t* q, bool invert) {
 }
 
 uint16_t qre_read_position_black(const qre_array_t* q) {
-    return qre_position_core(q, /*invert=*/true);
-}
-uint16_t qre_read_position_white(const qre_array_t* q) {
+    // Línea NEGRA: NO invertir (negro ya es ~1000)
     return qre_position_core(q, /*invert=*/false);
 }
+uint16_t qre_read_position_white(const qre_array_t* q) {
+    // Línea BLANCA: SÍ invertir (blanco es ~0 → invertir a ~1000)
+    return qre_position_core(q, /*invert=*/true);
+}
+
 
 // Deprecada: conservada por compatibilidad.
 uint16_t qre_read_position(const qre_array_t* q, bool line_is_white) {
