@@ -21,7 +21,7 @@
 #define SETPOINT   0     // trabajamos con posición centrada, 0 es el centro
 
 #define US_MIN     1000u
-#define US_MAX     1350u
+#define US_MAX     1200u
 
 // >>> Parámetros de movimiento que ya te funcionan <<<
 #define PWM_HZ         400u
@@ -147,8 +147,8 @@ int main(void){
 
     // Arming: 1000us ~2 s
     uint32_t t0 = millis();
-    esc_begin_arming(&escL, 2000, t0);
-    esc_begin_arming(&escR, 2000, t0);
+    esc_begin_arming(&escL, 3000, t0);
+    esc_begin_arming(&escR, 3000, t0);
     while (esc_state(&escL)!=ESC_STATE_ARMED || esc_state(&escR)!=ESC_STATE_ARMED){
         esc_write_us(&escL, US_MIN);
         esc_write_us(&escR, US_MIN);
