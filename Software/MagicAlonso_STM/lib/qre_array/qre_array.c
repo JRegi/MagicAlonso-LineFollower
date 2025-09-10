@@ -62,7 +62,7 @@ static void gpio_setup_for_channel(uint8_t ch) {
 // out debe tener al menos q->num_sensors elementos.
 static void adc1_read_sequence(const qre_array_t* q, uint16_t* out) {
     // Cargar la secuencia completa (1..16 canales)
-    adc_set_regular_sequence(ADC1, q->num_sensors, q->adc_channels);
+    adc_set_regular_sequence(ADC1, q->num_sensors, (uint8_t*)q->adc_channels);
 
     // Un solo start recorre toda la secuencia; EOC se setea en cada conversión
     adc_start_conversion_regular(ADC1);
