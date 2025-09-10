@@ -2,6 +2,7 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/usart.h>
+#include <libopencm3/cm3/systick.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -38,7 +39,32 @@ static void uart_printf(const char *fmt, ...) {
 // ====== Clocks ======
 static void clocks_setup(void) {
     rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]); // 72 MHz
+
+    /*** Configuración del SysTyck ***/
+    // Se toma la velocidad del AHB (SYSCLK) y se activa el divisor por 8:
+    systick_set_clocksource(STK_CSR_CLKSOURCE_AHB_DIV8); // 72M/8 = 9M
+ 
+    systick_set_reload(8999); // 9M / 9000 = 1k => T = 1ms
+    systick_interrupt_enable();
+    systick_counter_enable();
+ 
+
 }
+ 
+volatile uint32_t ticks = 0; // Ticks de 1ms
+
+void delay_ms(uint32_t ms)
+{
+    uint32_t tm = ticks + ms;
+    while(ticks < tm);
+}
+ 
+void sys_tick_handler(void)
+{
+    ticks++; // Se incrementan los ticks
+}
+
+
 
 static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
 qre_array_t qre;
@@ -51,11 +77,13 @@ int main(void) {
 
     // Calibrar (mueve el robot sobre línea y fondo)
     uart_write("CAL: mover sobre linea/fondo...\r\n");
-    qre_calibrate(&qre, 400, 1000);
+    qre_calibrate(&qre, 1000, 1000);
     uart_write("\r\nCAL OK\r\n");
 
     while (1) {
         uint16_t pos = qre_read_position_black(&qre); // false = línea negra
         uart_printf("%d\r\n", pos);
+
+        delay_ms(250);
     }
 }
