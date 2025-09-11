@@ -41,7 +41,6 @@ static void adc1_setup_once(void) {
 
     // Clave en F1 para disparo por software (SWSTART):
     adc_enable_external_trigger_regular(ADC1, ADC_CR2_EXTSEL_SWSTART);
-    adc_external_trigger_regular_enable(ADC1);  // <-- habilita EXTTRIG
 
     done = true;
 }
