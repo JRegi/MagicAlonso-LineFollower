@@ -77,8 +77,10 @@ int main(void) {
 
     // Calibrar (mueve el robot sobre línea y fondo)
     uart_write("CAL: mover sobre linea/fondo...\r\n");
-    qre_calibrate(&qre, 1000, 1000);
+    qre_calibrate(&qre, 2000, 1000);
     uart_write("\r\nCAL OK\r\n");
+
+    qre_set_averaging(&qre, 4);
 
     while (1) {
         uint16_t pos = qre_read_position_black(&qre); // false = línea negra
