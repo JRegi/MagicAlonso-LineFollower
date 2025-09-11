@@ -64,6 +64,8 @@ void sys_tick_handler(void)
     ticks++; // Se incrementan los ticks
 }
 
+
+
 static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
 qre_array_t qre;
 
@@ -72,8 +74,6 @@ int main(void) {
     usart3_setup_115200();
     // Inicializar
     qre_init(&qre, QRE_CH, 8);
-
-    qre_set_averaging(&qre, 4);
 
     // Calibrar (mueve el robot sobre línea y fondo)
     uart_write("CAL: mover sobre linea/fondo...\r\n");
