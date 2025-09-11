@@ -6,6 +6,9 @@
 /* -------- Helpers privados -------- */
 static int is_adv_timer(uint32_t tim) { return (tim == TIM1) || (tim == TIM8); }
 
+static void delay_us(uint32_t us){ for (volatile uint32_t i=0;i<us*12;++i) __asm__("nop"); }
+static void delay_ms(uint32_t ms){ while(ms--) delay_us(1000); }
+
 static void enable_rcc_gpio(uint32_t port) {
   if (port == GPIOA) rcc_periph_clock_enable(RCC_GPIOA);
   else if (port == GPIOB) rcc_periph_clock_enable(RCC_GPIOB);
@@ -73,34 +76,34 @@ void esc_write_us(esc_handle_t* h, uint16_t us)
 
 void esc_calibrate(esc_handle_t* h)
 {
-    if (!h) return;
+  if (!h) return;
 
-    // Mínimo
-    esc_write_us(h, h->cfg.min_us);
-    delay_ms(500);
+  // Mínimo
+  esc_write_us(h, h->cfg.min_us);
+  delay_ms(500);
 
-    // Máximo
-    esc_write_us(h, h->cfg.max_us);
-    delay_ms(3100);
+  // Máximo
+  esc_write_us(h, h->cfg.max_us);
+  delay_ms(3100);
 
-    // Vuelve a mínimo
-    esc_write_us(h, h->cfg.min_us);
-    delay_ms(3100);
+  // Vuelve a mínimo
+  esc_write_us(h, h->cfg.min_us);
+  delay_ms(3100);
 }
 
 void esc_arm(esc_handle_t* h)
 {
-    if (!h) return;
+  if (!h) return;
 
-    // Min 500ms
-    esc_write_us(h, h->cfg.min_us);
-    delay_ms(500);
+  // Min 500ms
+  esc_write_us(h, h->cfg.min_us);
+  delay_ms(500);
 
     // 1500us 500ms
-    esc_write_us(h, 1500);
-    delay_ms(500);
+  esc_write_us(h, 1500);
+  delay_ms(500);
 
     // Min 500ms
-    esc_write_us(h, h->cfg.min_us);
-    delay_ms(500);
+  esc_write_us(h, h->cfg.min_us);
+  delay_ms(500);
 }

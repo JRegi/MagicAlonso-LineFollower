@@ -38,7 +38,6 @@ static void adc1_setup_once(void) {
 
     // SWSTART en F1: seleccionar fuente + habilitar el trigger
     adc_enable_external_trigger_regular(ADC1, ADC_CR2_EXTSEL_SWSTART);
-    adc_external_trigger_regular_enable(ADC1); // <- evita cuelgues al disparar
 
     done = true;
 }
