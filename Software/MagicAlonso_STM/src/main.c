@@ -95,8 +95,16 @@ int main(void) {
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
 
-    esc_arm(&ml);
-    esc_arm(&mr);
+
+
+    esc_write_us(&ml, 0);
+    esc_write_us(&mr, 0);
+
+    //esc_calibrate(&ml);
+    //esc_calibrate(&mr);
+    
+    //esc_arm(&ml);
+    //esc_arm(&mr);
 
     // Sensores
     qre_init(&qre, QRE_CH, 8);
@@ -115,6 +123,8 @@ int main(void) {
 
         // 1) Lectura en fase
         uint16_t pos = qre_read_position_black(&qre);
+
+        
 
         // 2) PID + salida
         pid_step_and_output(pos);

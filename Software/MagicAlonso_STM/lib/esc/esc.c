@@ -76,19 +76,21 @@ void esc_write_us(esc_handle_t* h, uint16_t us)
 
 void esc_calibrate(esc_handle_t* h)
 {
-  if (!h) return;
+  //if (!h) return;
 
-  // Mínimo
-  esc_write_us(h, h->cfg.min_us);
+  esc_write_us(h, 0);
+  delay_ms(200);
+
+
+  esc_write_us(h, 1000);
   delay_ms(500);
 
-  // Máximo
-  esc_write_us(h, h->cfg.max_us);
-  delay_ms(3100);
 
-  // Vuelve a mínimo
-  esc_write_us(h, h->cfg.min_us);
-  delay_ms(3100);
+  esc_write_us(h, 2000);
+  delay_ms(5100);
+
+  esc_write_us(h, 1000);
+  delay_ms(4100);
 }
 
 void esc_arm(esc_handle_t* h)
