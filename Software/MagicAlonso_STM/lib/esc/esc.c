@@ -81,7 +81,7 @@ void esc_init(esc_handle_t* h, const esc_config_t* cfg)
 
   /* Canal PWM */
   set_oc_mode(cfg->tim, cfg->ch);
-  timer_set_oc_value(cfg->tim, cfg->ch, cfg->min_us);
+  timer_set_oc_value(cfg->tim, cfg->ch, 0);
 
   /* TIM1/TIM8 requieren habilitar MOE para sacar PWM */
   if (h->is_adv) { timer_enable_break_main_output(cfg->tim); }
@@ -93,8 +93,8 @@ void esc_init(esc_handle_t* h, const esc_config_t* cfg)
 void esc_write_us(esc_handle_t* h, uint16_t us)
 {
   if (!h) return;
-  if (us < h->cfg.min_us) us = h->cfg.min_us;
-  if (us > h->cfg.max_us) us = h->cfg.max_us;
+  // if (us < h->cfg.min_us) us = h->cfg.min_us;
+  // if (us > h->cfg.max_us) us = h->cfg.max_us;
   timer_set_oc_value(h->cfg.tim, h->cfg.ch, us);
 }
 
