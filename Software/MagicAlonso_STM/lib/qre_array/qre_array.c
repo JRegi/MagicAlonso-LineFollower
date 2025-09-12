@@ -9,6 +9,10 @@
 #define QRE_ADC_DEV ADC1
 #endif
 
+#define QRE_READ_ALL(dst_u16_ptr)   qre_read_all(dst_u16_ptr)   // tu lector actual
+#define QRE_DELAY_MS(ms)            do { if ((ms) > 0) delay_ms(ms); } while (0) // tu delay actual
+
+
 // ---------- Utilidades ----------
 static inline void delay_us_blocking(uint32_t us) {
     for (uint32_t i = 0; i < us; i++)
@@ -36,7 +40,7 @@ static void adc1_setup_once(void) {
     adc_set_sample_time_on_all_channels(QRE_ADC_DEV, ADC_SMPR_SMP_55DOT5CYC); // estable
 
     adc_power_on(QRE_ADC_DEV);
-    delay_us_blocking(10);
+    delay_us_blocking(50);
 
     adc_reset_calibration(QRE_ADC_DEV);
     adc_calibrate(QRE_ADC_DEV);
