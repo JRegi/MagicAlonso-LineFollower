@@ -14,9 +14,6 @@ extern "C" {
 #define QRE_MAX_SENSORS 16
 #endif
 
-
-void qre_calibrate(uint16_t total_samples, uint16_t delay_between_ms);
-
 typedef struct {
     // Config
     uint8_t  num_sensors;                  // cantidad de canales usados (1..QRE_MAX_SENSORS)

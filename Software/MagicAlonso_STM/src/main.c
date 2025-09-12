@@ -11,9 +11,9 @@
 
 
 
-#define BUTTON1_PIN  GPIO3           // PB3 (pull-down externo)
-#define BUTTON2_PIN  GPIO14           // PC14 (pull-down externo)
-#define BUTTON3_PIN  GPIO15           // PC15 (pull-down externo)
+#define BUTTON1_PIN  GPIO3           // PB3 (pull-down)
+#define BUTTON2_PIN  GPIO14           // PC14 (pull-down)
+#define BUTTON3_PIN  GPIO15           // PC15 (pull-down)
 
 #define BUTTON1_PORT GPIOB
 #define BUTTON2_PORT GPIOC
@@ -22,12 +22,7 @@
 #define RGB_RED_PIN    GPIO12           // PB12
 #define RGB_GREEN_PIN  GPIO14           // PB14
 #define RGB_BLUE_PIN   GPIO13           // PB13
-
-#define LED_RED_PIN    GPIO8            // PB8
-#define LED_GREEN_PIN  GPIO5            // PB5
-#define LED_ORANGE_PIN GPIO4            // PB4
-
-#define LEDS_PORT      GPIOB
+#define RGB_PORT      GPIOB
 
 
 
@@ -82,34 +77,6 @@ const esc_config_t escR = {
 void sys_tick_handler(void);
 void sys_tick_handler(void) { ticks++; }
 
-static void buttons_setup(void) {
-    rcc_periph_clock_enable(RCC_GPIOC);
-    rcc_periph_clock_enable(RCC_GPIOB);
-    gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, BUTTON1_PIN | BUTTON2_PIN | BUTTON3_PIN);
-
-}
-
-static void leds_setup(void){
-    rcc_periph_clock_enable(RCC_GPIOB);
-
-    gpio_set_mode(LEDS_PORT, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
-                  RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN | LED_RED_PIN | LED_GREEN_PIN | LED_ORANGE_PIN);
-    gpio_clear(LEDS_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN | LED_RED_PIN | LED_GREEN_PIN | LED_ORANGE_PIN);
-}
-
-static void rgb_set_color(bool red, bool green, bool blue){
-    if (red)   gpio_set(LEDS_PORT, RGB_RED_PIN);   else gpio_clear(LEDS_PORT, RGB_RED_PIN);
-    if (green) gpio_set(LEDS_PORT, RGB_GREEN_PIN); else gpio_clear(LEDS_PORT, RGB_GREEN_PIN);
-    if (blue)  gpio_set(LEDS_PORT, RGB_BLUE_PIN);  else gpio_clear(LEDS_PORT, RGB_BLUE_PIN);
-}
-
-static void rgb_clear(void){gpio_clear(LEDS_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);}
-
-
-static inline bool button1_get_state(void){return gpio_get(BUTTON1_PORT, BUTTON1_PIN);}
-static inline bool button2_get_state(void){return gpio_get(BUTTON2_PORT, BUTTON2_PIN);}
-static inline bool button3_get_state(void){return gpio_get(BUTTON3_PORT, BUTTON3_PIN);}
-
 static void clock_and_systick_setup(void) {
     // 72 MHz desde HSE 8 MHz
     rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
@@ -141,7 +108,6 @@ static inline void pid_step_and_output(uint16_t position) {
 }
 
 static void qre_calibrate_blocking(qre_array_t* q, uint32_t ms_total, uint16_t step_ms){
-    //rgb_set_color(false, false, true); // azul
     qre_calibration_reset(q);
     uint32_t elapsed = 0;
     while (elapsed < ms_total){
@@ -149,16 +115,38 @@ static void qre_calibrate_blocking(qre_array_t* q, uint32_t ms_total, uint16_t s
         delay_ms(step_ms);
         elapsed += step_ms;
     }
-    //rgb_clear();
 }
 
+static void buttons_setup(void) {
+    rcc_periph_clock_enable(RCC_GPIOC);
+    rcc_periph_clock_enable(RCC_GPIOB);
+    gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, BUTTON1_PIN | BUTTON2_PIN | BUTTON3_PIN);
 
+}
+
+static void rgb_setup(void){
+    rcc_periph_clock_enable(RCC_GPIOB);
+    gpio_set_mode(RGB_PORT, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
+                  RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);
+   gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);
+}
+inline void rgb_set_color(bool red, bool green, bool blue){
+    if (red)   gpio_set(RGB_PORT, RGB_RED_PIN);   else gpio_clear(RGB_PORT, RGB_RED_PIN);
+    if (green) gpio_set(RGB_PORT, RGB_GREEN_PIN); else gpio_clear(RGB_PORT, RGB_GREEN_PIN);
+    if (blue)  gpio_set(RGB_PORT, RGB_BLUE_PIN);  else gpio_clear(RGB_PORT, RGB_BLUE_PIN);
+}
+
+inline void rgb_clear(void){rgb_set_color(false, false, false);}
+
+
+inline bool button1_get_state(void){return gpio_get(BUTTON1_PORT, BUTTON1_PIN);}
+inline bool button2_get_state(void){return gpio_get(BUTTON2_PORT, BUTTON2_PIN);}
+inline bool button3_get_state(void){return gpio_get(BUTTON3_PORT, BUTTON3_PIN);}
 
 int main(void) {
     clock_and_systick_setup();
-    delay_init_ms();
     buttons_setup();
-    leds_setup();
+    delay_init_ms();
 
     bool btn1_pressed = false;
     bool btn2_pressed = false;
@@ -167,6 +155,8 @@ int main(void) {
     // Motores
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
+
+
     
 
     //esc_arm(&ml);
@@ -174,32 +164,26 @@ int main(void) {
 
     //esc_write_us(&ml, 2000);
     //esc_write_us(&mr, 2000);
-
-    delay_ms(250);
-    rgb_clear();
     
     // Sensores
-   // uint8_t num_qre = 8;
-    qre_init(&qre, QRE_CH, 8);
-    qre_calibrate_blocking(&qre, 1000, 10);
+    uint8_t num_qre = 8;
+    qre_init(&qre, QRE_CH, &num_qre);
     qre_set_avg_samples(&qre, 4);
 
 
+    rgb_setup();
 
     uint32_t next = ticks; // arranca ya
     
     while (1) {
 
         rgb_clear();
-        //if (button1_get_state()) {btn1_pressed = true; rgb_set_color(true, false, false);} 
-        //else if (button2_get_state()) {btn2_pressed = true; rgb_set_color(false, true, false);}
-        //else if (button3_get_state()) {btn3_pressed = true; rgb_set_color(false, false, true);}
+        if (button1_get_state()) {btn1_pressed = true; rgb_set_color(true, false, false);} 
+        else if (button2_get_state()) {btn2_pressed = true; rgb_set_color(false, true, false);}
+        else if (button3_get_state()) {btn3_pressed = true; rgb_set_color(false, false, true);}
 
-        while (true/*btn1_pressed*/) { // Color rojo
+        while (btn1_pressed) { // Color rojo
             // esperar el próximo tick exacto (2.5 ms)
-
-            gpio_set(LEDS_PORT, LED_GREEN_PIN); // Indica que está en control
-
             while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
             next += 1;
 
@@ -211,26 +195,22 @@ int main(void) {
             // 2) PID + salida
             pid_step_and_output(pos);
 
-            //if (button1_get_state()) {btn1_pressed = false;}
+            if (button1_get_state()) {btn1_pressed = false;}
         }
 
-        // while (btn2_pressed) { // Color verde
-        //     esc_calibrate(&ml);
-        //     //delay_ms(10000);
-        //     esc_calibrate(&mr);
-        //     delay_ms(500);
-        //     btn2_pressed = false;
-        // }
+        while (btn2_pressed) { // Color verde
+            esc_calibrate(&ml);
+            esc_calibrate(&mr);
+            delay_ms(500);
+            btn2_pressed = false;
+        }
 
 
-        // while (btn3_pressed) { // Color azul
-        //     delay_ms(100); // evitar rebotes
-        //     qre_calibrate_blocking(&qre, 1000, 100);
-        //     rgb_set_color(true, false, true); 
-        //     delay_ms(500);
-        //     btn3_pressed = false;
-        // }
+        while (btn3_pressed) { // Color azul
+            qre_calibrate_blocking(&qre, 3000, 1000);
+            btn3_pressed = false;
+        }
 
-        delay_ms(100); // evitar rebotes
+        delay_ms(50); // evitar rebotes
     }
 }
