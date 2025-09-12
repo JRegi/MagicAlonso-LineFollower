@@ -22,6 +22,10 @@ typedef struct {
   uint8_t  is_adv;   // TIM1/TIM8
 } esc_handle_t;
 
+void delay_init_ms(void);
+
+void delay_ms(uint32_t ms);
+
 /* Inicializa GPIO + Timer + Canal. Base de tiempo a 1 MHz (1 µs/tick).
  * Supone SYSCLK=72 MHz ya configurado.
  */

@@ -1,13 +1,37 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/timer.h>
+#include <libopencm3/cm3/dwt.h>
 #include "esc.h"
 
 /* -------- Helpers privados -------- */
 static int is_adv_timer(uint32_t tim) { return (tim == TIM1) || (tim == TIM8); }
 
-static void delay_us(uint32_t us){ for (volatile uint32_t i=0;i<us*12;++i) __asm__("nop"); }
-static void delay_ms(uint32_t ms){ while(ms--) delay_us(1000); }
+void delay_init_ms(void) {
+    dwt_enable_cycle_counter();  // libopencm3 habilita DEMCR.TRCENA y DWT_CYCCNT
+}
+
+// Espera 'cycles' ciclos de CPU (maneja wrap-around de 32 bits).
+static inline void _delay_cycles(uint32_t cycles) {
+    const uint32_t start = DWT_CYCCNT;
+    while ((uint32_t)(DWT_CYCCNT - start) < cycles) {
+        __asm__("nop");
+    }
+}
+
+// Delay en milisegundos (bloqueante).
+void delay_ms(uint32_t ms) {
+    // ticks por ms según el clock efectivo de AHB (72e6 => 72000 ticks/ms)
+    const uint32_t ticks_per_ms = rcc_ahb_frequency / 1000U;
+
+    // Para soportar delays largos sin overflow, lo hacemos en "chunks".
+    while (ms) {
+        // máx 1000 ms por chunk (=> <= ~72e6 ciclos, cabe en 32 bits con margen)
+        uint32_t chunk = (ms > 1000U) ? 1000U : ms;
+        _delay_cycles(ticks_per_ms * chunk);
+        ms -= chunk;
+    }
+}
 
 static void enable_rcc_gpio(uint32_t port) {
   if (port == GPIOA) rcc_periph_clock_enable(RCC_GPIOA);
@@ -76,15 +100,15 @@ void esc_write_us(esc_handle_t* h, uint16_t us)
 
 void esc_calibrate(esc_handle_t* h)
 {
-  //if (!h) return;
+  if (!h) return;
+
+  delay_init_ms();
 
   esc_write_us(h, 0);
   delay_ms(200);
 
-
   esc_write_us(h, 1000);
   delay_ms(500);
-
 
   esc_write_us(h, 2000);
   delay_ms(5100);
@@ -96,6 +120,8 @@ void esc_calibrate(esc_handle_t* h)
 void esc_arm(esc_handle_t* h)
 {
   if (!h) return;
+
+  delay_init_ms();
 
   // Min 500ms
   esc_write_us(h, h->cfg.min_us);
