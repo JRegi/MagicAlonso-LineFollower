@@ -14,8 +14,8 @@
 #define SETPOINT     3500
 
 // Ahora en μs de servo:
-#define BASE_SPEED   1200                // neutral
-#define MAX_SPEED    1400                 // tope alto seguro
+#define BASE_SPEED   1150                // neutral
+#define MAX_SPEED    1300                 // tope alto seguro
 #define MIN_SPEED    1000                 // tope bajo seguro
 #define PWM_HZ       400u                 // servo @ 400 Hz
 
@@ -25,9 +25,27 @@
 #define TIM_LEFT_MOTOR   TIM_OC3
 #define TIM_RIGHT_MOTOR  TIM_OC1
 
+// Botones
+#define BUTTON1_PIN  GPIO3           // PB3 (pull-down)
+#define BUTTON2_PIN  GPIO14           // PC14 (pull-down)
+#define BUTTON3_PIN  GPIO15           // PC15 (pull-down)
+
+#define BUTTON1_PORT GPIOB
+#define BUTTON2_PORT GPIOC
+#define BUTTON3_PORT GPIOC
+
+// LEDs
+#define RGB_RED_PIN    GPIO14           // PB12
+#define RGB_GREEN_PIN  GPIO12           // PB14
+#define RGB_BLUE_PIN   GPIO13           // PB13
+#define RGB_PORT      GPIOB
+
+
+
+
 // Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
-static float KP = 0.03f;
-static float KD = 0.14f;
+static float KP = 0.022f;
+static float KD = 0.12f;
 static int   last_error = 0;
 
 // (dejado como lo tenías)
@@ -91,24 +109,72 @@ static inline void pid_step_and_output(uint16_t position) {
     //uart_printf("ML: %4u MR: %4u\n", (uint16_t)us_right, (uint16_t)us_left);
 }
 
+///
+///     Atenti!
+///     Mover a librería aparte luego
+///
+
+static void release_jtag_keep_swd(void) {
+    rcc_periph_clock_enable(RCC_AFIO);
+    // Bits 26:24 = SWJ_CFG → 010 = JTAG off, SWD on
+    AFIO_MAPR = (AFIO_MAPR & ~(7u << 24)) | (2u << 24);
+}
+
+
+static void user_interfaces_setup(void) {
+    release_jtag_keep_swd();
+    
+    rcc_periph_clock_enable(RCC_GPIOC);
+    rcc_periph_clock_enable(RCC_GPIOB);
+
+    rcc_periph_clock_enable(RCC_AFIO);
+    // Deshabilita JTAG, deja SWD (SWJ_CFG = 010)
+    // Limpia los bits SWJ y setea el modo "JTAG off, SWD on"
+    // gpio_primary_remap(AFIO_MAPR_SWJ_MASK, AFIO_MAPR_SWJ_CFG_JTAG_OFF_SW_ON);
+
+    // GPIOs LEDs
+    gpio_set_mode(RGB_PORT, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
+        RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);
+
+    // Botón 1 en PB3
+    gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, BUTTON1_PIN);
+    // Botones 2 y 3 en PC14/PC15
+    gpio_set_mode(GPIOC, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, BUTTON2_PIN | BUTTON3_PIN);
+
+                 
+    // Apagar LEDs al inicio
+    gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);
+}
+
+static void rgb_red(void)   { gpio_set(RGB_PORT, RGB_RED_PIN); }
+static void rgb_green(void) { gpio_set(RGB_PORT, RGB_GREEN_PIN); } // No funca
+static void rgb_blue(void)  { gpio_set(RGB_PORT, RGB_BLUE_PIN); }
+
+static void rgb_cyan(void)  { gpio_set(RGB_PORT, RGB_GREEN_PIN | RGB_BLUE_PIN); }
+
+static void rgb_clear(void) { gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN); }
+
+
+
+
+
 int main(void) {
     clock_and_systick_setup();
+    user_interfaces_setup();
     //uart_init_115200();
     delay_init_ms();
 
-    delay_ms(2000);
+    delay_ms(200);
 
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
 
-    delay_ms(500); 
+    delay_ms(200); 
 
 
     // Armado
     esc_write_us(&ml, 1000);
     esc_write_us(&mr, 1000);
-    delay_ms(2500);
-
     // esc_calibrate(&ml);
     // delay_ms(4000);
     // esc_calibrate(&mr);
@@ -123,6 +189,8 @@ int main(void) {
     //uart_printf("Calibrating QRE...\n");
 
     // Calibración (mover la regleta por línea y fondo)
+    rgb_red();
+    delay_ms(500);
     qre_calibrate(&qre, 2000, 500);
 
     //uart_printf("Calibration done.\n");
@@ -133,32 +201,45 @@ int main(void) {
     uint32_t next = ticks; // arranca ya
 
     //uint16_t raw_qre[8];
-    
+    rgb_clear();
+    rgb_blue();
+
+    bool boton1 = false;
+
     while (1) {
-        // esperar el próximo tick exacto (2.5 ms)
-        while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
-        next += 1;
+        delay_ms(100);
 
-        // 1) Lectura en fase
-        uint16_t pos = qre_read_position_white(&qre);
+        if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = true; rgb_clear(); rgb_cyan();}
 
-        //uart_printf("Pos: %4u\n", pos);
-       
-        // 2) PID + salida
-        pid_step_and_output(pos);
+        while(boton1) {
+            // esperar el próximo tick exacto (2.5 ms)
+            while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
+            next += 1;
 
-        //uart_printf("\n");
+            // 1) Lectura en fase
+            uint16_t pos = qre_read_position_white(&qre);
 
+            //uart_printf("Pos: %4u\n", pos);
+        
+            // 2) PID + salida
+            pid_step_and_output(pos);
 
-        // for (uint8_t i = 0; i < 8; i++) {
-        //     raw_qre[i] = qre_read_raw_channel(QRE_CH[i]);
-        // }
-
-        // uart_printf("QRE: %4u %4u %4u %4u %4u %4u %4u %4u\n",
-        //             raw_qre[7], raw_qre[6], raw_qre[5], raw_qre[4],
-        //             raw_qre[3], raw_qre[2], raw_qre[1], raw_qre[0]);
+            //uart_printf("\n");
 
 
-        //delay_ms(100); // simula trabajo en el loop
+            // for (uint8_t i = 0; i < 8; i++) {
+            //     raw_qre[i] = qre_read_raw_channel(QRE_CH[i]);
+            // }
+
+            // uart_printf("QRE: %4u %4u %4u %4u %4u %4u %4u %4u\n",
+            //             raw_qre[7], raw_qre[6], raw_qre[5], raw_qre[4],
+            //             raw_qre[3], raw_qre[2], raw_qre[1], raw_qre[0]);
+
+
+            //delay_ms(100); // simula trabajo en el loop
+            
+            //if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = false; rgb_clear(); rgb_cyan();}
+
+        }
     }
 }
