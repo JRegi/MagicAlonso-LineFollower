@@ -81,7 +81,7 @@ void esc_init(esc_handle_t* h, const esc_config_t* cfg)
 
   /* Canal PWM */
   set_oc_mode(cfg->tim, cfg->ch);
-  timer_set_oc_value(cfg->tim, cfg->ch, cfg->min_us);
+  timer_set_oc_value(cfg->tim, cfg->ch, 0);
 
   /* TIM1/TIM8 requieren habilitar MOE para sacar PWM */
   if (h->is_adv) { timer_enable_break_main_output(cfg->tim); }
@@ -93,8 +93,8 @@ void esc_init(esc_handle_t* h, const esc_config_t* cfg)
 void esc_write_us(esc_handle_t* h, uint16_t us)
 {
   if (!h) return;
-  if (us < h->cfg.min_us) us = h->cfg.min_us;
-  if (us > h->cfg.max_us) us = h->cfg.max_us;
+  // if (us < h->cfg.min_us) us = h->cfg.min_us;
+  // if (us > h->cfg.max_us) us = h->cfg.max_us;
   timer_set_oc_value(h->cfg.tim, h->cfg.ch, us);
 }
 
@@ -102,13 +102,13 @@ void esc_calibrate(esc_handle_t* h)
 {
   if (!h) return;
 
-  delay_init_ms();
+  //delay_init_ms();
 
   esc_write_us(h, 0);
   delay_ms(200);
 
   esc_write_us(h, 1000);
-  delay_ms(500);
+  delay_ms(800);
 
   esc_write_us(h, 2000);
   delay_ms(5100);
@@ -121,17 +121,17 @@ void esc_arm(esc_handle_t* h)
 {
   if (!h) return;
 
-  delay_init_ms();
+  //delay_init_ms();
 
   // Min 500ms
-  esc_write_us(h, h->cfg.min_us);
-  delay_ms(500);
+  esc_write_us(h, 1000);
+  delay_ms(1000);
 
     // 1500us 500ms
-  esc_write_us(h, 1500);
-  delay_ms(500);
+  esc_write_us(h, 1400);
+  delay_ms(800);
 
     // Min 500ms
-  esc_write_us(h, h->cfg.min_us);
-  delay_ms(500);
+  esc_write_us(h, 1000);
+  delay_ms(1000);
 }

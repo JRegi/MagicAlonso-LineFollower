@@ -1,5 +1,6 @@
 #include "qre_array.h"
 #include "esc.h"
+#include "uart.h"
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/gpio.h>
@@ -13,8 +14,8 @@
 #define SETPOINT     3500
 
 // Ahora en μs de servo:
-#define BASE_SPEED   1075                // neutral
-#define MAX_SPEED    1150                 // tope alto seguro
+#define BASE_SPEED   1050                // neutral
+#define MAX_SPEED    1300                 // tope alto seguro
 #define MIN_SPEED    1000                 // tope bajo seguro
 #define PWM_HZ       400u                 // servo @ 400 Hz
 
@@ -25,8 +26,8 @@
 #define TIM_RIGHT_MOTOR  TIM_OC1
 
 // Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
-static float KP = 0.008f;
-static float KD = 0.0f;
+static float KP = 0.02f;
+static float KD = 0.02f;
 static int   last_error = 0;
 
 // (dejado como lo tenías)
@@ -77,8 +78,8 @@ static inline void pid_step_and_output(uint16_t position) {
     float pid = (error * KP) + (derivative * KD);
     last_error = error;
 
-    float us_right = (float)BASE_SPEED + pid;
-    float us_left  = (float)BASE_SPEED - pid;
+    float us_right = (float)BASE_SPEED - pid;
+    float us_left  = (float)BASE_SPEED + pid;
 
     if (us_right > MAX_SPEED) us_right = MAX_SPEED;
     else if (us_right < MIN_SPEED) us_right = MIN_SPEED;
@@ -87,35 +88,52 @@ static inline void pid_step_and_output(uint16_t position) {
 
     esc_write_us(&mr, (uint16_t)us_right);
     esc_write_us(&ml, (uint16_t)us_left);
+    //uart_printf("ML: %4u MR: %4u\n", (uint16_t)us_right, (uint16_t)us_left);
 }
 
 int main(void) {
     clock_and_systick_setup();
+    //uart_init_115200();
+    delay_init_ms();
+
+    delay_ms(2000);
 
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
 
+    delay_ms(500); 
 
 
-    esc_write_us(&ml, 0);
-    esc_write_us(&mr, 0);
+    // Armado
+    esc_write_us(&ml, 1000);
+    esc_write_us(&mr, 1000);
+    delay_ms(2500);
 
-    //esc_calibrate(&ml);
-    //esc_calibrate(&mr);
+    // esc_calibrate(&ml);
+    // delay_ms(4000);
+    // esc_calibrate(&mr);
     
     //esc_arm(&ml);
     //esc_arm(&mr);
 
+    
     // Sensores
     qre_init(&qre, QRE_CH, 8);
 
+    //uart_printf("Calibrating QRE...\n");
+
     // Calibración (mover la regleta por línea y fondo)
-    qre_calibrate(&qre, 2000, 1000);
+    qre_calibrate(&qre, 2000, 500);
+
+    //uart_printf("Calibration done.\n");
 
     // Promedio (arrancá con 1 si querés tunear KP primero)
-    qre_set_averaging(&qre, 4);
+    qre_set_averaging(&qre, 1);
 
     uint32_t next = ticks; // arranca ya
+
+    //uint16_t raw_qre[8];
+    
     while (1) {
         // esperar el próximo tick exacto (2.5 ms)
         while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
@@ -124,9 +142,23 @@ int main(void) {
         // 1) Lectura en fase
         uint16_t pos = qre_read_position_black(&qre);
 
-        
-
+        //uart_printf("Pos: %4u\n", pos);
+       
         // 2) PID + salida
         pid_step_and_output(pos);
+
+        //uart_printf("\n");
+
+
+        // for (uint8_t i = 0; i < 8; i++) {
+        //     raw_qre[i] = qre_read_raw_channel(QRE_CH[i]);
+        // }
+
+        // uart_printf("QRE: %4u %4u %4u %4u %4u %4u %4u %4u\n",
+        //             raw_qre[7], raw_qre[6], raw_qre[5], raw_qre[4],
+        //             raw_qre[3], raw_qre[2], raw_qre[1], raw_qre[0]);
+
+
+        //delay_ms(100); // simula trabajo en el loop
     }
 }
