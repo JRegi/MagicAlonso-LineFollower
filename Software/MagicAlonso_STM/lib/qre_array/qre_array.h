@@ -1,5 +1,5 @@
 // qre_array.h - Minimal QRE1113 (QTR analog) array for STM32F103 + libopencm3
-// + Averaging configurable (sin scan mode) + umbrales tipo Pololu + last_pos
+// + Averaging configurable (sin scan mode)
 #ifndef QRE_ARRAY_H
 #define QRE_ARRAY_H
 
@@ -15,41 +15,37 @@ extern "C" {
 #endif
 
 typedef struct {
-    // Config
-    uint8_t  num_sensors;                  // cantidad de canales usados (1..QRE_MAX_SENSORS)
-    const uint8_t *adc_channels;           // lista de ADC1_INx (0..15) en orden físico
-    uint8_t  avg_samples;                  // 1..32 (promedio por lectura cruda)
+    uint8_t  num_sensors;                   // cantidad de sensores
+    uint8_t  adc_channels[QRE_MAX_SENSORS]; // ADC1_INx (0..15) en orden físico
+    uint16_t min[QRE_MAX_SENSORS];          // mínimos calibrados
+    uint16_t max[QRE_MAX_SENSORS];          // máximos calibrados
+    bool     calibrated;
 
-    // Calibración por sensor (min/max crudos)
-    uint16_t cal_min[QRE_MAX_SENSORS];
-    uint16_t cal_max[QRE_MAX_SENSORS];
-
-    // Estado y parámetros de posición
-    uint16_t th_avg;                       // umbral para entrar al promedio (0..1000, default 50)
-    uint16_t th_online;                    // umbral para decidir "estoy sobre la línea" (0..1000, default 200)
-    uint16_t last_pos;                     // último resultado de posición 0..(N-1)*1000
-
+    // ---- Nuevo: promediado anti-ruido ----
+    uint8_t  avg_samples;                   // Nº de muestras por lectura (>=1). Default: 1
 } qre_array_t;
 
-// --- Setup / Calibración ---
-void qre_init(qre_array_t* q, uint8_t num_sensors, const uint8_t *adc_channels);
-void qre_set_avg_samples(qre_array_t* q, uint8_t samples);          // clamp 1..32
-void qre_set_thresholds(qre_array_t* q, uint16_t th_avg, uint16_t th_online); // escala calibrada 0..1000
-void qre_calibration_reset(qre_array_t* q);
-void qre_calibration_step(qre_array_t* q);                           // tomar una muestra para min/max
+// Inicializa ADC1 y setea GPIOs analógicos. Devuelve false si count > QRE_MAX_SENSORS.
+bool qre_init(qre_array_t* q, const uint8_t* channels, uint8_t count);
 
-// --- Lecturas ---
+// Configura el número de muestras a promediar por lectura (1..32 recomendado).
+void qre_set_averaging(qre_array_t* q, uint8_t samples);
+
+// Calibra min/max leyendo 'iterations' veces. delay_us opcional entre lecturas.
+void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us);
+
+// Lee crudo (0..4095) un canal ADC1 suelto (PA0..PA7=0..7, PB0..PB1=8..9, PC0..PC5=10..15)
+uint16_t qre_read_raw_channel(uint8_t ch);
+
+// Lecturas (aplican promediado si avg_samples>1)
 void qre_read_raw(const qre_array_t* q, uint16_t* out);        // 0..4095
-void qre_read_calibrated(const qre_array_t* q, uint16_t* out); // 0..1000 (saturado)
+void qre_read_calibrated(const qre_array_t* q, uint16_t* out); // 0..1000
 
-// --- Posición (0..(N-1)*1000) ---
-// Convención tipo Pololu:
-//  - Línea NEGRA: NO invertir (negro es alto en calibrado)  => _black()
-//  - Línea BLANCA: SÍ invertir                              => _white()
-uint16_t qre_read_position_black(const qre_array_t* q);
-uint16_t qre_read_position_white(const qre_array_t* q);
+// Posición (0..(N-1)*1000) — funciones explícitas:
+uint16_t qre_read_position_black(const qre_array_t* q); // línea negra (NO invierte)
+uint16_t qre_read_position_white(const qre_array_t* q); // línea blanca (SÍ invierte)
 
-// Compatibilidad (DEPRECATED): preferir _black/_white
+// DEPRECATED: preferí las funciones _black/_white
 uint16_t qre_read_position(const qre_array_t* q, bool line_is_white);
 
 #ifdef __cplusplus

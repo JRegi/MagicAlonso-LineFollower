@@ -1,15 +1,9 @@
 // qre_array.c - Implementación mínima + averaging (sin scan mode, bloqueante)
-// Añadido: TH_AVG / TH_ONLINE (tipo Pololu), last_pos y pérdida de línea al último lado
 #include "qre_array.h"
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/adc.h>
 
-#ifndef QRE_ADC_DEV
-#define QRE_ADC_DEV ADC1
-#endif
-
-// ---------- Utilidades ----------
 static inline void delay_us_blocking(uint32_t us) {
     for (uint32_t i = 0; i < us; i++)
         for (volatile uint32_t j = 0; j < 12; j++) __asm__("nop"); // ~1us @72MHz aprox
@@ -19,184 +13,180 @@ static void adc1_setup_once(void) {
     static bool done = false;
     if (done) return;
 
-    // Clocks
+    rcc_periph_clock_enable(RCC_ADC1);
     rcc_periph_clock_enable(RCC_GPIOA);
     rcc_periph_clock_enable(RCC_GPIOB);
     rcc_periph_clock_enable(RCC_GPIOC);
-    rcc_periph_clock_enable(RCC_ADC1);
 
-    // ADC clock por defecto (PCLK2/6 ~12MHz si PCLK2=72)
+    // ADC clk = PCLK2/6 = 12 MHz (<=14 MHz)
     rcc_set_adcpre(RCC_CFGR_ADCPRE_PCLK2_DIV6);
 
-    // Power-on + calib
-    adc_power_off(QRE_ADC_DEV);
-    adc_disable_scan_mode(QRE_ADC_DEV);
-    adc_set_single_conversion_mode(QRE_ADC_DEV);
-    adc_set_right_aligned(QRE_ADC_DEV);
-    adc_set_sample_time_on_all_channels(QRE_ADC_DEV, ADC_SMPR_SMP_55DOT5CYC); // estable
+    adc_power_off(ADC1);
+    rcc_periph_reset_pulse(RST_ADC1);
 
-    adc_power_on(QRE_ADC_DEV);
+    adc_disable_scan_mode(ADC1);
+    adc_set_single_conversion_mode(ADC1);
+    adc_set_right_aligned(ADC1);
+
+    for (int ch = 0; ch <= 17; ch++)
+        adc_set_sample_time(ADC1, ch, ADC_SMPR_SMP_55DOT5CYC);
+
+    adc_power_on(ADC1);
     delay_us_blocking(10);
+    adc_reset_calibration(ADC1);
+    adc_calibrate(ADC1);
 
-    adc_reset_calibration(QRE_ADC_DEV);
-    adc_calibrate(QRE_ADC_DEV);
+    // SWSTART en F1: seleccionar fuente + habilitar el trigger
+    adc_enable_external_trigger_regular(ADC1, ADC_CR2_EXTSEL_SWSTART);
 
     done = true;
 }
 
-static void adc1_channel_pin_analog(uint8_t ch) {
-    // ADC1_IN0..7 -> PA0..PA7
-    // ADC1_IN8    -> PB0
-    // ADC1_IN9    -> PB1
-    // ADC1_IN10..15 -> PC0..PC5
+static void gpio_setup_for_channel(uint8_t ch) {
     if (ch <= 7) { // PA0..PA7
-        uint16_t pin = 1u << ch;
-        gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, pin);
+        gpio_set_mode(GPIOA, GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, (1 << ch));
     } else if (ch == 8) { // PB0
         gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, GPIO0);
     } else if (ch == 9) { // PB1
         gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, GPIO1);
     } else if (ch <= 15) { // PC0..PC5
-        uint16_t pin = 1u << (ch - 10);
+        uint16_t pin = 1 << (ch - 10);
         gpio_set_mode(GPIOC, GPIO_MODE_INPUT, GPIO_CNF_INPUT_ANALOG, pin);
     }
 }
 
 static uint16_t adc1_read_channel_once(uint8_t ch) {
-    adc_set_regular_sequence(QRE_ADC_DEV, 1, &ch);
-    adc_start_conversion_regular(QRE_ADC_DEV);
-    while (!adc_eoc(QRE_ADC_DEV)) { /* wait */ }
-    return adc_read_regular(QRE_ADC_DEV);
+    adc_set_regular_sequence(ADC1, 1, &ch);
+    adc_start_conversion_regular(ADC1);
+    while (!adc_eoc(ADC1)) { /* wait */ }
+    return adc_read_regular(ADC1);
 }
 
-// ---------- API ----------
-void qre_init(qre_array_t* q, uint8_t num_sensors, const uint8_t *adc_channels) {
-    if (!q) return;
-    if (num_sensors == 0 || num_sensors > QRE_MAX_SENSORS) num_sensors = QRE_MAX_SENSORS;
+/* ---------- API ---------- */
 
-    q->num_sensors  = num_sensors;
-    q->adc_channels = adc_channels;
-    q->avg_samples  = 4;               // default
-    q->th_avg       = 50;              // default (escala calibrada)
-    q->th_online    = 200;             // default (escala calibrada)
-    q->last_pos     = 0;
-
-    for (uint8_t i = 0; i < q->num_sensors; i++) {
-        q->cal_min[i] = 4095;
-        q->cal_max[i] = 0;
-    }
+bool qre_init(qre_array_t* q, const uint8_t* channels, uint8_t count) {
+    if (!q || !channels) return false;
+    if (count == 0 || count > QRE_MAX_SENSORS) return false;
 
     adc1_setup_once();
-    // Configurar pines como analógicos
-    for (uint8_t i = 0; i < q->num_sensors; i++) {
-        adc1_channel_pin_analog(q->adc_channels[i]);
+
+    q->num_sensors = count;
+    for (uint8_t i = 0; i < count; i++) {
+        uint8_t ch = channels[i];
+        q->adc_channels[i] = ch;
+        gpio_setup_for_channel(ch);
+        q->min[i] = 4095;
+        q->max[i] = 0;
     }
+    q->calibrated = false;
+    q->avg_samples = 1; // por defecto sin promedio
+    return true;
 }
 
-void qre_set_avg_samples(qre_array_t* q, uint8_t samples) {
+void qre_set_averaging(qre_array_t* q, uint8_t samples) {
     if (!q) return;
-    if (samples < 1) samples = 1;
-    if (samples > 32) samples = 32;
+    if (samples == 0) samples = 1;
+    if (samples > 32) samples = 32; // límite sano
     q->avg_samples = samples;
 }
 
-void qre_set_thresholds(qre_array_t* q, uint16_t th_avg, uint16_t th_online) {
-    if (!q) return;
-    if (th_avg > 1000) th_avg = 1000;
-    if (th_online > 1000) th_online = 1000;
-    q->th_avg    = th_avg;
-    q->th_online = th_online;
-}
-
-void qre_calibration_reset(qre_array_t* q) {
-    if (!q) return;
-    for (uint8_t i = 0; i < q->num_sensors; i++) {
-        q->cal_min[i] = 4095;
-        q->cal_max[i] = 0;
-    }
-}
-
-void qre_calibration_step(qre_array_t* q) {
+void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us) {
     if (!q) return;
     uint16_t v[QRE_MAX_SENSORS];
-    qre_read_raw(q, v);
-    for (uint8_t i = 0; i < q->num_sensors; i++) {
-        if (v[i] < q->cal_min[i]) q->cal_min[i] = v[i];
-        if (v[i] > q->cal_max[i]) q->cal_max[i] = v[i];
+
+    // Durante calibración, medir sin promediar para capturar extremos reales
+    uint8_t saved = q->avg_samples;
+    q->avg_samples = 1;
+
+    for (uint16_t it = 0; it < iterations; it++) {
+        for (uint8_t i = 0; i < q->num_sensors; i++) {
+            v[i] = adc1_read_channel_once(q->adc_channels[i]);
+        }
+        for (uint8_t i = 0; i < q->num_sensors; i++) {
+            if (v[i] < q->min[i]) q->min[i] = v[i];
+            if (v[i] > q->max[i]) q->max[i] = v[i];
+        }
+        if (delay_us) delay_us_blocking(delay_us);
     }
+    q->avg_samples = saved;
+    q->calibrated  = true;
+}
+
+uint16_t qre_read_raw_channel(uint8_t ch) {
+    adc1_setup_once();
+    gpio_setup_for_channel(ch);
+
+    // Aplica promediado global? No; esta función es “canal suelto”.
+    // Si querés promedio aquí, cambiá 1->q->avg_samples y pasá 'q' como parámetro.
+    return adc1_read_channel_once(ch);
 }
 
 void qre_read_raw(const qre_array_t* q, uint16_t* out) {
     if (!q || !out) return;
-    const uint8_t N = q->num_sensors;
-    const uint8_t K = q->avg_samples ? q->avg_samples : 1;
 
-    for (uint8_t i = 0; i < N; i++) {
-        uint32_t acc = 0;
-        uint8_t ch = q->adc_channels[i];
-        for (uint8_t k = 0; k < K; k++) {
-            acc += adc1_read_channel_once(ch);
-        }
-        out[i] = (uint16_t)(acc / K);
+    if (q->avg_samples <= 1) {
+        for (uint8_t i = 0; i < q->num_sensors; i++)
+            out[i] = adc1_read_channel_once(q->adc_channels[i]);
+        return;
     }
+
+    uint32_t acc[QRE_MAX_SENSORS] = {0};
+
+    for (uint8_t s = 0; s < q->avg_samples; s++) {
+        for (uint8_t i = 0; i < q->num_sensors; i++) {
+            acc[i] += adc1_read_channel_once(q->adc_channels[i]);
+        }
+        // Si querés decorrelacionar un poco el ruido:
+        // delay_us_blocking(5);
+    }
+
+    for (uint8_t i = 0; i < q->num_sensors; i++)
+        out[i] = (uint16_t)(acc[i] / q->avg_samples);
 }
 
-static inline uint16_t map_calibrated_u16(uint16_t x, uint16_t in_min, uint16_t in_max) {
-    if (in_max <= in_min) return 0; // evita div/0: sensor sin calibrar, vuelve 0
-    if (x <= in_min) return 0;
-    if (x >= in_max) return 1000;
-    uint32_t num = (uint32_t)(x - in_min) * 1000u;
+static inline uint16_t map_u16(uint16_t x, uint16_t in_min, uint16_t in_max, uint16_t out_max) {
+    if (in_max <= in_min) return 0;
+    uint32_t num = (uint32_t)(x - in_min) * out_max;
     uint32_t den = (uint32_t)(in_max - in_min);
-    return (uint16_t)(num / den); // 0..1000
+    uint32_t y = num / den;
+    if (y > out_max) y = out_max;
+    return (uint16_t)y;
 }
 
 void qre_read_calibrated(const qre_array_t* q, uint16_t* out) {
     if (!q || !out) return;
-    uint16_t raw[QRE_MAX_SENSORS];
-    qre_read_raw(q, raw);
 
-    for (uint8_t i = 0; i < q->num_sensors; i++) {
-        out[i] = map_calibrated_u16(raw[i], q->cal_min[i], q->cal_max[i]);
+    uint16_t raw[QRE_MAX_SENSORS];
+    qre_read_raw(q, raw); // usa promediado si está configurado
+
+    if (q->calibrated) {
+        for (uint8_t i = 0; i < q->num_sensors; i++)
+            out[i] = map_u16(raw[i], q->min[i], q->max[i], 1000);
+    } else {
+        for (uint8_t i = 0; i < q->num_sensors; i++)
+            out[i] = (raw[i] * 1000u) / 4095u;
     }
 }
 
-// --- Núcleo de posición con umbrales tipo Pololu ---
+// --- Núcleo común para posición (invert=true => invierte 0..1000 -> 1000..0)
 static uint16_t qre_position_core(const qre_array_t* q, bool invert) {
+    if (!q) return 0;
+
     uint16_t val[QRE_MAX_SENSORS];
-    qre_read_calibrated(q, val); // 0..1000
+    qre_read_calibrated(q, val);
 
-    const uint16_t right_edge = (uint16_t)((q->num_sensors - 1) * 1000u);
-    const uint16_t center     = right_edge / 2;
-
-    bool onLine = false;
-    uint32_t sum = 0;
-    uint32_t wsum = 0;
-
+    uint32_t sum = 0, wsum = 0;
     for (uint8_t i = 0; i < q->num_sensors; i++) {
         uint16_t v = val[i];
-        if (invert) v = 1000 - v;
-
-        if (v > q->th_online) onLine = true;         // detecta línea presente
-        if (v > q->th_avg) {                         // sólo ponderar lo significativo
-            uint16_t w = (uint16_t)(i * 1000u);
-            sum  += (uint32_t)v * w;
-            wsum += v;
-        }
+        if (invert) v = 1000 - v;    // línea negra ⇒ invertir? (en tu caso NO)
+        uint16_t w = (uint16_t)(i * 1000u);
+        sum  += (uint32_t)v * w;
+        wsum += v;
     }
+    if (wsum == 0)
+        return invert ? 0 : (uint16_t)((q->num_sensors - 1) * 1000u);
 
-    // Si no se ve la línea (o no hubo contribución), ir al borde según el último lado
-    if (!onLine || wsum == 0) {
-        // Nota: usamos last_pos guardado en la struct (mutable)
-        uint16_t last = q->last_pos;
-        return (last < center) ? 0 : right_edge;
-    }
-
-    uint16_t pos = (uint16_t)(sum / wsum);
-
-    // Actualizar last_pos (necesitamos mutar la struct; hacemos cast a non-const)
-    ((qre_array_t*)q)->last_pos = pos;
-
-    return pos;
+    return (uint16_t)(sum / wsum);
 }
 
 // Línea NEGRA: NO invertir (negro ya es alto tras calibrar)
