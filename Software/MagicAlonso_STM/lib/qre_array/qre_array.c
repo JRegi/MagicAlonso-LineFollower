@@ -172,52 +172,36 @@ void qre_read_calibrated(const qre_array_t* q, uint16_t* out) {
 static uint16_t qre_position_core(const qre_array_t* q, bool invert) {
     if (!q) return 0;
 
-    // memoria de última posición (0..(N-1)*1000)
+    // "memoria" de última posición (0..(N-1)*1000)
     static uint16_t last_pos = 0;
 
     uint16_t val[QRE_MAX_SENSORS];
-    qre_read_calibrated(q, val); // 0..1000  (usa tu calibración y promediado)  // :contentReference[oaicite:1]{index=1}
+    qre_read_calibrated(q, val); // 0..1000
 
-    const uint16_t THRESH_ONLINE = 200; // “vemos línea”
-    const uint16_t THRESH_NOISE  = 50;  // entra al promedio
-    const uint8_t  WIDE_CLUSTER_MIN_ON = 5; // ***clave***: congela si ≥5 sensores >200
+    const uint16_t THRESH_ONLINE = 200; // detecta presencia de línea
+    const uint16_t THRESH_NOISE  = 50;  // ignora ruido en el promedio
 
     bool on_line = false;
     uint32_t sumw = 0, sumv = 0;
-    uint8_t count_on = 0;
-    int first_on = -1, last_on = -1;
 
     for (uint8_t i = 0; i < q->num_sensors; i++) {
         uint16_t v = val[i];
         if (invert) v = 1000 - v;
 
-        if (v > THRESH_ONLINE) {
-            on_line = true;
-            count_on++;
-            if (first_on < 0) first_on = i;
-            last_on = i;
-        }
+        if (v > THRESH_ONLINE) on_line = true;
         if (v > THRESH_NOISE) {
             sumw += (uint32_t)v * (i * 1000u);
             sumv += v;
         }
     }
 
-    uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
-
-    // --- Nueva regla: franja ancha => mantener la última posición (evita ir recto)
-    if (count_on >= WIDE_CLUSTER_MIN_ON) {
-        return last_pos; // "hold" hasta que vuelva a verse un borde más angosto
-        // Alternativa si preferís forzar borde coherente con lo anterior:
-        // return (last_pos < mid) ? (uint16_t)(first_on * 1000u) : (uint16_t)(last_on * 1000u);
-    }
-
-    // Si no “vemos” línea, usar memoria hacia el extremo (comportamiento Pololu)
     if (!on_line) {
+        // devuelve extremo según última posición (memoria)
+        uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
         return (last_pos < mid) ? 0u : (uint16_t)((q->num_sensors - 1) * 1000u);
     }
 
-    if (sumv == 0) return last_pos; // por seguridad si todo quedó bajo 50
+    if (sumv == 0) return last_pos; // por seguridad
     last_pos = (uint16_t)(sumw / sumv);
     return last_pos;
 }

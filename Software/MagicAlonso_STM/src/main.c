@@ -14,8 +14,8 @@
 #define SETPOINT     3500
 
 // Ahora en μs de servo:
-#define BASE_SPEED   1050                // neutral
-#define MAX_SPEED    1300                 // tope alto seguro
+#define BASE_SPEED   1200                // neutral
+#define MAX_SPEED    1400                 // tope alto seguro
 #define MIN_SPEED    1000                 // tope bajo seguro
 #define PWM_HZ       400u                 // servo @ 400 Hz
 
@@ -26,8 +26,8 @@
 #define TIM_RIGHT_MOTOR  TIM_OC1
 
 // Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
-static float KP = 0.02f;
-static float KD = 0.02f;
+static float KP = 0.03f;
+static float KD = 0.14f;
 static int   last_error = 0;
 
 // (dejado como lo tenías)
@@ -140,7 +140,7 @@ int main(void) {
         next += 1;
 
         // 1) Lectura en fase
-        uint16_t pos = qre_read_position_black(&qre);
+        uint16_t pos = qre_read_position_white(&qre);
 
         //uart_printf("Pos: %4u\n", pos);
        
