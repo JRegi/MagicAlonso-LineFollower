@@ -1,7 +1,6 @@
 #include "qre_array.h"
 #include "esc.h"
 #include "uart.h"
-#include "receptor_ir.h"
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/gpio.h>
@@ -152,18 +151,20 @@ static void rgb_cyan(void)  { gpio_set(RGB_PORT, RGB_GREEN_PIN | RGB_BLUE_PIN); 
 
 static void rgb_clear(void) { gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN); }
 
+
+
+
+
 int main(void) {
     clock_and_systick_setup();
     user_interfaces_setup();
-    uart_init_115200();
+    //uart_init_115200();
     delay_init_ms();
 
     delay_ms(200);
 
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
-
-    ir_init();
 
     delay_ms(200); 
 
@@ -203,9 +204,39 @@ int main(void) {
     bool boton1 = false;
 
     while (1) {
-        if (ir_available()) {
-            uint32_t code = ir_read();
-            uart_printf("IR code:", code);
+        delay_ms(100);
+
+        if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = true; rgb_clear(); rgb_cyan();}
+
+        while(boton1) {
+            // esperar el próximo tick exacto (2.5 ms)
+            while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
+            next += 1;
+
+            // 1) Lectura en fase
+            uint16_t pos = qre_read_position_white(&qre);
+
+            //uart_printf("Pos: %4u\n", pos);
+        
+            // 2) PID + salida
+            pid_step_and_output(pos);
+
+            //uart_printf("\n");
+
+
+            // for (uint8_t i = 0; i < 8; i++) {
+            //     raw_qre[i] = qre_read_raw_channel(QRE_CH[i]);
+            // }
+
+            // uart_printf("QRE: %4u %4u %4u %4u %4u %4u %4u %4u\n",
+            //             raw_qre[7], raw_qre[6], raw_qre[5], raw_qre[4],
+            //             raw_qre[3], raw_qre[2], raw_qre[1], raw_qre[0]);
+
+
+            //delay_ms(100); // simula trabajo en el loop
+            
+            //if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = false; rgb_clear(); rgb_cyan();}
+
         }
     }
 }
