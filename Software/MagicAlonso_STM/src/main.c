@@ -93,16 +93,16 @@ static inline void pid_step_and_output(uint16_t position) {
     int error      = (int)position - SETPOINT;
     int derivative = error - last_error;
 
-    float pid = (error * KP) + (derivative * KD);
+    int pid = (error * KP) + (derivative * KD);
     last_error = error;
 
-    float us_right = (float)BASE_SPEED - pid;
-    float us_left  = (float)BASE_SPEED + pid;
+    int us_right = BASE_SPEED - pid;
+    int us_left  = BASE_SPEED + pid;
 
     if (us_right > MAX_SPEED) us_right = MAX_SPEED;
-    else if (us_right < MIN_SPEED) us_right = MIN_SPEED;
+    if (us_right < MIN_SPEED) us_right = MIN_SPEED;
     if (us_left  > MAX_SPEED) us_left  = MAX_SPEED;
-    else if (us_left  < MIN_SPEED) us_left  = MIN_SPEED;
+    if (us_left  < MIN_SPEED) us_left  = MIN_SPEED;
 
     esc_write_us(&mr, (uint16_t)us_right);
     esc_write_us(&ml, (uint16_t)us_left);
@@ -119,7 +119,6 @@ static void release_jtag_keep_swd(void) {
     // Bits 26:24 = SWJ_CFG → 010 = JTAG off, SWD on
     AFIO_MAPR = (AFIO_MAPR & ~(7u << 24)) | (2u << 24);
 }
-
 
 static void user_interfaces_setup(void) {
     release_jtag_keep_swd();
@@ -153,10 +152,6 @@ static void rgb_blue(void)  { gpio_set(RGB_PORT, RGB_BLUE_PIN); }
 static void rgb_cyan(void)  { gpio_set(RGB_PORT, RGB_GREEN_PIN | RGB_BLUE_PIN); }
 
 static void rgb_clear(void) { gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN); }
-
-
-
-
 
 int main(void) {
     clock_and_systick_setup();
