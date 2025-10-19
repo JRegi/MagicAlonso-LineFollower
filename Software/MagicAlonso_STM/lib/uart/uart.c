@@ -1,12 +1,10 @@
 #include "uart.h"
+#include "timing.h"
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/usart.h>
 #include <stdio.h>
 #include <stdarg.h>
-
-// --- Si ya tenés delay_ms en otra lib, podés declarar extern y usarla aquí.
-// extern void delay_ms(uint32_t ms);
 
 void uart_init_115200(void) {
     rcc_periph_clock_enable(RCC_GPIOB);
@@ -51,17 +49,7 @@ static int _uart_rx_ready(void) {
 
 // Implementación simple de timeout (en "vueltas"); si tenés delay_ms, cambiá por tiempo real.
 int uart_getc_timeout(int timeout_ms) {
-    // Si ya tenés delay_ms real, hacé:
-    // int t = timeout_ms;
-    // while (t-- > 0) { if (_uart_rx_ready()) return usart_recv(USART3); delay_ms(1); }
-    // return -1;
-
-    // Fallback: bucle aproximado (no usa delay_ms)
-    volatile int spins = timeout_ms * 6000; // aprox a 72MHz; ajustar si querés
-    while (spins-- > 0) {
-        if (_uart_rx_ready())
-            return (int)usart_recv(USART3);
-        __asm__("nop");
-    }
+    int t = timeout_ms;
+    while (t-- > 0) { if (_uart_rx_ready()) return usart_recv(USART3); delay_ms_blocking(1); }
     return -1;
 }

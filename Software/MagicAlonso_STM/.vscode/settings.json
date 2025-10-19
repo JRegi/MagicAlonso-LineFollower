@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "systick.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "timing.h": "c",
+        "stdint.h": "c",
+        "rcc.h": "c",
+        "gpio.h": "c"
     }
 }

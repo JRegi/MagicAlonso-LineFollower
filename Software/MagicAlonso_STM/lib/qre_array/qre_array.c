@@ -1,13 +1,8 @@
 #include "qre_array.h"
+#include "timing.h"
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/adc.h>
-
-// Delay bloqueante aproximado
-static inline void delay_us_blocking(uint32_t us) {
-    for (uint32_t i = 0; i < us; i++)
-        for (volatile uint32_t j = 0; j < 12; j++) __asm__("nop"); // ~1us @72MHz aprox
-}
 
 // Setup de ADC, sin SCAN_MODE, SINGLE_CONVERSION, RIGHT_ALIGNED
 static void adc1_setup_once(void) {
@@ -93,7 +88,7 @@ void qre_set_averaging(qre_array_t* q, uint8_t samples) {
 }
 
 // Calibración automática: actualiza min y max con varias lecturas
-void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us) {
+void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay) {
     if (!q) return;
 
     uint8_t saved = q->avg_samples;
@@ -107,7 +102,7 @@ void qre_calibrate(qre_array_t* q, uint16_t iterations, uint32_t delay_us) {
             if (reading > q->max[i]) q->max[i] = reading;
         }
 
-        if (delay_us) delay_us_blocking(delay_us);
+        if (delay) delay_us_blocking(delay);
     }
     
     q->avg_samples = saved;
