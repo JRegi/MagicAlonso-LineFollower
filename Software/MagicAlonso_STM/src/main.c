@@ -1,244 +1,150 @@
-// PID velocista + QRE + ESC (1000..1200us) en PA8 (izq, TIM1_CH1) y PA10 (der, TIM1_CH3)
-// Indicadores: PB4 = CALIBRANDO (ON), PB5 = ANDANDO (blink 2 Hz)
-
-#include <libopencm3/stm32/rcc.h>
-#include <libopencm3/stm32/gpio.h>
-#include <libopencm3/stm32/adc.h>
-#include <libopencm3/stm32/timer.h>
-#include <libopencm3/cm3/systick.h>
+#include "qre_array.h"
 #include "esc.h"
-#include "qtr_array.h"
+#include "uart.h"
+#include "timing.h"
+#include "ui.h"
+#include "clocks.h"
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/cm3/systick.h>
+#include <libopencm3/stm32/gpio.h>
+#include <stdint.h>
+#include <stdbool.h>
 
-#define MOTOR_LEFT_PIN  GPIO10   // TIM1_CH3
-#define MOTOR_RIGHT_PIN GPIO8  // TIM1_CH1
+// Centro para N=8 (0..7000)
+#define SETPOINT     3500
 
-#define TIM_LEFT_MOTOR  TIM_OC3
-#define TIM_RIGHT_MOTOR TIM_OC1
+// Ahora en μs de servo:
+#define BASE_SPEED   1150                // neutral
+#define MAX_SPEED    1300                 // tope alto seguro
+#define MIN_SPEED    1000                 // tope bajo seguro
+#define PWM_HZ       400u                 // servo @ 400 Hz
 
-#define KP         0.85f
-#define KI         0.00f
-#define KD         0.25f
+#define MOTOR_LEFT_PIN   GPIO10           // TIM1_CH3 (PA10 si corresponde a tu mapeo)
+#define MOTOR_RIGHT_PIN  GPIO8            // TIM1_CH1 (PA8)
 
-#define US_MIN     1000u
-#define US_MAX     1350u
+#define TIM_LEFT_MOTOR   TIM_OC3
+#define TIM_RIGHT_MOTOR  TIM_OC1
 
-// >>> Cambios clave para que se mueva <<<
-#define PWM_HZ         400u      
-#define MIN_SPIN_US    1025u     // umbral mínimo que mantiene giro
-#define BASE_FWD_US    1150u     // base hacia adelante (sigue en 1000..1200)
-#define KICK_US        1200u     // pulso de arranque
-#define KICK_MS        50u       // duración del pulso de arranque
-#define LOST_BIAS_US   50u   // sesgo suave cuando se pierde la línea (30–80 us típico)
+// Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
+static float KP = 0.022f;
+static float KD = 0.12f;
+static int   last_error = 0;
 
-// <<<<
+uint16_t control_period = 1000000 / PWM_HZ;
 
-#define NUM_SENS   8
-#define POS_CENTER 3500
+// (dejado como lo tenías)
+static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
+qre_array_t qre;
 
-#define LED_CAL_PORT GPIOB
-#define LED_CAL_PIN  GPIO15
-#define LED_RUN_PORT GPIOB
-#define LED_RUN_PIN  GPIO14
-#define LED_ON(p, n)    gpio_set((p), (n))
-#define LED_OFF(p, n)   gpio_clear((p), (n))
-#define LED_TOGGLE(p,n) gpio_toggle((p), (n))
+esc_handle_t ml, mr;
 
-void sys_tick_handler(void);
-static volatile uint32_t _ms = 0;
-void sys_tick_handler(void){ _ms++; }
-static inline uint32_t millis(void){ return _ms; }
+const esc_config_t escL = {
+    .tim       = TIM1,
+    .ch        = TIM_LEFT_MOTOR,
+    .gpio_port = GPIOA,
+    .gpio_pin  = MOTOR_LEFT_PIN,
+    .freq_hz   = PWM_HZ,        // 400 Hz
+    .min_us    = MIN_SPEED,     // 1100
+    .max_us    = MAX_SPEED      // 1900
+};
 
-static void delay_us(uint32_t us){ for (volatile uint32_t i=0;i<us*12;++i) __asm__("nop"); }
-static void delay_ms(uint32_t ms){ while(ms--) delay_us(1000); }
+const esc_config_t escR = {
+    .tim       = TIM1,
+    .ch        = TIM_RIGHT_MOTOR,
+    .gpio_port = GPIOA,
+    .gpio_pin  = MOTOR_RIGHT_PIN,
+    .freq_hz   = PWM_HZ,        // 400 Hz
+    .min_us    = MIN_SPEED,     // 1100
+    .max_us    = MAX_SPEED      // 1900 (arreglado)
+};
 
-static void clock_setup(void){
-    rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
-    rcc_periph_clock_enable(RCC_GPIOA);
-    rcc_periph_clock_enable(RCC_GPIOB);
-    rcc_periph_clock_enable(RCC_TIM1);
-    rcc_periph_clock_enable(RCC_ADC1);
-    rcc_periph_clock_enable(RCC_AFIO);
-    rcc_set_adcpre(RCC_CFGR_ADCPRE_PCLK2_DIV6);
+static inline void pid_step_and_output(uint16_t position) {
+    int error      = (int)position - SETPOINT;
+    int derivative = error - last_error;
 
-    gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, LED_CAL_PIN | LED_RUN_PIN);
-    LED_OFF(LED_CAL_PORT, LED_CAL_PIN);
-    LED_OFF(LED_RUN_PORT, LED_RUN_PIN);
+    int pid = (error * KP) + (derivative * KD);
+    last_error = error;
+
+    int us_right = BASE_SPEED - pid;
+    int us_left  = BASE_SPEED + pid;
+
+    if (us_right > MAX_SPEED) us_right = MAX_SPEED;
+    if (us_right < MIN_SPEED) us_right = MIN_SPEED;
+    if (us_left  > MAX_SPEED) us_left  = MAX_SPEED;
+    if (us_left  < MIN_SPEED) us_left  = MIN_SPEED;
+
+    esc_write_us(&mr, (uint16_t)us_right);
+    esc_write_us(&ml, (uint16_t)us_left);
+    //uart_printf("ML: %4u MR: %4u\n", (uint16_t)us_right, (uint16_t)us_left);
 }
 
-static void systick_setup(void){
-    systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
-    systick_set_reload(72000 - 1); // 1 ms
-    systick_interrupt_enable();
-    systick_counter_enable();
-}
+int main(void) {
+    clocks_init();
+    timing_init();
+    ui_init();
+    //uart_init_115200();
 
-static void qre_build_and_init(qre_t *qr){
-    static const uint32_t ports[NUM_SENS]={GPIOA,GPIOA,GPIOA,GPIOA,GPIOA,GPIOA,GPIOA,GPIOA};
-    static const uint16_t pins [NUM_SENS]={GPIO1,GPIO0,GPIO2,GPIO3,GPIO4,GPIO5,GPIO6,GPIO7};
-    static const uint8_t  ch   [NUM_SENS]={1,0,2,3,4,5,6,7};
-    qre_cfg_t cfg = {
-        .adc=ADC1,.num_sensors=NUM_SENS,.adc_channels=ch,.gpio_ports=ports,.gpio_pins=pins,
-        .has_emitters=false,.emit_port=0,.emit_pin=0,.line_is_white=true,.use_ambient_sub=false,
-        .smpr_default=ADC_SMPR_SMP_55DOT5CYC,.delay_us=delay_us,
-    };
-    qre_init(qr,&cfg);
-}
+    delay_ms_blocking(200);
 
-static void qre_auto_calibrate(qre_t *qr){
-    LED_ON(LED_CAL_PORT, LED_CAL_PIN);
-    qre_calibrate_on_samples(qr, 400, 5000);   // ~2 s
-    LED_OFF(LED_CAL_PORT, LED_CAL_PIN);
-}
+    esc_init(&ml, &escL);
+    esc_init(&mr, &escR);
 
-static inline uint16_t clamp_u16(int v, int lo, int hi){
-    if (v < lo) return (uint16_t)lo;
-    if (v > hi) return (uint16_t)hi;
-    return (uint16_t)v;
-}
-
-// --- Kickstart / floor por motor ---
-static uint16_t last_cmd_L = US_MIN, last_cmd_R = US_MIN;
-static uint32_t kick_until_L = 0,     kick_until_R = 0;
-
-static inline uint16_t ensure_spin_L(uint16_t target){
-    if (target <= US_MIN) { kick_until_L=0; last_cmd_L=US_MIN; return US_MIN; }
-    // si pasa de parado a movimiento, dar un pulso
-    if (last_cmd_L <= US_MIN && target >= MIN_SPIN_US){
-        kick_until_L = millis() + KICK_MS;
-        last_cmd_L = KICK_US;
-        return KICK_US;
-    }
-    if (kick_until_L && (int32_t)(millis() - kick_until_L) < 0){
-        last_cmd_L = KICK_US;
-        return KICK_US;
-    } else kick_until_L = 0;
-    if (target < MIN_SPIN_US) target = MIN_SPIN_US;
-    last_cmd_L = target;
-    return target;
-}
-
-static inline uint16_t ensure_spin_R(uint16_t target){
-    if (target <= US_MIN) { kick_until_R=0; last_cmd_R=US_MIN; return US_MIN; }
-    if (last_cmd_R <= US_MIN && target >= MIN_SPIN_US){
-        kick_until_R = millis() + KICK_MS;
-        last_cmd_R = KICK_US;
-        return KICK_US;
-    }
-    if (kick_until_R && (int32_t)(millis() - kick_until_R) < 0){
-        last_cmd_R = KICK_US;
-        return KICK_US;
-    } else kick_until_R = 0;
-    if (target < MIN_SPIN_US) target = MIN_SPIN_US;
-    last_cmd_R = target;
-    return target;
-}
-
-int main(void){
-    clock_setup();
-    systick_setup();
-
-    // ESC con 400 Hz
-    esc_handle_t escL, escR;
-    const esc_config_t cfgL = {.tim=TIM1,.ch=TIM_LEFT_MOTOR,.gpio_port=GPIOA,.gpio_pin=MOTOR_LEFT_PIN,
-                               .freq_hz=PWM_HZ,.min_us=US_MIN,.max_us=US_MAX};
-    const esc_config_t cfgR = {.tim=TIM1,.ch=TIM_RIGHT_MOTOR,.gpio_port=GPIOA,.gpio_pin=MOTOR_RIGHT_PIN,
-                               .freq_hz=PWM_HZ,.min_us=US_MIN,.max_us=US_MAX};
-    esc_init(&escL, &cfgL);
-    esc_init(&escR, &cfgR);
-
-    // Arming: 1000us ~2 s
-    uint32_t t0 = millis();
-    esc_begin_arming(&escL, 2000, t0);
-    esc_begin_arming(&escR, 2000, t0);
-    while (esc_state(&escL)!=ESC_STATE_ARMED || esc_state(&escR)!=ESC_STATE_ARMED){
-        esc_write_us(&escL, US_MIN);
-        esc_write_us(&escR, US_MIN);
-        esc_update(&escL, millis());
-        esc_update(&escR, millis());
-    }
-
-    // QRE + calibración
-    qre_t qre = {0};
-    qre_build_and_init(&qre);
-    qre_auto_calibrate(&qre);
-
-    // PID
-    float integ = 0.0f; int last_err = 0;
-    uint32_t hb_t0 = millis(); LED_OFF(LED_RUN_PORT, LED_RUN_PIN);
-
-    while (1){
-        // Heartbeat 2 Hz
-        if ((uint32_t)(millis() - hb_t0) >= 250){ hb_t0 += 250; LED_TOGGLE(LED_RUN_PORT, LED_RUN_PIN); }
-
-        uint16_t cal[NUM_SENS];
-        qre_read_calibrated(&qre, cal);
-        int32_t pos = qre_read_line_position(&qre, cal); // 0..7000, -1 si no hay línea
+    delay_ms_blocking(200); 
 
 
-        if (pos < 0){
-            // Antes: mandábamos 1000us y se paraba.
-            // Ahora: seguir recto con un sesgo hacia el último error conocido.
-            int sgn = (last_err > 0) ? 1 : (last_err < 0 ? -1 : 0);
-            int left_us  = (int)BASE_FWD_US + (int)sgn * (int)LOST_BIAS_US;
-            int right_us = (int)BASE_FWD_US - (int)sgn * (int)LOST_BIAS_US;
+    // Armado
+    // esc_write_us(&ml, 1000);
+    // esc_write_us(&mr, 1000);
+    // esc_calibrate(&ml);
+    // delay_ms_blocking(4000);
+    // esc_calibrate(&mr);
 
-            left_us  = clamp_u16(left_us,  US_MIN, US_MAX);
-            right_us = clamp_u16(right_us, US_MIN, US_MAX);
+    esc_arm(&ml);
+    esc_arm(&mr);
+    
+    //esc_arm(&ml);
+    //esc_arm(&mr);
 
-            // Mantener giro (floor/kick) y escribir
-            uint16_t outL = ensure_spin_L((uint16_t)left_us);
-            uint16_t outR = ensure_spin_R((uint16_t)right_us);
-            esc_write_us(&escL, outL);
-            esc_write_us(&escR, outR);
+    // Sensores
+    qre_init(&qre, QRE_CH, 8);
 
-            // Nota: NO reseteo last_err, así recordamos hacia dónde “estaba” la línea.
-            // (KI=0, así que el 'integ' no influye; podés dejar esta línea o quitarla)
-            integ = 0.0f;
+    //uart_printf("Calibrating QRE...\n");
 
-            // Loop rápido para reacquirir (mejor que 50 ms)
-            delay_ms(10);
-            continue;
+    // Calibración (mover la regleta por línea y fondo)
+    rgb_red();
+    delay_ms_blocking(500);
+    qre_calibrate(&qre, 2000, 500);
+
+    //uart_printf("Calibration done.\n");
+
+    // Promedio (arrancá con 1 si querés tunear KP primero)
+    qre_set_averaging(&qre, 1);
+
+    //uint16_t raw_qre[8];
+    rgb_off();
+    rgb_blue();
+
+    uint32_t last_control = 0;
+
+    bool modo_activo = false;
+
+    while (1) {
+        if (button1_was_pressed(2000)) { // 2 ms de debounce
+            modo_activo = !modo_activo;
+
+            if (modo_activo) {
+                rgb_cyan();    // modo ON
+            } else {
+                rgb_off();     // modo OFF
+                esc_write_us(&mr, MIN_SPEED);
+                esc_write_us(&ml, MIN_SPEED);
+            }
         }
 
-        // if (pos < 0){
-        //     esc_write_us(&escL, US_MIN);
-        //     esc_write_us(&escR, US_MIN);
-        //     delay_ms(50);    // que se note si pierde línea
-        //     integ = 0.0f; last_err = 0;
-        //     continue;
-        // }
-
-        int err = POS_CENTER - (int)pos;
-
-        // PID discreto
-        integ += err;
-        if (integ > 20000.0f) integ = 20000.0f;
-        if (integ < -20000.0f) integ = -20000.0f;
-        int derr = err - last_err; last_err = err;
-
-        float u = KP*(float)err + KI*integ + KD*(float)derr;
-
-        // Escalado de corrección → µs
-        const float ERR_TO_US = 100.0f / 3500.0f; // |err|≈3500 → ~100 µs
-        int delta_us = (int)(u * ERR_TO_US);
-
-        // >>> base hacia adelante más alta (1180 µs) <<<
-        int left_us  = (int)BASE_FWD_US + delta_us;
-        int right_us = (int)BASE_FWD_US - delta_us;
-
-        // Clip a 1000..1200
-        left_us  = clamp_u16(left_us,  US_MIN, US_MAX);
-        right_us = clamp_u16(right_us, US_MIN, US_MAX);
-
-        // Floor + kickstart por motor
-        uint16_t outL = ensure_spin_L((uint16_t)left_us);
-        uint16_t outR = ensure_spin_R((uint16_t)right_us);
-
-        esc_write_us(&escL, outL);
-        esc_write_us(&escR, outR);
-
-        // ~400 Hz / 2 = 2.5 ms (bucle más rápido si querés)
-        //delay_us(750);
-        delay_us(2500);
+        // Si el modo está activo, corré el lazo a 400 Hz
+        if (modo_activo && timeout_elapsed(&last_control, control_period)) {
+            uint16_t pos = qre_read_position_white(&qre);
+            pid_step_and_output(pos);
+        }
     }
 }
