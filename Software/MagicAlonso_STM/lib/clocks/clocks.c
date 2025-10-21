@@ -13,22 +13,19 @@ void clocks_init(void)
     rcc_periph_clock_enable(RCC_GPIOA);
     rcc_periph_clock_enable(RCC_GPIOB);
     rcc_periph_clock_enable(RCC_GPIOC);
-    rcc_periph_clock_enable(RCC_GPIOD);
-    rcc_periph_clock_enable(RCC_GPIOE);
-
+    
     rcc_periph_clock_enable(RCC_AFIO);
 
     /* Timers que aparecen en tu código: TIM1..TIM4 */
     rcc_periph_clock_enable(RCC_TIM1);
-    rcc_periph_clock_enable(RCC_TIM2);
-    rcc_periph_clock_enable(RCC_TIM3);
-    rcc_periph_clock_enable(RCC_TIM4);
 
     /* ADC1 (usado por regleta de sensores QRE) */
     rcc_periph_clock_enable(RCC_ADC1);
 
     /* USART3 (telemetría/console en tu proyecto) */
     rcc_periph_clock_enable(RCC_USART3);
+
+    rcc_set_adcpre(RCC_CFGR_ADCPRE_PCLK2_DIV6);
 
     /* Configurar prioridades NVIC por defecto */
     clocks_default_nvic_priorities();
@@ -47,22 +44,17 @@ uint32_t clocks_get_hz(void)
 void clocks_default_nvic_priorities(void)
 {
     /* SysTick: prioridad media */
-    #ifdef NVIC_SYSTICK_IRQ
+    #ifdef NVIC_SYSTICK
+        nvic_set_priority(NVIC_SYSTICK, 64);
+    #elif defined(NVIC_SYSTICK_IRQ)
         nvic_set_priority(NVIC_SYSTICK_IRQ, 64);
+    #else
+        #warning "SysTick NVIC identifier not defined for this target."
     #endif
 
     /* Timers críticos: TIM1 (PWM) y TIM2-TIM4 (encoders/control) */
     #ifdef NVIC_TIM1_UP_IRQ
         nvic_set_priority(NVIC_TIM1_UP_IRQ, 32);
-    #endif
-    #ifdef NVIC_TIM2_IRQ
-        nvic_set_priority(NVIC_TIM2_IRQ, 32);
-    #endif
-    #ifdef NVIC_TIM3_IRQ
-        nvic_set_priority(NVIC_TIM3_IRQ, 32);
-    #endif
-    #ifdef NVIC_TIM4_IRQ
-        nvic_set_priority(NVIC_TIM4_IRQ, 32);
     #endif
 
     /* USART3: baja prioridad (telemetría no crítica) */

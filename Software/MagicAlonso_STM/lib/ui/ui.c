@@ -15,12 +15,6 @@ static inline void rgb_write(bool r_on, bool g_on, bool b_on)
 
 void ui_init(void)
 {
-    /* Clocks GPIO/AFIO */
-    rcc_periph_clock_enable(RCC_GPIOA);
-    rcc_periph_clock_enable(RCC_GPIOB);
-    rcc_periph_clock_enable(RCC_GPIOC);
-    rcc_periph_clock_enable(RCC_AFIO);
-
     /* Liberar PB3/PB4/PB5 si hizo falta (JTAG off, SWD on) */
     AFIO_MAPR |= AFIO_MAPR_SWJ_CFG_JTAG_OFF_SW_ON;
 

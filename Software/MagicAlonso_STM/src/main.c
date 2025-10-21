@@ -129,7 +129,7 @@ int main(void) {
     bool modo_activo = false;
 
     while (1) {
-        if (button1_was_pressed(2000)) { // 2 ms de debounce
+        if (button1_was_pressed(15000)) { // 15 ms de debounce
             modo_activo = !modo_activo;
 
             if (modo_activo) {

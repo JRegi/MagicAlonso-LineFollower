@@ -7,9 +7,6 @@
 #include <stdarg.h>
 
 void uart_init_115200(void) {
-    rcc_periph_clock_enable(RCC_GPIOB);
-    rcc_periph_clock_enable(RCC_USART3);
-
     // PB10 = TX (AF Push-Pull 50 MHz), PB11 = RX (Input Floating)
     gpio_set_mode(GPIOB, GPIO_MODE_OUTPUT_50_MHZ,
                   GPIO_CNF_OUTPUT_ALTFN_PUSHPULL, GPIO10);

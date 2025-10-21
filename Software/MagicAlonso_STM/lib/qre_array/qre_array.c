@@ -9,14 +9,6 @@ static void adc1_setup_once(void) {
     static bool done = false;
     if (done) return;
 
-    rcc_periph_clock_enable(RCC_ADC1);
-    rcc_periph_clock_enable(RCC_GPIOA);
-    rcc_periph_clock_enable(RCC_GPIOB);
-    rcc_periph_clock_enable(RCC_GPIOC);
-
-    // ADC clk = PCLK2/6 = 12 MHz (<=14 MHz)
-    rcc_set_adcpre(RCC_CFGR_ADCPRE_PCLK2_DIV6);
-
     adc_power_off(ADC1);
     rcc_periph_reset_pulse(RST_ADC1);
 

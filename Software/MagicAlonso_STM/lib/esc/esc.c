@@ -8,21 +8,6 @@
 /* -------- Helpers privados -------- */
 static int is_adv_timer(uint32_t tim) { return (tim == TIM1) || (tim == TIM8); }
 
-static void enable_rcc_gpio(uint32_t port) {
-  if (port == GPIOA) rcc_periph_clock_enable(RCC_GPIOA);
-  else if (port == GPIOB) rcc_periph_clock_enable(RCC_GPIOB);
-  else if (port == GPIOC) rcc_periph_clock_enable(RCC_GPIOC);
-  else if (port == GPIOD) rcc_periph_clock_enable(RCC_GPIOD);
-  else if (port == GPIOE) rcc_periph_clock_enable(RCC_GPIOE);
-}
-
-static void enable_rcc_tim(uint32_t tim) {
-  if (tim == TIM1) rcc_periph_clock_enable(RCC_TIM1);
-  else if (tim == TIM2) rcc_periph_clock_enable(RCC_TIM2);
-  else if (tim == TIM3) rcc_periph_clock_enable(RCC_TIM3);
-  else if (tim == TIM4) rcc_periph_clock_enable(RCC_TIM4);
-}
-
 static void set_oc_mode(uint32_t tim, enum tim_oc_id ch) {
   timer_set_oc_mode(tim, ch, TIM_OCM_PWM1);
   timer_enable_oc_preload(tim, ch);
@@ -39,17 +24,18 @@ void esc_init(esc_handle_t* h, const esc_config_t* cfg)
   h->is_adv = is_adv_timer(cfg->tim);
   h->arr   = (uint16_t)(period_us - 1);
 
-  /* Clocks */
-  enable_rcc_gpio(cfg->gpio_port);
-  enable_rcc_tim(cfg->tim);
-
   /* Pin AF push-pull (F1) */
   gpio_set_mode(cfg->gpio_port, GPIO_MODE_OUTPUT_10_MHZ,
                 GPIO_CNF_OUTPUT_ALTFN_PUSHPULL, cfg->gpio_pin);
 
   /* Timer: base 1 MHz (1 µs/tick), edge-aligned, up */
   timer_set_mode(cfg->tim, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
-  timer_set_prescaler(cfg->tim, 71);          // 72 MHz / (71+1) = 1 MHz
+
+  // Suponiendo TIM1 en APB2 @72 MHz: obtenerlo desde libopencm3 si disponible
+  uint32_t timclk_hz = rcc_apb2_frequency; // en F1 el timer clock = apb2 * 1 (o *2 si prescalado >1)
+  uint16_t psc = (uint16_t)((timclk_hz / 1000000UL) - 1UL);
+  timer_set_prescaler(cfg->tim, psc);
+
   timer_set_period(cfg->tim, h->arr);         // ARR = periodo_us - 1
   timer_enable_preload(cfg->tim);
   timer_continuous_mode(cfg->tim);
