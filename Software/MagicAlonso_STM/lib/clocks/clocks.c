@@ -16,8 +16,9 @@ void clocks_init(void)
     
     rcc_periph_clock_enable(RCC_AFIO);
 
-    /* Timers que aparecen en tu código: TIM1..TIM4 */
+    /* Timers que aparecen en tu código: TIM1 y TIM2 */
     rcc_periph_clock_enable(RCC_TIM1);
+    rcc_periph_clock_enable(RCC_TIM2);
 
     /* ADC1 (usado por regleta de sensores QRE) */
     rcc_periph_clock_enable(RCC_ADC1);
@@ -52,9 +53,13 @@ void clocks_default_nvic_priorities(void)
         #warning "SysTick NVIC identifier not defined for this target."
     #endif
 
-    /* Timers críticos: TIM1 (PWM) y TIM2-TIM4 (encoders/control) */
+    /* Timers críticos: TIM1 (PWM) y TIM2 (loop de control) */
     #ifdef NVIC_TIM1_UP_IRQ
         nvic_set_priority(NVIC_TIM1_UP_IRQ, 32);
+    #endif
+
+    #ifdef NVIC_TIM2_IRQ
+        nvic_set_priority(NVIC_TIM2_IRQ, 48);
     #endif
 
     /* USART3: baja prioridad (telemetría no crítica) */

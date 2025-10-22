@@ -5,6 +5,7 @@
         "timing.h": "c",
         "stdint.h": "c",
         "rcc.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "dwt.h": "c"
     }
 }

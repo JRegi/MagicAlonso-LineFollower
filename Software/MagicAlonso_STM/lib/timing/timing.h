@@ -4,7 +4,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-void sys_tick_handler(void);
+extern volatile bool control_tick_400hz;
+
+void control_timer_init_400hz(void);
 
 /** Inicializa SysTick (1 kHz) y DWT para micros.
  *  Debe llamarse después de clocks_init(). */

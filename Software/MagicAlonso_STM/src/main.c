@@ -82,6 +82,7 @@ int main(void) {
     clocks_init();
     timing_init();
     ui_init();
+    control_timer_init_400hz();
     //uart_init_115200();
 
     delay_ms_blocking(200);
@@ -90,7 +91,6 @@ int main(void) {
     esc_init(&mr, &escR);
 
     delay_ms_blocking(200); 
-
 
     // Armado
     // esc_write_us(&ml, 1000);
@@ -124,8 +124,6 @@ int main(void) {
     rgb_off();
     rgb_blue();
 
-    uint32_t last_control = 0;
-
     bool modo_activo = false;
 
     while (1) {
@@ -142,8 +140,11 @@ int main(void) {
         }
 
         // Si el modo está activo, corré el lazo a 400 Hz
-        if (modo_activo && timeout_elapsed(&last_control, control_period)) {
+        if (modo_activo && control_tick_400hz) {
+            control_tick_400hz = false;
+
             uint16_t pos = qre_read_position_white(&qre);
+
             pid_step_and_output(pos);
         }
     }
