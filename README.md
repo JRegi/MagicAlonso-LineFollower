@@ -2,7 +2,7 @@
 
 ## MagicAlonso V1 (sin turbina)
 
-![imagen](https://github.com/JRegi/MagicAlonso-LineFollower/blob/main/MagicAlonsoV1_ensamblado.png)
+![imagen](./MagicAlonsoV1_ensamblado.png)
 
 ## Descripción
 
