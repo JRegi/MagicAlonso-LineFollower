@@ -5,5 +5,4 @@
 ![imagen](MagicAlonsoV1_ensamblado.png)
 
 ## Descripción
-
 _MagicAlonso_ es un robot seguidor de líneas de alto rendimiento con tracción y succión brushless. 
