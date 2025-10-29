@@ -6,11 +6,9 @@
 
 static inline void rgb_write(bool r_on, bool g_on, bool b_on)
 {
-    /* Asumo LED común cátodo (GPIO alto = encendido).
-       Si tu LED fuera común ánodo, invertí la lógica (set=APAGAR). */
-    if (r_on) gpio_set(RGB_PORT, RGB_RED_PIN); else gpio_clear(RGB_PORT, RGB_RED_PIN);
+    if (r_on) gpio_set(RGB_PORT, RGB_RED_PIN);   else gpio_clear(RGB_PORT, RGB_RED_PIN);
     if (g_on) gpio_set(RGB_PORT, RGB_GREEN_PIN); else gpio_clear(RGB_PORT, RGB_GREEN_PIN);
-    if (b_on) gpio_set(RGB_PORT, RGB_BLUE_PIN); else gpio_clear(RGB_PORT, RGB_BLUE_PIN);
+    if (b_on) gpio_set(RGB_PORT, RGB_BLUE_PIN);  else gpio_clear(RGB_PORT, RGB_BLUE_PIN);
 }
 
 void ui_init(void)
@@ -32,8 +30,8 @@ void ui_init(void)
 
 void rgb_set(bool r, bool g, bool b)     { rgb_write(r, g, b); }
 void rgb_off(void)                       { rgb_write(false, false, false); }
-void rgb_red(void)                       { rgb_write(true , false, false); }
-void rgb_green(void)                     { rgb_write(false, true , false); }
+void rgb_red(void)                       { rgb_write(false , true, false); }
+void rgb_green(void)                     { rgb_write(true, false, false); }
 void rgb_blue(void)                      { rgb_write(false, false, true ); }
 void rgb_yellow(void)                    { rgb_write(true , true , false); }
 void rgb_magenta(void)                   { rgb_write(true , false, true ); }

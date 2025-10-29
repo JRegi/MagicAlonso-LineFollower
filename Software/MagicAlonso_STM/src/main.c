@@ -21,9 +21,11 @@
 
 #define MOTOR_LEFT_PIN   GPIO10           // TIM1_CH3 (PA10 si corresponde a tu mapeo)
 #define MOTOR_RIGHT_PIN  GPIO8            // TIM1_CH1 (PA8)
+#define MOTOR_FAN_PIN    GPIO9            // TIM1_CH2 (PA9)
 
 #define TIM_LEFT_MOTOR   TIM_OC3
 #define TIM_RIGHT_MOTOR  TIM_OC1
+#define TIM_FAN_MOTOR    TIM_OC2
 
 // Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
 static float KP = 0.022f;
@@ -36,7 +38,7 @@ uint16_t control_period = 1000000 / PWM_HZ;
 static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
 qre_array_t qre;
 
-esc_handle_t ml, mr;
+esc_handle_t ml, mr, mf;
 
 const esc_config_t escL = {
     .tim       = TIM1,
@@ -53,6 +55,16 @@ const esc_config_t escR = {
     .ch        = TIM_RIGHT_MOTOR,
     .gpio_port = GPIOA,
     .gpio_pin  = MOTOR_RIGHT_PIN,
+    .freq_hz   = PWM_HZ,        // 400 Hz
+    .min_us    = MIN_SPEED,     // 1100
+    .max_us    = MAX_SPEED      // 1900 (arreglado)
+};
+
+const esc_config_t escF = {
+    .tim       = TIM1,
+    .ch        = TIM_FAN_MOTOR,
+    .gpio_port = GPIOA,
+    .gpio_pin  = MOTOR_FAN_PIN,
     .freq_hz   = PWM_HZ,        // 400 Hz
     .min_us    = MIN_SPEED,     // 1100
     .max_us    = MAX_SPEED      // 1900 (arreglado)
@@ -89,6 +101,7 @@ int main(void) {
 
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
+    esc_init(&mf, &escF);
 
     delay_ms_blocking(200); 
 
@@ -101,6 +114,7 @@ int main(void) {
 
     esc_arm(&ml);
     esc_arm(&mr);
+    esc_arm(&mf);
     
     //esc_arm(&ml);
     //esc_arm(&mr);
@@ -111,6 +125,7 @@ int main(void) {
     //uart_printf("Calibrating QRE...\n");
 
     // Calibración (mover la regleta por línea y fondo)
+    //rgb_off();
     rgb_red();
     delay_ms_blocking(500);
     qre_calibrate(&qre, 2000, 500);
@@ -127,7 +142,9 @@ int main(void) {
     bool modo_activo = false;
 
     while (1) {
-        if (button1_was_pressed(15000)) { // 15 ms de debounce
+        esc_write_us(&mf, 1500);
+
+        if (button1_was_pressed(2000)) { // 15 ms de debounce
             modo_activo = !modo_activo;
 
             if (modo_activo) {
@@ -145,7 +162,7 @@ int main(void) {
 
             uint16_t pos = qre_read_position_white(&qre);
 
-            pid_step_and_output(pos);
+            //pid_step_and_output(pos);
         }
     }
 }

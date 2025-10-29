@@ -17,15 +17,14 @@ extern "C" {
 #define RGB_PORT        GPIOB
 #endif
 #ifndef RGB_RED_PIN
-#define RGB_RED_PIN     GPIO12  /* PB12 */
+#define RGB_RED_PIN     GPIO15  /* PB12 */
 #endif
 #ifndef RGB_GREEN_PIN
-#define RGB_GREEN_PIN   GPIO13  /* PB13 */
+#define RGB_GREEN_PIN   GPIO14  /* PB13 */
 #endif
 #ifndef RGB_BLUE_PIN
-#define RGB_BLUE_PIN    GPIO14  /* PB14 */
+#define RGB_BLUE_PIN    GPIO13  /* PB14 */
 #endif
-
 #ifndef BUTTON1_PORT
 #define BUTTON1_PORT    GPIOC
 #endif
