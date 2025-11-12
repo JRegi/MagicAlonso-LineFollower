@@ -197,8 +197,10 @@ static uint16_t qre_position_core(const qre_array_t* q, bool invert) {
 
     if (!on_line) {
         // devuelve extremo según última posición (memoria)
-        uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
-        return (last_pos < mid) ? 0u : (uint16_t)((q->num_sensors - 1) * 1000u);
+        // uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
+        // return (last_pos < mid) ? 0u : (uint16_t)((q->num_sensors - 1) * 1000u);
+
+        return -1; // línea no detectada
     }
 
     if (sumv == 0) return last_pos; // por seguridad

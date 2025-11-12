@@ -14,19 +14,23 @@
 #define SETPOINT     3500
 
 // Ahora en μs de servo:
-#define BASE_SPEED   1125                // neutral
-#define MAX_SPEED    1250                 // tope alto seguro
+#define BASE_SPEED   1150                 // neutral
+#define MAX_SPEED    1300                 // tope alto seguro
 #define MIN_SPEED    1000                 // tope bajo seguro
 #define PWM_HZ       400u                 // servo @ 400 Hz
 
+#define FAN_SPEED_US 1500                 // velocidad del ventilador en us (1500 = 50%)
+
 #define MOTOR_LEFT_PIN   GPIO10           // TIM1_CH3 (PA10 si corresponde a tu mapeo)
 #define MOTOR_RIGHT_PIN  GPIO8            // TIM1_CH1 (PA8)
+#define MOTOR_FAN_PIN    GPIO9            // TIM1_CH2 (PA9)
 
 #define TIM_LEFT_MOTOR   TIM_OC3
 #define TIM_RIGHT_MOTOR  TIM_OC1
+#define TIM_FAN_MOTOR    TIM_OC2
 
 // Botones
-#define BUTTON1_PIN  GPIO3           // PB3 (pull-down)
+#define BUTTON1_PIN  GPIO3            // PB3 (pull-down)
 #define BUTTON2_PIN  GPIO14           // PC14 (pull-down)
 #define BUTTON3_PIN  GPIO15           // PC15 (pull-down)
 
@@ -38,11 +42,11 @@
 #define RGB_RED_PIN    GPIO14           // PB12
 #define RGB_GREEN_PIN  GPIO12           // PB14
 #define RGB_BLUE_PIN   GPIO13           // PB13
-#define RGB_PORT      GPIOB
+#define RGB_PORT       GPIOB
 
 // Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
-static float KP = 0.03f;
-static float KD = 0.13f;
+static float KP = 0.04f;
+static float KD = 0.1f;
 static int   last_error = 0;
 
 // (dejado como lo tenías)
@@ -51,7 +55,7 @@ qre_array_t qre;
 
 static volatile uint32_t ticks = 0;
 
-esc_handle_t ml, mr;
+esc_handle_t ml, mr, mf; // left, right, fan
 
 const esc_config_t escL = {
     .tim       = TIM1,
@@ -70,6 +74,15 @@ const esc_config_t escR = {
     .freq_hz   = PWM_HZ,        // 400 Hz
     .min_us    = MIN_SPEED,     // 1100
     .max_us    = MAX_SPEED      // 1900 (arreglado)
+};
+const esc_config_t escFan = {
+    .tim       = TIM1,
+    .ch        = TIM_FAN_MOTOR, // 2
+    .gpio_port = GPIOA, 
+    .gpio_pin  = MOTOR_FAN_PIN, // 9
+    .freq_hz   = PWM_HZ,        // 400 Hz
+    .min_us    = MIN_SPEED,     // 1100
+    .max_us    = MAX_SPEED      // 1900
 };
 
 void sys_tick_handler(void);
@@ -165,13 +178,18 @@ int main(void) {
 
     esc_init(&ml, &escL);
     esc_init(&mr, &escR);
+    esc_init(&mf, &escFan);
 
     delay_ms(200); 
 
 
     // Armado
+   
     esc_write_us(&ml, 1000);
     esc_write_us(&mr, 1000);
+    esc_write_us(&mf, 1000);
+    delay_ms(2000);
+   
     // esc_calibrate(&ml);
     // delay_ms(4000);
     // esc_calibrate(&mr);
@@ -201,14 +219,107 @@ int main(void) {
     rgb_clear();
     rgb_blue();
 
+    
     bool boton1 = false;
-
+    bool boton2 = false;
+    bool boton3 = false;
+    
+    bool fan_on = false;
+    
+    bool esc_calibrated = false;
+    
+    inline void reset_buttons(void) {
+        boton1 = false;
+        boton2 = false;
+        boton3 = false;
+    }
     while (1) {
-        delay_ms(100);
+        delay_ms(150);
+
 
         if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = true; rgb_clear(); rgb_cyan();}
+        if (gpio_get(BUTTON2_PORT, BUTTON2_PIN)) {boton2 = true; rgb_clear(); rgb_green();}
+        if (gpio_get(BUTTON3_PORT, BUTTON3_PIN)) {boton3 = true; rgb_clear(); rgb_green();}
 
-        while(boton1) {
+
+        // if (boton3 && !esc_calibrated) { 
+        //     boton3 = false;
+        //     // Armado
+        //     esc_write_us(&ml, 1000);
+        //     esc_write_us(&mr, 1000);
+        //     esc_write_us(&mf, 1000);
+        //     delay_ms(2000);
+       
+        //     esc_calibrated = true;
+        // }
+
+        // if (boton3 && !esc_calibrated) { 
+        //     reset_buttons();
+
+        //     // debounce / detectar hold: si tras 500 ms sigue presionado → calibrar
+        //     delay_ms(50);                // pequeño debounce inicial
+        //     if (gpio_get(BUTTON3_PORT, BUTTON3_PIN)) {
+        //         // esperar un poco más para confirmar hold
+        //         delay_ms(450);
+        //         if (gpio_get(BUTTON3_PORT, BUTTON3_PIN)) {
+        //             // Calibración (botón mantenido)
+        //             rgb_clear(); rgb_blue();
+        //             esc_calibrate(&ml);
+        //             esc_calibrate(&mr);
+        //             esc_calibrate(&mf);
+        //             delay_ms(200); // pequeño respiro
+        //             rgb_clear();
+        //             esc_calibrated = true; // opcional: marcar calibrado
+        //         } else {
+        //             // no fue hold prolongado → hacer armado
+        //             esc_write_us(&ml, 1000);
+        //             esc_write_us(&mr, 1000);
+        //             esc_write_us(&mf, 1000);
+        //             delay_ms(2000);
+        //             esc_calibrated = true;
+        //         }
+        //     } else {
+        //         // no quedó presionado tras debounce → hacer armado
+        //         esc_write_us(&ml, 1000);
+        //         esc_write_us(&mr, 1000);
+        //         esc_write_us(&mf, 1000);
+        //         delay_ms(2000);
+        //         esc_calibrated = true;
+        //     }
+        // }
+
+        // if (gpio_get(BUTTON3_PORT, BUTTON3_PIN))
+        // {
+        //     rgb_clear(); rgb_green();
+        //     esc_calibrate(&ml);
+        //     esc_calibrate(&mr);
+        //     esc_calibrate(&mf);
+
+        //     delay_ms(5000);
+
+        //     rgb_clear(); rgb_blue();
+        // }
+        
+
+        // if (boton2 && esc_calibrated) { 
+        //     reset_buttons();
+        //     fan_on = !fan_on;
+
+        //     if (fan_on){
+        //         esc_write_us(&mf, FAN_SPEED_US);
+        //     } else if (!fan_on){
+        //         esc_write_us(&mf, 1000);
+        //     }
+        //     rgb_clear(); rgb_red(); 
+        // }
+
+        while (boton1) {
+            
+            if (!fan_on) {
+                esc_write_us(&mf, FAN_SPEED_US);
+                fan_on = true;
+            }
+
             // esperar el próximo tick exacto (2.5 ms)
             while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
             next += 1;
@@ -219,7 +330,13 @@ int main(void) {
             //uart_printf("Pos: %4u\n", pos);
         
             // 2) PID + salida
-            pid_step_and_output(pos);
+            if (pos == (uint16_t)(-1)) {
+                // Línea no detectada: detener motores
+                esc_write_us(&ml, 1000);
+                esc_write_us(&mr, 1000);
+            } else {
+                pid_step_and_output(pos);
+            }
 
             //uart_printf("\n");
 
