@@ -187,8 +187,10 @@ static uint16_t qre_position_core(const qre_array_t* q, bool invert) {
     // PD: hacer ese cambio puede solucionar que el robot se sale si salta en la rampa.
     
     if (!on_line) {
-        uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
-        return (last_pos < mid) ? 0u : (uint16_t)((q->num_sensors - 1) * 1000u);
+        // uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
+        // return (last_pos < mid) ? 0u : (uint16_t)((q->num_sensors - 1) * 1000u);
+
+        return -1;
     }
 
     if (total_sum == 0) return last_pos; // por seguridad

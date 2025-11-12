@@ -41,7 +41,7 @@ void rgb_white(void)                     { rgb_write(true , true , true ); }
 bool button1_read(void)
 {
     /* PC13 en Bluepill es activo en 0 (a masa al presionar). */
-    return !gpio_get(BUTTON1_PORT, BUTTON1_PIN);
+    return gpio_get(BUTTON1_PORT, BUTTON1_PIN);
 }
 
 bool button1_was_pressed(uint32_t debounce_us)

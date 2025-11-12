@@ -142,13 +142,12 @@ int main(void) {
     bool modo_activo = false;
 
     while (1) {
-        esc_write_us(&mf, 1500);
-
-        if (button1_was_pressed(2000)) { // 15 ms de debounce
+        if (button1_was_pressed(15000)) { // 15 ms de debounce
             modo_activo = !modo_activo;
 
             if (modo_activo) {
                 rgb_cyan();    // modo ON
+                esc_write_us(&mf, 1500);
             } else {
                 rgb_off();     // modo OFF
                 esc_write_us(&mr, MIN_SPEED);
@@ -162,7 +161,13 @@ int main(void) {
 
             uint16_t pos = qre_read_position_white(&qre);
 
-            //pid_step_and_output(pos);
+            if (pos == (uint16_t)-1) {
+                // No se ve línea: detener motores
+                esc_write_us(&mr, MIN_SPEED);
+                esc_write_us(&ml, MIN_SPEED);
+            } else {
+                pid_step_and_output(pos);
+            }
         }
     }
 }

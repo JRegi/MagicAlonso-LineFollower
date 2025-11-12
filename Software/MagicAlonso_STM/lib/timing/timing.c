@@ -39,6 +39,9 @@ static uint32_t tim2_get_clk_hz(void) {
 void control_timer_init_400hz(void) {
     /* Secuencia de init sin timer_reset(): */
     timer_disable_counter(TIM2);
+
+    nvic_enable_irq(NVIC_TIM2_IRQ);
+    
     /* CR1: clock interno, edge-aligned, upcounting */
     timer_set_mode(TIM2, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
 
