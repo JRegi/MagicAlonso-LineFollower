@@ -6145,6 +6145,12 @@
 		(uuid "c48f5668-4ea9-4add-9217-573d209587d0")
 	)
 	(junction
+		(at -26.67 118.11)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c562bb43-f1c3-4607-b9f5-49b2ea647ba5")
+	)
+	(junction
 		(at 119.38 127)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -6517,6 +6523,16 @@
 			(type default)
 		)
 		(uuid "2de2d584-3232-48f2-955d-c2a2a25aeb44")
+	)
+	(wire
+		(pts
+			(xy -6.35 115.57) (xy -6.35 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f5880eb-d60a-4ef7-85aa-b7eae18700c1")
 	)
 	(wire
 		(pts
@@ -6900,6 +6916,26 @@
 	)
 	(wire
 		(pts
+			(xy -27.94 118.11) (xy -26.67 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61619856-3647-4c93-add0-df053f6217b6")
+	)
+	(wire
+		(pts
+			(xy -26.67 118.11) (xy -21.59 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "638d3357-247b-4f66-bcdb-743bd579ebf8")
+	)
+	(wire
+		(pts
 			(xy 102.87 41.91) (xy 102.87 39.37)
 		)
 		(stroke
@@ -6967,6 +7003,16 @@
 			(type default)
 		)
 		(uuid "6ea4dc5d-4e78-4250-b13c-bd8693b8e1ff")
+	)
+	(wire
+		(pts
+			(xy -16.51 118.11) (xy -13.97 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f0981fd-25cb-4526-8cfe-7c180355d214")
 	)
 	(wire
 		(pts
@@ -7080,6 +7126,16 @@
 	)
 	(wire
 		(pts
+			(xy -26.67 118.11) (xy -26.67 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80fee96d-32f2-45e9-a8c5-87c69f81a05a")
+	)
+	(wire
+		(pts
 			(xy 69.85 116.84) (xy 69.85 118.11)
 		)
 		(stroke
@@ -7097,6 +7153,16 @@
 			(type default)
 		)
 		(uuid "82c0d543-2241-437b-96e7-21c9f4b87bca")
+	)
+	(wire
+		(pts
+			(xy -26.67 105.41) (xy -26.67 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "845d40e7-c4e7-4671-9430-938efa0becdf")
 	)
 	(wire
 		(pts
@@ -7197,6 +7263,16 @@
 			(type default)
 		)
 		(uuid "96ea1796-2d3f-4efb-aac7-4d30e029c255")
+	)
+	(wire
+		(pts
+			(xy -26.67 116.84) (xy -26.67 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9836705d-0583-4b33-a725-75ec0c108eab")
 	)
 	(wire
 		(pts
@@ -7530,6 +7606,16 @@
 	)
 	(wire
 		(pts
+			(xy -26.67 124.46) (xy -26.67 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0f8d832-31e9-4d7a-916a-75929efbb6ea")
+	)
+	(wire
+		(pts
 			(xy 180.34 80.01) (xy 180.34 81.28)
 		)
 		(stroke
@@ -7567,6 +7653,16 @@
 			(type default)
 		)
 		(uuid "da1d9271-5c4b-495b-a055-ae60ecbbaa5f")
+	)
+	(wire
+		(pts
+			(xy -6.35 118.11) (xy -8.89 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da8244ce-50b8-4efb-b552-d59768750fec")
 	)
 	(wire
 		(pts
@@ -10390,6 +10486,16 @@
 		)
 		(uuid "f0d9a979-5c89-41c4-8b88-9926b47fd57e")
 	)
+	(label "PC13"
+		(at -27.94 118.11 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f30eddb0-372f-452c-b119-551ebc46583e")
+	)
 	(label "ESC_M2"
 		(at 147.32 172.72 180)
 		(effects
@@ -10945,6 +11051,71 @@
 			(project "main_Magic_BluePIll"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
 					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at -26.67 105.41 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "238ac1d2-8d76-4e49-aaa7-fdf67f743858")
+		(property "Reference" "#PWR021"
+			(at -26.67 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at -26.924 101.346 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -26.67 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at -26.67 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at -26.67 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "47ae97a6-1f03-4db8-8fb7-6914decdabc7")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -11556,6 +11727,75 @@
 			(project "main_Magic_BluePIll"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
 					(reference "C7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at -19.05 118.11 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3e0257f2-b3e4-477d-a7d8-65647c5210ea")
+		(property "Reference" "R17"
+			(at -18.288 114.046 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1k"
+			(at -18.034 115.824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at -19.05 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at -19.05 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at -19.05 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "90a8eef0-33f2-4ef3-9712-b1474fbfd4fd")
+		)
+		(pin "2"
+			(uuid "07ad3786-f27a-4326-936c-936690e0f232")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "R17")
 					(unit 1)
 				)
 			)
@@ -13555,6 +13795,84 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED_Small")
+		(at -11.43 118.11 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "88b417ef-e688-4301-9406-ef172b140673")
+		(property "Reference" "D5"
+			(at -6.604 123.952 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED_BLUE"
+			(at -6.604 121.412 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "MixLib:LED_0805_2012Metric"
+			(at -11.43 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at -11.43 118.11 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode, small symbol"
+			(at -11.43 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pin" "1=K 2=A"
+			(at -11.43 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "63b1b47d-9f56-4aee-8a14-c9e96ee98faa")
+		)
+		(pin "1"
+			(uuid "739a9652-95ab-4065-ae7b-dac3b7b490f2")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small")
 		(at 39.37 73.66 90)
 		(unit 1)
@@ -13618,6 +13936,71 @@
 			(project "main_Magic-simple"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
 					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at -6.35 115.57 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8c964554-eaed-4df2-b6bb-9b97890da9c2")
+		(property "Reference" "#PWR024"
+			(at -6.35 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at -6.604 111.506 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -6.35 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at -6.35 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at -6.35 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "903b8f54-89ae-47e3-b202-be74291a9471")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -15206,6 +15589,140 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at -26.67 125.73 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dd828b98-f4f7-4f77-af3e-71d04399e7d9")
+		(property "Reference" "#PWR023"
+			(at -26.67 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at -26.67 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -26.67 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at -26.67 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at -26.67 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4bff5cc5-e85d-4a81-8376-44381fac84b8")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "#PWR023")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push")
+		(at -26.67 111.76 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dd9939d4-fafd-4775-8e07-8f8c03107ba4")
+		(property "Reference" "SW5"
+			(at -34.036 110.49 90)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PUSH_1"
+			(at -34.544 112.268 90)
+			(effects
+				(font
+					(size 1 1)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MixLib:SW_Push_Sw-3424p_Handsolder"
+			(at -21.59 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at -21.59 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at -26.67 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b17fff7d-9ab9-4178-9e84-b740af83d8f7")
+		)
+		(pin "1"
+			(uuid "6d87f756-631c-4916-b3da-57bf0150ecd7")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "SW5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 45.72 74.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15393,6 +15910,75 @@
 			(project "main_Magic_BluePIll"
 				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at -26.67 121.92 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e7e6dd0f-4a31-4916-a164-eee8775192c3")
+		(property "Reference" "R15"
+			(at -31.75 120.396 0)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "10k"
+			(at -32.004 122.936 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at -26.67 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at -26.67 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at -26.67 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f19bea29-8e3e-4bb8-89cb-e4ab5be6a62f")
+		)
+		(pin "2"
+			(uuid "d3e386e7-06ec-4b18-a919-b3340be97878")
+		)
+		(instances
+			(project "main_Magic_BluePIll"
+				(path "/80af5e1a-3060-4775-9fc3-f6762d1535e7"
+					(reference "R15")
 					(unit 1)
 				)
 			)
