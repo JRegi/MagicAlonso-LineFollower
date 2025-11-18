@@ -54,7 +54,7 @@ bool button1_was_pressed(uint32_t debounce_us)
     if (now != pressed_last) {
         /* cambió estado → arrancar/chequear debounce */
         uint32_t t = micros();
-        if ((uint32_t)(t - t_last) >= debounce_us) {
+        if ((uint32_t)(t - t_last) >= debounce_us * 1000) {
             /* estado estable por > debounce → actualizar */
             pressed_last = now;
             t_last = t;

@@ -4,6 +4,7 @@
 #include "timing.h"
 #include "ui.h"
 #include "clocks.h"
+//#include "hc05.h"
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/gpio.h>
@@ -14,10 +15,12 @@
 #define SETPOINT     3500
 
 // Ahora en μs de servo:
-#define BASE_SPEED   1150                // neutral
-#define MAX_SPEED    1300                 // tope alto seguro
+#define BASE_SPEED   1100                // neutral
+#define MAX_SPEED    1200                 // tope alto seguro
 #define MIN_SPEED    1000                 // tope bajo seguro
 #define PWM_HZ       400u                 // servo @ 400 Hz
+
+#define FAN_SPEED    1500                 // velocidad fija del ventilador
 
 #define MOTOR_LEFT_PIN   GPIO10           // TIM1_CH3 (PA10 si corresponde a tu mapeo)
 #define MOTOR_RIGHT_PIN  GPIO8            // TIM1_CH1 (PA8)
@@ -27,8 +30,13 @@
 #define TIM_RIGHT_MOTOR  TIM_OC1
 #define TIM_FAN_MOTOR    TIM_OC2
 
+#define JS40_PIN GPIO6
+#define JS40_PORT GPIOB
+
+//static BTSerial bt;
+
 // Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
-static float KP = 0.022f;
+static float KP = 0.03f;
 static float KD = 0.12f;
 static int   last_error = 0;
 
@@ -90,11 +98,23 @@ static inline void pid_step_and_output(uint16_t position) {
     //uart_printf("ML: %4u MR: %4u\n", (uint16_t)us_right, (uint16_t)us_left);
 }
 
+void init_js40 (void) {
+    gpio_set_mode(JS40_PORT, GPIO_MODE_INPUT,
+                  GPIO_CNF_INPUT_FLOAT, JS40_PIN);
+}
+
+bool read_js40 (void) {
+    return gpio_get(JS40_PORT, JS40_PIN);
+}
+
 int main(void) {
     clocks_init();
     timing_init();
     ui_init();
     control_timer_init_400hz();
+    init_js40();
+    // SerialBT_begin(115200);
+    // SerialBT_println("SerialBT listo. Enviá PING"); // sin control de KEY
     //uart_init_115200();
 
     delay_ms_blocking(200);
@@ -112,10 +132,18 @@ int main(void) {
     // delay_ms_blocking(4000);
     // esc_calibrate(&mr);
 
-    esc_arm(&ml);
-    esc_arm(&mr);
-    esc_arm(&mf);
+    // esc_arm(&ml);
+    // esc_arm(&mr);
+    // esc_arm(&mf);
     
+
+    /*      Armado      */
+    esc_write_us(&mf, 1000); // ventilador ON
+    esc_write_us(&mr, 1000);
+    esc_write_us(&ml, 1000);
+
+    delay_ms_blocking(2000);
+
     //esc_arm(&ml);
     //esc_arm(&mr);
 
@@ -139,24 +167,41 @@ int main(void) {
     rgb_off();
     rgb_blue();
 
+    //bool fan_state = false;
+
     bool modo_activo = false;
+    
+    bool js40_read = false;
+    bool led_on = false;
 
     while (1) {
-        if (button1_was_pressed(15000)) { // 15 ms de debounce
+
+        if(read_js40()) {
+            rgb_off();     // modo OFF
+            esc_write_us(&mf, MIN_SPEED);
+            esc_write_us(&mr, MIN_SPEED);
+            esc_write_us(&ml, MIN_SPEED);
+        } else if (modo_activo) {
+            esc_write_us(&mf, FAN_SPEED);
+        }
+
+        if (button1_was_pressed(100)) { // 15 ms de debounce
             modo_activo = !modo_activo;
+            rgb_blue();
 
             if (modo_activo) {
                 rgb_cyan();    // modo ON
-                esc_write_us(&mf, 1500);
+                esc_write_us(&mf, FAN_SPEED);
             } else {
                 rgb_off();     // modo OFF
+                esc_write_us(&mf, MIN_SPEED);
                 esc_write_us(&mr, MIN_SPEED);
                 esc_write_us(&ml, MIN_SPEED);
             }
         }
 
         // Si el modo está activo, corré el lazo a 400 Hz
-        if (modo_activo && control_tick_400hz) {
+        if (modo_activo && control_tick_400hz ) {
             control_tick_400hz = false;
 
             uint16_t pos = qre_read_position_white(&qre);
@@ -166,8 +211,9 @@ int main(void) {
                 esc_write_us(&mr, MIN_SPEED);
                 esc_write_us(&ml, MIN_SPEED);
             } else {
-                pid_step_and_output(pos);
+                //pid_step_and_output(pos);
             }
         }
+
     }
 }

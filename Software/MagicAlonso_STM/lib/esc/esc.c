@@ -81,14 +81,11 @@ void esc_arm(esc_handle_t* h)
   if (!h) return;
 
   // Min 500ms
-  esc_write_us(h, 1000);
-  delay_ms_blocking(1000);
+  uint8_t t = millis();
 
-    // 1500us 500ms
-  esc_write_us(h, 1400);
-  delay_ms_blocking(800);
-
-    // Min 500ms
   esc_write_us(h, 1000);
-  delay_ms_blocking(1000);
+
+  
+
+  
 }

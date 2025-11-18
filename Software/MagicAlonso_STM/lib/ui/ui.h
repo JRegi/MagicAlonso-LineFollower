@@ -26,10 +26,10 @@ extern "C" {
 #define RGB_BLUE_PIN    GPIO13  /* PB14 */
 #endif
 #ifndef BUTTON1_PORT
-#define BUTTON1_PORT    GPIOC
+#define BUTTON1_PORT    GPIOB
 #endif
 #ifndef BUTTON1_PIN
-#define BUTTON1_PIN     GPIO13  /* PC13, activo en 0 */
+#define BUTTON1_PIN     GPIO3  /* PC13, activo en 0 */
 #endif
 
 /* ---------- API ---------- */
