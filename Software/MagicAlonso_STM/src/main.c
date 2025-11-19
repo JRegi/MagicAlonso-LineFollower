@@ -14,13 +14,29 @@
 // Centro para N=8 (0..7000)
 #define SETPOINT     3500
 
-// Ahora en μs de servo:
-#define BASE_SPEED   1100                // neutral
-#define MAX_SPEED    1200                 // tope alto seguro
-#define MIN_SPEED    1000                 // tope bajo seguro
-#define PWM_HZ       400u                 // servo @ 400 Hz
+#define ONESHOT125
 
-#define FAN_SPEED    1500                 // velocidad fija del ventilador
+
+#ifdef ONESHOT125
+    // Ahora en μs de servo:
+    #define BASE_SPEED   140                // neutral
+    #define MAX_SPEED    160                 // tope alto seguro
+    #define MIN_SPEED    125     
+                                             // tope bajo seguro
+    #define PWM_MOTOR_HZ 2000u               // frecuencia PWM de los motores
+#else // PWM estándar
+    // Ahora en μs de servo:
+    #define BASE_SPEED   1500                // neutral
+    #define MAX_SPEED    1900                 // tope alto seguro
+    #define MIN_SPEED    1100                 // tope bajo seguro
+    #define PWM_MOTOR_HZ 400u                 // frecuencia PWM de los motores
+#endif
+
+
+#define CONTROL_HZ   400u                 // servo @ 400 Hz
+
+
+#define FAN_SPEED    200                 // velocidad fija del ventilador
 
 #define MOTOR_LEFT_PIN   GPIO10           // TIM1_CH3 (PA10 si corresponde a tu mapeo)
 #define MOTOR_RIGHT_PIN  GPIO8            // TIM1_CH1 (PA8)
@@ -40,7 +56,7 @@ static float KP = 0.03f;
 static float KD = 0.12f;
 static int   last_error = 0;
 
-uint16_t control_period = 1000000 / PWM_HZ;
+uint16_t control_period = 1000000 / CONTROL_HZ;
 
 // (dejado como lo tenías)
 static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
@@ -53,7 +69,7 @@ const esc_config_t escL = {
     .ch        = TIM_LEFT_MOTOR,
     .gpio_port = GPIOA,
     .gpio_pin  = MOTOR_LEFT_PIN,
-    .freq_hz   = PWM_HZ,        // 400 Hz
+    .freq_hz   = PWM_MOTOR_HZ,        // 400 Hz
     .min_us    = MIN_SPEED,     // 1100
     .max_us    = MAX_SPEED      // 1900
 };
@@ -63,7 +79,7 @@ const esc_config_t escR = {
     .ch        = TIM_RIGHT_MOTOR,
     .gpio_port = GPIOA,
     .gpio_pin  = MOTOR_RIGHT_PIN,
-    .freq_hz   = PWM_HZ,        // 400 Hz
+    .freq_hz   = PWM_MOTOR_HZ,        // 400 Hz
     .min_us    = MIN_SPEED,     // 1100
     .max_us    = MAX_SPEED      // 1900 (arreglado)
 };
@@ -73,7 +89,7 @@ const esc_config_t escF = {
     .ch        = TIM_FAN_MOTOR,
     .gpio_port = GPIOA,
     .gpio_pin  = MOTOR_FAN_PIN,
-    .freq_hz   = PWM_HZ,        // 400 Hz
+    .freq_hz   = PWM_MOTOR_HZ,        // 400 Hz
     .min_us    = MIN_SPEED,     // 1100
     .max_us    = MAX_SPEED      // 1900 (arreglado)
 };
@@ -138,9 +154,9 @@ int main(void) {
     
 
     /*      Armado      */
-    esc_write_us(&mf, 1000); // ventilador ON
-    esc_write_us(&mr, 1000);
-    esc_write_us(&ml, 1000);
+    esc_write_us(&mf, MIN_SPEED); // ventilador ON
+    esc_write_us(&mr, MIN_SPEED);
+    esc_write_us(&ml, MIN_SPEED);
 
     delay_ms_blocking(2000);
 
