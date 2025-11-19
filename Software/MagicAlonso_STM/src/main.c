@@ -2,6 +2,7 @@
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/exti.h>
 #include <libopencm3/stm32/timer.h>
+#include <libopencm3/stm32/flash.h>
 #include <libopencm3/cm3/nvic.h>
 
 #include <stdint.h>
@@ -17,35 +18,41 @@
 #define LED_G_PIN      GPIO14   // verde
 #define LED_B_PIN      GPIO13   // azul
 
+/* ESC en PA8 / PA9 / PA10 (TIM1_CH1/2/3) */
+
+/* ================== Flash ================== */
+
+#define IR_FLASH_ADDR  0x0800FC00U  /* última página en un F103C8 (64KB) */
+#define IR_MAGIC       0x51C051C0U  /* constante arbitraria válida */
+
+typedef struct {
+    uint32_t magic;        // IR_MAGIC si válido
+    uint16_t sirc_code;    // 12 bits Sony SIRC
+    uint16_t reserved;     // padding
+    uint32_t checksum;     // magic ^ sirc_code
+} ir_flash_t;
+
+static ir_flash_t ir_flash_data;
+
 /* ================== Estados ================== */
 
 typedef enum {
-    IR_LEARN_FIRST = 0,   // aprendiendo botón 1
-    IR_LEARN_SECOND,      // aprendiendo botón 2
-    IR_LEARN_DONE         // modo normal
-} ir_learn_state_t;
+    IR_STATE_LEARN = 0,  // esperando primer código para guardar
+    IR_STATE_DONE        // ya tiene código, modo normal
+} ir_state_t;
 
-static ir_learn_state_t learn_state = IR_LEARN_FIRST;
+static ir_state_t ir_state = IR_STATE_LEARN;
 
-/* Códigos aprendidos (Sony SIRC 12 bits) */
-static uint16_t code_btn1 = 0;
-static uint16_t code_btn2 = 0;
-static bool     btn1_learned = false;
-static bool     btn2_learned = false;
+/* ================== Sony SIRC decoder ================== */
+/* Medimos tiempo entre flancos descendentes (delta_us).
+ * - Si delta_us > ~10000us => nueva trama
+ * - 600..1500 us  => bit 0
+ * - 1500..3200 us => bit 1
+ * 12 bits totales
+ */
 
-/* ================== Decodificación Sony SIRC ==================
- * Medimos tiempo entre flancos descendentes (delta_us).
- *
- * - Si delta_us > ~10000us => asumimos que empieza una nueva trama.
- * - Bits:
- *      ~1.2ms (ej. 600..1500us)  => bit 0
- *      ~2.4ms (ej. 1500..3200us) => bit 1
- *
- * Recibimos 12 bits (SIRC clásico).
- * ============================================================= */
-
-static volatile int      ir_bit_index    = -1;   // -1 = no estamos en trama
-static volatile uint16_t ir_code         = 0;    // máx 16 bits, usamos 12
+static volatile int      ir_bit_index    = -1;
+static volatile uint16_t ir_code         = 0;
 static volatile bool     ir_frame_ready  = false;
 static volatile bool     ir_error        = false;
 
@@ -56,7 +63,7 @@ static void delay(volatile uint32_t t)
     while (t--) __asm__("nop");
 }
 
-/* LED helpers (activos en alto, independientes por color) */
+/* LED helpers (activos en alto) */
 
 static void led_all_off(void)
 {
@@ -82,25 +89,6 @@ static void led_red_toggle(void)
     }
 }
 
-static void led_blue_on(void)
-{
-    gpio_set(LED_PORT, LED_B_PIN);
-}
-
-static void led_blue_off(void)
-{
-    gpio_clear(LED_PORT, LED_B_PIN);
-}
-
-static void led_blue_toggle(void)
-{
-    if (gpio_get(LED_PORT, LED_B_PIN)) {
-        led_blue_off();
-    } else {
-        led_blue_on();
-    }
-}
-
 static void led_green_on(void)
 {
     gpio_set(LED_PORT, LED_G_PIN);
@@ -111,13 +99,79 @@ static void led_green_off(void)
     gpio_clear(LED_PORT, LED_G_PIN);
 }
 
-/* ================== Init ================== */
+static void led_blue_on(void)
+{
+    gpio_set(LED_PORT, LED_B_PIN);
+}
+
+static void led_blue_off(void)
+{
+    gpio_clear(LED_PORT, LED_B_PIN);
+}
+
+/* ================== Clock 72 MHz ================== */
 
 static void clock_setup(void)
 {
     /* HSE 8MHz -> PLL -> 72MHz */
     rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
 }
+
+/* ================== ESC: PWM seguro 400 Hz, 1000us ================== */
+
+static void esc_pwm_safe_400hz_1000us(void)
+{
+    /* 1) Clocks */
+    rcc_periph_clock_enable(RCC_GPIOA);
+    rcc_periph_clock_enable(RCC_TIM1);
+
+    /* 2) GPIO: PA8/9/10 como alternate function push-pull */
+    gpio_set_mode(GPIOA,
+                  GPIO_MODE_OUTPUT_2_MHZ,
+                  GPIO_CNF_OUTPUT_ALTFN_PUSHPULL,
+                  GPIO8 | GPIO9 | GPIO10);
+
+    /* 3) Timer1 a 1 MHz (1 us por tick), periodo 2500 us -> 400 Hz */
+    timer_disable_counter(TIM1);
+
+    /* 72 MHz / 72 = 1 MHz */
+    timer_set_prescaler(TIM1, 72 - 1);
+
+    /* Periodo: 2500 ticks -> 2500 us -> 400 Hz */
+    timer_set_period(TIM1, 2500 - 1);
+
+    /* 4) Configurar canales en PWM1 */
+    timer_set_oc_mode(TIM1, TIM_OC1, TIM_OCM_PWM1);
+    timer_set_oc_mode(TIM1, TIM_OC2, TIM_OCM_PWM1);
+    timer_set_oc_mode(TIM1, TIM_OC3, TIM_OCM_PWM1);
+
+    timer_enable_oc_preload(TIM1, TIM_OC1);
+    timer_enable_oc_preload(TIM1, TIM_OC2);
+    timer_enable_oc_preload(TIM1, TIM_OC3);
+
+    timer_set_oc_polarity_high(TIM1, TIM_OC1);
+    timer_set_oc_polarity_high(TIM1, TIM_OC2);
+    timer_set_oc_polarity_high(TIM1, TIM_OC3);
+
+    /* 5) Pulsos a 1000 us (mínimo) */
+    timer_set_oc_value(TIM1, TIM_OC1, 1000);
+    timer_set_oc_value(TIM1, TIM_OC2, 1000);
+    timer_set_oc_value(TIM1, TIM_OC3, 1000);
+
+    /* 6) Habilitar salida canales */
+    timer_enable_oc_output(TIM1, TIM_OC1);
+    timer_enable_oc_output(TIM1, TIM_OC2);
+    timer_enable_oc_output(TIM1, TIM_OC3);
+
+    /* 7) Habilitar salida principal de TIM1 (advanced timer) */
+    timer_enable_break_main_output(TIM1);
+
+    /* 8) Actualizar y arrancar */
+    timer_generate_event(TIM1, TIM_EGR_UG);
+    timer_enable_counter(TIM1);
+}
+
+/* ================== Init GPIO LED e IR ================== */
 
 static void led_init(void)
 {
@@ -143,6 +197,8 @@ static void ir_gpio_setup(void)
                   IR_PIN);
 }
 
+/* ================== Timer2 para tiempos IR (1us) ================== */
+
 static void timer2_setup(void)
 {
     rcc_periph_clock_enable(RCC_TIM2);
@@ -155,6 +211,8 @@ static void timer2_setup(void)
     timer_enable_counter(TIM2);
 }
 
+/* ================== EXTI PB7 ================== */
+
 static void ir_exti_setup(void)
 {
     rcc_periph_clock_enable(RCC_AFIO);
@@ -164,6 +222,45 @@ static void ir_exti_setup(void)
     exti_enable_request(EXTI7);
 
     nvic_enable_irq(NVIC_EXTI9_5_IRQ);
+}
+
+/* ================== Flash: load / save ================== */
+
+static void ir_load_from_flash(void)
+{
+    const ir_flash_t *pf = (const ir_flash_t *)IR_FLASH_ADDR;
+    ir_flash_data = *pf;
+
+    uint32_t expected = ir_flash_data.magic ^ ir_flash_data.sirc_code;
+
+    if (ir_flash_data.magic != IR_MAGIC || ir_flash_data.checksum != expected) {
+        /* No hay datos válidos */
+        ir_flash_data.magic     = 0;
+        ir_flash_data.sirc_code = 0;
+        ir_flash_data.reserved  = 0;
+        ir_flash_data.checksum  = 0;
+    }
+}
+
+static void ir_save_to_flash(uint16_t code)
+{
+    ir_flash_data.magic     = IR_MAGIC;
+    ir_flash_data.sirc_code = code;
+    ir_flash_data.reserved  = 0;
+    ir_flash_data.checksum  = ir_flash_data.magic ^ ir_flash_data.sirc_code;
+
+    flash_unlock();
+    flash_erase_page(IR_FLASH_ADDR);
+
+    uint32_t *src  = (uint32_t *)&ir_flash_data;
+    uint32_t  addr = IR_FLASH_ADDR;
+
+    for (unsigned i = 0; i < sizeof(ir_flash_data)/4; i++) {
+        flash_program_word(addr, src[i]);
+        addr += 4;
+    }
+
+    flash_lock();
 }
 
 /* ================== ISR EXTI: Sony SIRC ================== */
@@ -222,17 +319,30 @@ void exti9_5_isr(void)
 int main(void)
 {
     clock_setup();
+    esc_pwm_safe_400hz_1000us();  /* Señal segura a los ESC */
     led_init();
     ir_gpio_setup();
     timer2_setup();
     ir_exti_setup();
 
-    /* Al inicio: aprender botón 1 -> LED verde encendido */
-    learn_state   = IR_LEARN_FIRST;
-    btn1_learned  = false;
-    btn2_learned  = false;
-    led_all_off();
-    led_green_on();
+    ir_load_from_flash();
+
+    if (ir_flash_data.magic == IR_MAGIC) {
+        /* Ya hay un código guardado en flash */
+        ir_state = IR_STATE_DONE;
+
+        /* Flash blanco rápido para decir "ya tenía código" */
+        led_red_on();
+        led_green_on();
+        led_blue_on();
+        delay(80000);
+        led_all_off();
+    } else {
+        /* No hay código -> modo aprendizaje */
+        ir_state = IR_STATE_LEARN;
+        /* LED verde fijo: esperando primer código */
+        led_green_on();
+    }
 
     while (1) {
         if (ir_frame_ready) {
@@ -243,46 +353,28 @@ int main(void)
                 continue;
             }
 
-            uint16_t code = ir_code;   // 12 bits válidos
+            uint16_t code = ir_code;  // 12 bits SIRC válidos
 
-            /* ======== MODO APRENDIZAJE ======== */
-            if (learn_state == IR_LEARN_FIRST) {
-                /* Primer botón */
-                code_btn1     = code;
-                btn1_learned  = true;
+            if (ir_state == IR_STATE_LEARN) {
+                /* Primer código válido que llega -> lo guardamos en Flash */
+                ir_save_to_flash(code);
 
-                /* Apagar verde, pequeña pausa y volver a encenderlo
-                   para indicar que ahora espera el segundo botón */
+                /* Apagar verde, dar feedback y pasar a modo normal */
                 led_green_off();
-                delay(60000);
-                led_green_on();
 
-                learn_state = IR_LEARN_SECOND;
-
-            } else if (learn_state == IR_LEARN_SECOND) {
-                /* Segundo botón */
-                code_btn2     = code;
-                btn2_learned  = true;
-
-                /* Ya no estamos aprendiendo: apagar verde */
-                led_green_off();
-                learn_state = IR_LEARN_DONE;
-
-                /* Pequeño flash rojo+azul al terminar el aprendizaje */
+                /* Flash rojo breve: "grabado" */
                 led_red_on();
-                led_blue_on();
                 delay(80000);
                 led_red_off();
-                led_blue_off();
 
-            /* ======== MODO NORMAL ======== */
-            } else if (learn_state == IR_LEARN_DONE) {
-                if (btn1_learned && code == code_btn1) {
-                    /* Botón 1 -> toggle rojo */
+                ir_state = IR_STATE_DONE;
+
+            } else if (ir_state == IR_STATE_DONE) {
+                /* Modo normal: si llega el mismo código, toggle rojo (para test) */
+                if (ir_flash_data.magic == IR_MAGIC &&
+                    code == ir_flash_data.sirc_code) {
+
                     led_red_toggle();
-                } else if (btn2_learned && code == code_btn2) {
-                    /* Botón 2 -> toggle azul */
-                    led_blue_toggle();
                 }
             }
         }
