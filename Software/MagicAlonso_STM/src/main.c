@@ -1,359 +1,292 @@
-#include "qre_array.h"
-#include "esc.h"
-#include "uart.h"
 #include <libopencm3/stm32/rcc.h>
-#include <libopencm3/cm3/systick.h>
 #include <libopencm3/stm32/gpio.h>
+#include <libopencm3/stm32/exti.h>
+#include <libopencm3/stm32/timer.h>
+#include <libopencm3/cm3/nvic.h>
+
 #include <stdint.h>
 #include <stdbool.h>
 
-#define CTRL_HZ      400                  // 400 Hz → PWM “servo”
-#define DT_SEC       (1.0f / CTRL_HZ)
+/* ================== Pines ================== */
 
-// Centro para N=8 (0..7000)
-#define SETPOINT     3500
+#define IR_PORT        GPIOB
+#define IR_PIN         GPIO7
 
-// Ahora en μs de servo:
-#define BASE_SPEED   1150                 // neutral
-#define MAX_SPEED    1300                 // tope alto seguro
-#define MIN_SPEED    1000                 // tope bajo seguro
-#define PWM_HZ       400u                 // servo @ 400 Hz
+#define LED_PORT       GPIOB
+#define LED_R_PIN      GPIO15   // rojo
+#define LED_G_PIN      GPIO14   // verde
+#define LED_B_PIN      GPIO13   // azul
 
-#define FAN_SPEED_US 1500                 // velocidad del ventilador en us (1500 = 50%)
+/* ================== Estados ================== */
 
-#define MOTOR_LEFT_PIN   GPIO10           // TIM1_CH3 (PA10 si corresponde a tu mapeo)
-#define MOTOR_RIGHT_PIN  GPIO8            // TIM1_CH1 (PA8)
-#define MOTOR_FAN_PIN    GPIO9            // TIM1_CH2 (PA9)
+typedef enum {
+    IR_LEARN_FIRST = 0,   // aprendiendo botón 1
+    IR_LEARN_SECOND,      // aprendiendo botón 2
+    IR_LEARN_DONE         // modo normal
+} ir_learn_state_t;
 
-#define TIM_LEFT_MOTOR   TIM_OC3
-#define TIM_RIGHT_MOTOR  TIM_OC1
-#define TIM_FAN_MOTOR    TIM_OC2
+static ir_learn_state_t learn_state = IR_LEARN_FIRST;
 
-// Botones
-#define BUTTON1_PIN  GPIO3            // PB3 (pull-down)
-#define BUTTON2_PIN  GPIO14           // PC14 (pull-down)
-#define BUTTON3_PIN  GPIO15           // PC15 (pull-down)
+/* Códigos aprendidos (Sony SIRC 12 bits) */
+static uint16_t code_btn1 = 0;
+static uint16_t code_btn2 = 0;
+static bool     btn1_learned = false;
+static bool     btn2_learned = false;
 
-#define BUTTON1_PORT GPIOB
-#define BUTTON2_PORT GPIOC
-#define BUTTON3_PORT GPIOC
+/* ================== Decodificación Sony SIRC ==================
+ * Medimos tiempo entre flancos descendentes (delta_us).
+ *
+ * - Si delta_us > ~10000us => asumimos que empieza una nueva trama.
+ * - Bits:
+ *      ~1.2ms (ej. 600..1500us)  => bit 0
+ *      ~2.4ms (ej. 1500..3200us) => bit 1
+ *
+ * Recibimos 12 bits (SIRC clásico).
+ * ============================================================= */
 
-// LEDs
-#define RGB_RED_PIN    GPIO14           // PB12
-#define RGB_GREEN_PIN  GPIO12           // PB14
-#define RGB_BLUE_PIN   GPIO13           // PB13
-#define RGB_PORT       GPIOB
+static volatile int      ir_bit_index    = -1;   // -1 = no estamos en trama
+static volatile uint16_t ir_code         = 0;    // máx 16 bits, usamos 12
+static volatile bool     ir_frame_ready  = false;
+static volatile bool     ir_error        = false;
 
-// Ganancias “por muestra” (dt=2.5 ms). Punto de arranque conservador.
-static float KP = 0.04f;
-static float KD = 0.1f;
-static int   last_error = 0;
+/* ================== Helpers ================== */
 
-// (dejado como lo tenías)
-static const uint8_t QRE_CH[8] = {7, 6, 5, 4, 3, 2, 0, 1};
-qre_array_t qre;
+static void delay(volatile uint32_t t)
+{
+    while (t--) __asm__("nop");
+}
 
-static volatile uint32_t ticks = 0;
+/* LED helpers (activos en alto, independientes por color) */
 
-esc_handle_t ml, mr, mf; // left, right, fan
+static void led_all_off(void)
+{
+    gpio_clear(LED_PORT, LED_R_PIN | LED_G_PIN | LED_B_PIN);
+}
 
-const esc_config_t escL = {
-    .tim       = TIM1,
-    .ch        = TIM_LEFT_MOTOR,
-    .gpio_port = GPIOA,
-    .gpio_pin  = MOTOR_LEFT_PIN,
-    .freq_hz   = PWM_HZ,        // 400 Hz
-    .min_us    = MIN_SPEED,     // 1100
-    .max_us    = MAX_SPEED      // 1900
-};
-const esc_config_t escR = {
-    .tim       = TIM1,
-    .ch        = TIM_RIGHT_MOTOR,
-    .gpio_port = GPIOA,
-    .gpio_pin  = MOTOR_RIGHT_PIN,
-    .freq_hz   = PWM_HZ,        // 400 Hz
-    .min_us    = MIN_SPEED,     // 1100
-    .max_us    = MAX_SPEED      // 1900 (arreglado)
-};
-const esc_config_t escFan = {
-    .tim       = TIM1,
-    .ch        = TIM_FAN_MOTOR, // 2
-    .gpio_port = GPIOA, 
-    .gpio_pin  = MOTOR_FAN_PIN, // 9
-    .freq_hz   = PWM_HZ,        // 400 Hz
-    .min_us    = MIN_SPEED,     // 1100
-    .max_us    = MAX_SPEED      // 1900
-};
+static void led_red_on(void)
+{
+    gpio_set(LED_PORT, LED_R_PIN);
+}
 
-void sys_tick_handler(void);
-void sys_tick_handler(void) { ticks++; }
+static void led_red_off(void)
+{
+    gpio_clear(LED_PORT, LED_R_PIN);
+}
 
-static void clock_and_systick_setup(void) {
-    // 72 MHz desde HSE 8 MHz
+static void led_red_toggle(void)
+{
+    if (gpio_get(LED_PORT, LED_R_PIN)) {
+        led_red_off();
+    } else {
+        led_red_on();
+    }
+}
+
+static void led_blue_on(void)
+{
+    gpio_set(LED_PORT, LED_B_PIN);
+}
+
+static void led_blue_off(void)
+{
+    gpio_clear(LED_PORT, LED_B_PIN);
+}
+
+static void led_blue_toggle(void)
+{
+    if (gpio_get(LED_PORT, LED_B_PIN)) {
+        led_blue_off();
+    } else {
+        led_blue_on();
+    }
+}
+
+static void led_green_on(void)
+{
+    gpio_set(LED_PORT, LED_G_PIN);
+}
+
+static void led_green_off(void)
+{
+    gpio_clear(LED_PORT, LED_G_PIN);
+}
+
+/* ================== Init ================== */
+
+static void clock_setup(void)
+{
+    /* HSE 8MHz -> PLL -> 72MHz */
     rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
-
-    // SysTick a 400 Hz → 2.5 ms
-    systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
-    systick_set_reload((72000000 / CTRL_HZ) - 1);
-    systick_interrupt_enable();
-    systick_counter_enable();
 }
 
-static inline void pid_step_and_output(uint16_t position) {
-    int error      = (int)position - SETPOINT;
-    int derivative = error - last_error;
-
-    float pid = (error * KP) + (derivative * KD);
-    last_error = error;
-
-    float us_right = (float)BASE_SPEED - pid;
-    float us_left  = (float)BASE_SPEED + pid;
-
-    if (us_right > MAX_SPEED) us_right = MAX_SPEED;
-    else if (us_right < MIN_SPEED) us_right = MIN_SPEED;
-    if (us_left  > MAX_SPEED) us_left  = MAX_SPEED;
-    else if (us_left  < MIN_SPEED) us_left  = MIN_SPEED;
-
-    esc_write_us(&mr, (uint16_t)us_right);
-    esc_write_us(&ml, (uint16_t)us_left);
-    //uart_printf("ML: %4u MR: %4u\n", (uint16_t)us_right, (uint16_t)us_left);
-}
-
-///
-///     Atenti!
-///     Mover a librería aparte luego
-///
-
-static void release_jtag_keep_swd(void) {
-    rcc_periph_clock_enable(RCC_AFIO);
-    // Bits 26:24 = SWJ_CFG → 010 = JTAG off, SWD on
-    AFIO_MAPR = (AFIO_MAPR & ~(7u << 24)) | (2u << 24);
-}
-
-
-static void user_interfaces_setup(void) {
-    release_jtag_keep_swd();
-    
-    rcc_periph_clock_enable(RCC_GPIOC);
+static void led_init(void)
+{
     rcc_periph_clock_enable(RCC_GPIOB);
 
-    rcc_periph_clock_enable(RCC_AFIO);
-    // Deshabilita JTAG, deja SWD (SWJ_CFG = 010)
-    // Limpia los bits SWJ y setea el modo "JTAG off, SWD on"
-    // gpio_primary_remap(AFIO_MAPR_SWJ_MASK, AFIO_MAPR_SWJ_CFG_JTAG_OFF_SW_ON);
+    gpio_set_mode(LED_PORT,
+                  GPIO_MODE_OUTPUT_2_MHZ,
+                  GPIO_CNF_OUTPUT_PUSHPULL,
+                  LED_R_PIN | LED_G_PIN | LED_B_PIN);
 
-    // GPIOs LEDs
-    gpio_set_mode(RGB_PORT, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL,
-        RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);
-
-    // Botón 1 en PB3
-    gpio_set_mode(GPIOB, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, BUTTON1_PIN);
-    // Botones 2 y 3 en PC14/PC15
-    gpio_set_mode(GPIOC, GPIO_MODE_INPUT, GPIO_CNF_INPUT_FLOAT, BUTTON2_PIN | BUTTON3_PIN);
-
-                 
-    // Apagar LEDs al inicio
-    gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN);
+    led_all_off();
 }
 
-static void rgb_red(void)   { gpio_set(RGB_PORT, RGB_RED_PIN); }
-static void rgb_green(void) { gpio_set(RGB_PORT, RGB_GREEN_PIN); } // No funca
-static void rgb_blue(void)  { gpio_set(RGB_PORT, RGB_BLUE_PIN); }
+static void ir_gpio_setup(void)
+{
+    rcc_periph_clock_enable(RCC_GPIOB);
 
-static void rgb_cyan(void)  { gpio_set(RGB_PORT, RGB_GREEN_PIN | RGB_BLUE_PIN); }
+    /* PB7 como entrada con pull-up interno */
+    gpio_set(IR_PORT, IR_PIN);  // ODR=1 => PULL-UP
+    gpio_set_mode(IR_PORT,
+                  GPIO_MODE_INPUT,
+                  GPIO_CNF_INPUT_PULL_UPDOWN,
+                  IR_PIN);
+}
 
-static void rgb_clear(void) { gpio_clear(RGB_PORT, RGB_RED_PIN | RGB_GREEN_PIN | RGB_BLUE_PIN); }
+static void timer2_setup(void)
+{
+    rcc_periph_clock_enable(RCC_TIM2);
 
+    timer_disable_counter(TIM2);
+    /* 72MHz / 72 = 1MHz => 1us por tick */
+    timer_set_prescaler(TIM2, 72 - 1);
+    timer_set_period(TIM2, 0xFFFF);
+    timer_set_counter(TIM2, 0);
+    timer_enable_counter(TIM2);
+}
 
+static void ir_exti_setup(void)
+{
+    rcc_periph_clock_enable(RCC_AFIO);
 
+    exti_select_source(EXTI7, IR_PORT);
+    exti_set_trigger(EXTI7, EXTI_TRIGGER_FALLING);
+    exti_enable_request(EXTI7);
 
+    nvic_enable_irq(NVIC_EXTI9_5_IRQ);
+}
 
-int main(void) {
-    clock_and_systick_setup();
-    user_interfaces_setup();
-    //uart_init_115200();
-    delay_init_ms();
+/* ================== ISR EXTI: Sony SIRC ================== */
 
-    delay_ms(200);
+void exti9_5_isr(void)
+{
+    if (!exti_get_flag_status(EXTI7)) return;
+    exti_reset_request(EXTI7);
 
-    esc_init(&ml, &escL);
-    esc_init(&mr, &escR);
-    esc_init(&mf, &escFan);
+    uint16_t delta_us = timer_get_counter(TIM2);
+    timer_set_counter(TIM2, 0);
 
-    delay_ms(200); 
-
-
-    // Armado
-   
-    esc_write_us(&ml, 1000);
-    esc_write_us(&mr, 1000);
-    esc_write_us(&mf, 1000);
-    delay_ms(2000);
-   
-    // esc_calibrate(&ml);
-    // delay_ms(4000);
-    // esc_calibrate(&mr);
-    
-    //esc_arm(&ml);
-    //esc_arm(&mr);
-
-    
-    // Sensores
-    qre_init(&qre, QRE_CH, 8);
-
-    //uart_printf("Calibrating QRE...\n");
-
-    // Calibración (mover la regleta por línea y fondo)
-    rgb_red();
-    delay_ms(500);
-    qre_calibrate(&qre, 2000, 500);
-
-    //uart_printf("Calibration done.\n");
-
-    // Promedio (arrancá con 1 si querés tunear KP primero)
-    qre_set_averaging(&qre, 1);
-
-    uint32_t next = ticks; // arranca ya
-
-    //uint16_t raw_qre[8];
-    rgb_clear();
-    rgb_blue();
-
-    
-    bool boton1 = false;
-    bool boton2 = false;
-    bool boton3 = false;
-    
-    bool fan_on = false;
-    
-    bool esc_calibrated = false;
-    
-    inline void reset_buttons(void) {
-        boton1 = false;
-        boton2 = false;
-        boton3 = false;
+    /* GAP largo entre tramas => reset y empezar nueva */
+    if (delta_us > 10000) {   // >10ms
+        ir_bit_index   = 0;
+        ir_code        = 0;
+        ir_frame_ready = false;
+        ir_error       = false;
+        return;
     }
+
+    if (ir_bit_index < 0 || ir_bit_index >= 12) {
+        /* Todavía no vimos un gap largo para empezar trama,
+           o ya pasamos 12 bits. Ignorar. */
+        return;
+    }
+
+    /* Decodificar bit según delta_us
+     *  - ~1.2ms => 0
+     *  - ~2.4ms => 1
+     */
+    if (delta_us > 600 && delta_us < 1500) {
+        /* bit 0 */
+        ir_code |= (0U << ir_bit_index);
+        ir_bit_index++;
+    } else if (delta_us > 1500 && delta_us < 3200) {
+        /* bit 1 */
+        ir_code |= (1U << ir_bit_index);
+        ir_bit_index++;
+    } else {
+        /* timing raro => error */
+        ir_error     = true;
+        ir_bit_index = -1;
+        return;
+    }
+
+    if (ir_bit_index == 12) {
+        /* recibimos 12 bits */
+        ir_frame_ready = true;
+        ir_bit_index   = -1;
+    }
+}
+
+/* ================== main ================== */
+
+int main(void)
+{
+    clock_setup();
+    led_init();
+    ir_gpio_setup();
+    timer2_setup();
+    ir_exti_setup();
+
+    /* Al inicio: aprender botón 1 -> LED verde encendido */
+    learn_state   = IR_LEARN_FIRST;
+    btn1_learned  = false;
+    btn2_learned  = false;
+    led_all_off();
+    led_green_on();
+
     while (1) {
-        delay_ms(150);
+        if (ir_frame_ready) {
+            ir_frame_ready = false;
 
-
-        if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = true; rgb_clear(); rgb_cyan();}
-        if (gpio_get(BUTTON2_PORT, BUTTON2_PIN)) {boton2 = true; rgb_clear(); rgb_green();}
-        if (gpio_get(BUTTON3_PORT, BUTTON3_PIN)) {boton3 = true; rgb_clear(); rgb_green();}
-
-
-        // if (boton3 && !esc_calibrated) { 
-        //     boton3 = false;
-        //     // Armado
-        //     esc_write_us(&ml, 1000);
-        //     esc_write_us(&mr, 1000);
-        //     esc_write_us(&mf, 1000);
-        //     delay_ms(2000);
-       
-        //     esc_calibrated = true;
-        // }
-
-        // if (boton3 && !esc_calibrated) { 
-        //     reset_buttons();
-
-        //     // debounce / detectar hold: si tras 500 ms sigue presionado → calibrar
-        //     delay_ms(50);                // pequeño debounce inicial
-        //     if (gpio_get(BUTTON3_PORT, BUTTON3_PIN)) {
-        //         // esperar un poco más para confirmar hold
-        //         delay_ms(450);
-        //         if (gpio_get(BUTTON3_PORT, BUTTON3_PIN)) {
-        //             // Calibración (botón mantenido)
-        //             rgb_clear(); rgb_blue();
-        //             esc_calibrate(&ml);
-        //             esc_calibrate(&mr);
-        //             esc_calibrate(&mf);
-        //             delay_ms(200); // pequeño respiro
-        //             rgb_clear();
-        //             esc_calibrated = true; // opcional: marcar calibrado
-        //         } else {
-        //             // no fue hold prolongado → hacer armado
-        //             esc_write_us(&ml, 1000);
-        //             esc_write_us(&mr, 1000);
-        //             esc_write_us(&mf, 1000);
-        //             delay_ms(2000);
-        //             esc_calibrated = true;
-        //         }
-        //     } else {
-        //         // no quedó presionado tras debounce → hacer armado
-        //         esc_write_us(&ml, 1000);
-        //         esc_write_us(&mr, 1000);
-        //         esc_write_us(&mf, 1000);
-        //         delay_ms(2000);
-        //         esc_calibrated = true;
-        //     }
-        // }
-
-        // if (gpio_get(BUTTON3_PORT, BUTTON3_PIN))
-        // {
-        //     rgb_clear(); rgb_green();
-        //     esc_calibrate(&ml);
-        //     esc_calibrate(&mr);
-        //     esc_calibrate(&mf);
-
-        //     delay_ms(5000);
-
-        //     rgb_clear(); rgb_blue();
-        // }
-        
-
-        // if (boton2 && esc_calibrated) { 
-        //     reset_buttons();
-        //     fan_on = !fan_on;
-
-        //     if (fan_on){
-        //         esc_write_us(&mf, FAN_SPEED_US);
-        //     } else if (!fan_on){
-        //         esc_write_us(&mf, 1000);
-        //     }
-        //     rgb_clear(); rgb_red(); 
-        // }
-
-        while (boton1) {
-            
-            if (!fan_on) {
-                esc_write_us(&mf, FAN_SPEED_US);
-                fan_on = true;
+            if (ir_error) {
+                ir_error = false;
+                continue;
             }
 
-            // esperar el próximo tick exacto (2.5 ms)
-            while ((int32_t)(ticks - next) < 0) { __asm__("nop"); }
-            next += 1;
+            uint16_t code = ir_code;   // 12 bits válidos
 
-            // 1) Lectura en fase
-            uint16_t pos = qre_read_position_white(&qre);
+            /* ======== MODO APRENDIZAJE ======== */
+            if (learn_state == IR_LEARN_FIRST) {
+                /* Primer botón */
+                code_btn1     = code;
+                btn1_learned  = true;
 
-            //uart_printf("Pos: %4u\n", pos);
-        
-            // 2) PID + salida
-            if (pos == (uint16_t)(-1)) {
-                // Línea no detectada: detener motores
-                esc_write_us(&ml, 1000);
-                esc_write_us(&mr, 1000);
-            } else {
-                pid_step_and_output(pos);
+                /* Apagar verde, pequeña pausa y volver a encenderlo
+                   para indicar que ahora espera el segundo botón */
+                led_green_off();
+                delay(60000);
+                led_green_on();
+
+                learn_state = IR_LEARN_SECOND;
+
+            } else if (learn_state == IR_LEARN_SECOND) {
+                /* Segundo botón */
+                code_btn2     = code;
+                btn2_learned  = true;
+
+                /* Ya no estamos aprendiendo: apagar verde */
+                led_green_off();
+                learn_state = IR_LEARN_DONE;
+
+                /* Pequeño flash rojo+azul al terminar el aprendizaje */
+                led_red_on();
+                led_blue_on();
+                delay(80000);
+                led_red_off();
+                led_blue_off();
+
+            /* ======== MODO NORMAL ======== */
+            } else if (learn_state == IR_LEARN_DONE) {
+                if (btn1_learned && code == code_btn1) {
+                    /* Botón 1 -> toggle rojo */
+                    led_red_toggle();
+                } else if (btn2_learned && code == code_btn2) {
+                    /* Botón 2 -> toggle azul */
+                    led_blue_toggle();
+                }
             }
-
-            //uart_printf("\n");
-
-
-            // for (uint8_t i = 0; i < 8; i++) {
-            //     raw_qre[i] = qre_read_raw_channel(QRE_CH[i]);
-            // }
-
-            // uart_printf("QRE: %4u %4u %4u %4u %4u %4u %4u %4u\n",
-            //             raw_qre[7], raw_qre[6], raw_qre[5], raw_qre[4],
-            //             raw_qre[3], raw_qre[2], raw_qre[1], raw_qre[0]);
-
-
-            //delay_ms(100); // simula trabajo en el loop
-            
-            //if (gpio_get(BUTTON1_PORT, BUTTON1_PIN)) {boton1 = false; rgb_clear(); rgb_cyan();}
-
         }
     }
+
+    return 0;
 }
