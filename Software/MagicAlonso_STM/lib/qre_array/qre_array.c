@@ -4,6 +4,8 @@
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/adc.h>
 
+#define LOST_LINE_TIMEOUT_MS 500u
+
 // Setup de ADC, sin SCAN_MODE, SINGLE_CONVERSION, RIGHT_ALIGNED
 static void adc1_setup_once(void) {
     static bool done = false;
@@ -155,46 +157,74 @@ void qre_read_calibrated(const qre_array_t* q, uint16_t* out) {
 }
 
 // Calcula la posición de la línea (0..(N-1)*1000) para línea negra o blanca
+// Calcula la posición de la línea (0..(N-1)*1000) para línea negra o blanca
 static uint16_t qre_position_core(const qre_array_t* q, bool invert) {
     if (!q) return 0;
 
-    // "memoria" de última posición (0..(N-1)*1000)
-    static uint16_t last_pos = 0;
+    static uint16_t last_pos        = 0;
+    static uint32_t last_on_line_ms = 0;
+    static bool     ever_on_line    = false;
 
     uint16_t readings[QRE_MAX_SENSORS];
     qre_read_calibrated(q, readings); // 0..1000
 
-    const uint16_t THRESH_ONLINE = 200; // detecta presencia de línea
-    const uint16_t THRESH_NOISE  = 50;  // ignora ruido en el promedio
+    /* Ajustá estos dos si hace falta después de probar */
+    const uint16_t THRESH_ONLINE = 400; // antes 200
+    const uint16_t THRESH_NOISE  = 80;  // antes 50
 
-    bool on_line = false;
-    uint32_t weighted_sum = 0, total_sum = 0;
+    bool     on_line     = false;
+    uint32_t weighted_sum = 0;
+    uint32_t total_sum    = 0;
 
     for (uint8_t i = 0; i < q->num_sensors; i++) {
         uint16_t v = readings[i];
-        if (invert) v = 1000 - v;
+        if (invert) v = 1000 - v;  // blanco
 
-        if (v > THRESH_ONLINE) on_line = true;
+        /* Para el promedio, ignoramos valores muy bajos (ruido) */
         if (v > THRESH_NOISE) {
             weighted_sum += (uint32_t)v * (i * 1000u);
-            total_sum += v;
+            total_sum    += v;
+        }
+
+        /* Para declarar "estamos sobre línea", pedimos un valor alto */
+        if (v > THRESH_ONLINE) {
+            on_line = true;
         }
     }
 
-    // Si no hay línea, devolver el último extremo conocido para una corrección rápida
-    // Si la corrección es demasiado brusca, recomiendo cambiar el condicional
-    // por "if (!on_line) return last_pos;" para mantener la última posición conocida.
-    // PD: hacer ese cambio puede solucionar que el robot se sale si salta en la rampa.
-    
-    if (!on_line) {
-        // uint16_t mid = (uint16_t)((q->num_sensors - 1) * 1000u / 2u);
-        // return (last_pos < mid) ? 0u : (uint16_t)((q->num_sensors - 1) * 1000u);
+    uint32_t now = millis();
 
-        return -1;
+    /* ---- NO hay línea detectada en esta lectura ---- */
+    if (!on_line) {
+        if (!ever_on_line) {
+            /* Nunca vimos la línea todavía: devolvé -1 directamente */
+            return (uint16_t)0xFFFF;
+        }
+
+        uint32_t elapsed = (uint32_t)(now - last_on_line_ms);
+
+        /* Si todavía estamos dentro del timeout, mantenemos last_pos */
+        if (elapsed < LOST_LINE_TIMEOUT_MS) {
+            return last_pos;
+        }
+
+        /* Ya pasó el timeout -> declaramos línea perdida */
+        return (uint16_t)0xFFFF;
     }
 
-    if (total_sum == 0) return last_pos; // por seguridad
+    /* ---- SÍ hay línea ---- */
+
+    if (total_sum == 0) {
+        /* Muy raro: hubo on_line pero sin contribuciones al promedio */
+        return last_pos;
+    }
+
     uint16_t position = (uint16_t)(weighted_sum / total_sum);
+
+    last_pos        = position;
+    last_on_line_ms = now;
+    ever_on_line    = true;
+
     return position;
 }
 
